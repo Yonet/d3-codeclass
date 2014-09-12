@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>D3 Workshop at Data Week 2014</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>D3.js</h1>
+					<h3>Data-Driven Documents</h3>
+					<p>	Created by <a href="http://bost.ocks.org/mike/">Mike Bostock</a></p>
+					<p><small>Aysegul Yonet / <a href="https://twitter.com/tevgende">@tevgende</a></small>
+					</p>
+				</section>
+				<!-- 1 -->
+				<section>
+					<h2>What is D3?</h2>
+					<p>
+
+					It is a tool for data visualization in the browser, making use of the widely implemented Scalable Vector Graphics (SVG), JavaScript, HTML5, and Cascading Style Sheets (CSS3) standards.
+						
+					</p>
+
+					<!-- <aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside> -->
+				</section>
+				<!-- 2 -->
+				<!-- TODO -->
+				<section>
+					<h2>What d3 is not?</h2>
+					<p>
+						<ul>
+							<li>Not a prototyping tool</li>
+						</ul>
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>How does it work?</h2>
+						<p>
+							Large datasets can be easily bound to SVG objects using simple D3 functions to generate rich text/graphic charts and diagrams. The data can be in various formats, most commonly JSON, comma-separated values (CSV) or geoJSON.
+						</p>
+					</section>
+					<section>
+						<p>The central principle of D3 design is to enable the programmer to first use a CSS-style selector to select a given set of Document Object Model (DOM) nodes, then use operators to manipulate them in a similar manner to jQuery.
+						</p>
+					</section>
+					<section>
+						<p>The selection can be based on tag (as in the below example), class, identifier, attribute, or place in the hierarchy. Once elements are selected, one can apply operations to them. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.</p>
+					</section>
+	
+				</section>
+				<section>
+					<h2>Why use D3?</h2>
+<!-- 					<p><ul>
+						<li>JavaScript is cool</li>
+						<li>Graphs are cool</li>
+						<li>Lot's of <a href="http://d3js.org/">examples</li>
+					</ul></p> -->
+				</section>
+				<!-- 3 -->
+				<section>
+					<section>
+						<h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
+						<p>
+							SVG(Scalable Vector Graphics). Except you can't put another html element inside an svg. 
+						</p>
+
+						<p>
+							
+						</p>
+						
+					</section>
+
+					<section>
+					<h3>Circle</h3>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<circle
+  cx=250
+  cy=100
+  r=30
+  fill='#25B0B0'>
+</circle>
+					</code></pre>
+						
+					</section>
+					<section>
+						<h3>Rectangle</h3>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<rect
+  x=200
+  y=50
+  width=100
+  height=100
+  rx=0
+  ry=0
+  fill='#25B0B0'>
+</rect>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Path</h3>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<path d='
+  M50,100
+  L131,66
+  L259,115
+  L339,50
+  L400,98
+  M350,150
+  L100,150'
+  fill=none
+  stroke='#25B0B0'>
+</path>
+							
+						</code></pre>
+					</section>
+					<section>
+						<h3>Group</h3>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<g transform='translate(100, 100)'>
+  <circle cx=20 cy=10 r=30 fill='#25B0B0'>
+  </circle>
+  <circle cx=100 cy=10 r=30 fill='#25B0B0'>
+  </circle>
+</g>
+							
+						</code></pre>
+					</section>
+
+				</section>
+				<!-- 4 -->
+				<section>
+					<h2>Selections</h2>
+					<p>
+						d3 selections are an array of nodes. Almost...
+					</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.selectAll("p").style('color', 'red')
+	.attr('class', 'paragraph');
+					</code></pre>
+				</section>
+				<!-- 5 -->
+				<section>
+					<p>
+						You can operate over the nodes in a declarative way.
+					</p>
+					<ul>
+						<li class="fragment">setting attributes or styles</li>
+						<li class="fragment">registering event listeners</li>
+						<li class="fragment">adding, removing or sorting nodes</li>
+						<li class="fragment">and changing HTML or text content</li>
+					</ul>
+					
+				</section>
+
+				<section>
+					<p>styles, attributes, and other properties can be specified as functions of data in D3, not just simple constants</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.selectAll("p").style("color", function() {
+	return "hsl(" + Math.random() * 360 + ",100%,50%)";
+});
+					</code></pre>
+					
+				</section>
+				<section>
+					<p>You can also use data or index to define any property</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.selectAll("p").style("color", function(d, i) {
+	return i % 2 ? "#fff" : "#eee";
+});
+					</code></pre>
+					
+				</section>
+				<section>
+					<h2>Data</h2>
+					<p>Data is specified as an array of values and bind to the selection by index.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.selectAll("p")
+	.data([4, 8, 15, 16, 23, 42])
+	.style("font-size", function(d) { return d + "px"; });
+						
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Enter and Exit</h2>
+					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
+					
+				</section>
+
+				<section>
+					<p>
+						When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection
+					</p>
+
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.select("body").selectAll("p")
+		.data([4, 8, 15, 16, 23, 42])
+	.enter().append("p")
+		.text(function(d) { return "I’m number " + d + "!"; });
+					</code></pre>
+					
+				</section>
+				<section>
+					<p>if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Update…
+var p = d3.select("body").selectAll("p")
+	.data([4, 8, 15, 16, 23, 42])
+	.text(String);
+
+// Enter…
+p.enter().append("p")
+	.text(String);
+
+// Exit…
+p.exit().remove();
+					</code></pre>
+					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
+					
+				</section>
+				<section>
+					<h2>Exercise Time</h2>
+					<!-- TODO create bitly link to exercizes on codepen -->
+				</section>
+				<section>
+				<h2>Transitions</h2>
+				<p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p>
+				<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.selectAll("circle").transition()
+	.duration(750)
+	.delay(function(d, i) { return i * 10; })
+	.attr("r", function(d) { return Math.sqrt(d * scale); });
+				</code></pre>
+				</section>
+
+				<section>
+					<h2>Scales</h2>
+					<ul>
+						<li>d3.scale.linear</li>
+							<ul>
+								<li>linear.nice - extend the scale domain to nice round numbers.</li>
+								<li>linear.ticks - get representative values from the input domain.</li>
+							</ul>
+							<li>d3.scale.pow - get the range value corresponding to a given domain value.</li>
+					</ul>
+					
+				</section>
+				<section>
+					<h2>Axis</h2>
+					<p>d3.svg.axis creates a new axis generator.</p>
+					<ul>
+						<li>axis.scale</li>
+						<li>axis.orient</li>
+						<li>axis.ticks</li>
+						<li>axis.tickFormat</li>
+					</ul>
+				</section>
+				<section>
+					<h2>d3.time</h2>
+					<ul>
+						<li class="fragment">d3.time.format - create a new local time formatter for a given specifier.</li>
+						<li class="fragment">d3.time.scale - construct a linear time scale.</li>
+						<li class="fragment">d3.time.intervals - a time interval in local time.</li>
+					</ul>
+
+					
+				</section>
+				<section>
+					<h2>Working with Arrays</h2>
+					<p>Most commonly used functions</p>
+					<ul>
+						<li class="fragment">d3.min/d3.max</li>
+						<li class="fragment">d3.range</li>
+						<li class="fragment">d3.map</li>
+							<ul class="fragment">
+								<li>map.forEach -  calls the specified function for each entry in the map.</li>
+								<li>map.get - returns the value for the specified key. </li>
+								<li>map.set - sets the value for the specified key.</li>
+							</ul>
+						<li class="fragment">d3.keys - list the keys of an associative array.</li>
+						<li class="fragment">d3.merge - merge multiple arrays into one array.</li>
+						<li class="fragment">d3.nest - group array elements hierarchically.</li>
+					</ul>
+					
+				</section>
+				<section>
+					<h2>Loading External Resources</h2>
+					<ul>
+						<li class="fragment">d3.json</li>
+						<li class="fragment">d3.csv</li>
+						<li class="fragment">d3.tsv</li>
+					</ul>
+					<aside class="notes">Don't forget to put the functions inside the async function.</aside>
+					
+				</section>
+
+				<section>
+					<h2>Exercise Time</h2>
+				</section>
+				<section>
+					<h2>Good News!</h2>
+					<ul>
+						<li class="fragment"><a href="http://nvd3.org/index.html">NVD3</a></li>
+						<li class="fragment"><a href="http://c3js.org/">C3.js</a></li>
+						<li class="fragment"><a href="http://code.shutterstock.com/rickshaw/examples/">Rickshaw</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>BY Aysegul Yonet / aysegulyonet@gmail.com</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
+
