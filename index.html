@@ -97,17 +97,17 @@
 					<section>
 						<h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
 						<p>
-							SVG(Scalable Vector Graphics). Except you can't put another html element inside an svg. 
+							SVG is another HTML element, except you can't put another HTML element inside an SVG. 
 						</p>
 
 						<p>
-							
+							SVG does not support common HTML attributes or styles such as width, height, position, left, top, right, bottom or float.
 						</p>
 						
 					</section>
 
 					<section>
-					<h3>Circle</h3>
+					<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/">Circle</a></h3>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <circle
   cx=250
@@ -126,10 +126,23 @@
   y=50
   width=100
   height=100
-  rx=0
+  rx=10
   ry=0
   fill='#25B0B0'>
 </rect>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Line</h3>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<line 
+	x1="10"
+	y1="10" 
+	x2="100" 
+	y2="100"
+	stroke="blue"
+	stroke-width="100">
+</line>
 						</code></pre>
 					</section>
 					<section>
@@ -148,9 +161,26 @@
 </path>
 							
 						</code></pre>
+						<ul>
+							<li>M - move.</li>
+							<li>L - line.</li>
+							<li>z - close path.</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Text</h3>
+						<p>Unless you set the style of the SVG text, it inherits font-styles from CSS.</p>
+						<pre><code>
+<svg>
+	<text x="100" y="100" fill="red" font-family="arial" font-size="16">
+		Look at me, I am a text.
+	</text>
+</svg>
+						</code></pre>
 					</section>
 					<section>
 						<h3>Group</h3>
+						<p>Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</p>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <g transform='translate(100, 100)'>
   <circle cx=20 cy=10 r=30 fill='#25B0B0'>
@@ -161,23 +191,33 @@
 							
 						</code></pre>
 					</section>
+					<section>
+						<h3>SVG styles</h3>
+						<ul>
+						TODO
+							<li>background-color </li>
+						</ul>
+					</section>
 
 				</section>
 				<!-- 4 -->
 				<section>
 					<h2>Selections</h2>
 					<p>
-						d3 selections are an array of nodes. Almost...
+						D3 selections are array like objects that represents sets of DOM elements paired with data.
+					</p>
+					<p>
+						Selectors in D3 are declared the same way as CSS rules. An important difference is, a D3 selector object only contains the elements that matched the selection rule when the selection was first created.
 					</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p").style('color', 'red')
-	.attr('class', 'paragraph');
+	.attr('class', 'classy');
 					</code></pre>
 				</section>
 				<!-- 5 -->
 				<section>
 					<p>
-						You can operate over the nodes in a declarative way.
+						You can operate over the nodes in a declarative way using selector methods.
 					</p>
 					<ul>
 						<li class="fragment">setting attributes or styles</li>
@@ -211,7 +251,7 @@ d3.selectAll("p").style("color", function(d, i) {
 					<p>Data is specified as an array of values and bind to the selection by index.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p")
-	.data([4, 8, 15, 16, 23, 42])
+	.data([3, 7, 21, 31, 35, 42])
 	.style("font-size", function(d) { return d + "px"; });
 						
 					</code></pre>
@@ -220,6 +260,17 @@ d3.selectAll("p")
 				<section>
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
+								<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var bars = d3.select('body').selectAll('svg');
+
+//if we have more data, add new rectangles for those data items
+bars.enter().append('rect')
+  .attr('class', 'bar');
+
+//if we have less data points, remove the rectangles that no longer have a data pairing. 
+bars.exit().remove();
+
+					</code></pre>
 					
 				</section>
 
@@ -230,7 +281,7 @@ d3.selectAll("p")
 
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.select("body").selectAll("p")
-		.data([4, 8, 15, 16, 23, 42])
+		.data([3, 7, 21, 31, 35, 42])
 	.enter().append("p")
 		.text(function(d) { return "I’m number " + d + "!"; });
 					</code></pre>
@@ -241,12 +292,12 @@ d3.select("body").selectAll("p")
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // Update…
 var p = d3.select("body").selectAll("p")
-	.data([4, 8, 15, 16, 23, 42])
-	.text(String);
+	.data([3, 7, 21, 31, 35, 42])
+	.text(function(d,i){ return "I'm pharagraph number" + i; });
 
 // Enter…
 p.enter().append("p")
-	.text(String);
+	.text(function(d,i){ return "I'm pharagraph number" + i; });
 
 // Exit…
 p.exit().remove();
@@ -344,7 +395,7 @@ d3.selectAll("circle").transition()
 
 				<section>
 					<h1>THE END</h1>
-					<h3>BY Aysegul Yonet / aysegulyonet@gmail.com</h3>
+					<h3>BY Aysegul Yonet / ayonet@poshly.com</h3>
 				</section>
 
 			</div>
