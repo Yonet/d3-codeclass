@@ -112,7 +112,7 @@ d3.select("div").selectAll("p").style('color', 'red')
             <p>Bind array of data to child nodes</p>
 
 
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
 	.style("font-size", function(d) { return d + "px"; });
@@ -123,7 +123,7 @@ d3.selectAll("p")
 					<section>
            <h2>Appending</h2>
            <p>Append nodes to parent container</p>
-           <pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+           <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.select("body").selectAll("p")
 		.data([3, 7, 21, 31, 35, 42])
 	.enter().append("p")
@@ -133,7 +133,7 @@ d3.select("body").selectAll("p")
 					<section>
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var bars = d3.select('svg').selectAll('rect');
 
 //if we have more data, add new rectangles for those data items
@@ -147,7 +147,7 @@ bars.exit().remove();
 				</section>
 				<section>
 					<p>if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data.</p>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 // Update…
 var p = d3.select("body").selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
@@ -167,7 +167,7 @@ p.exit().remove();
 					<section>
             <h2>Style</h2>
             					<p>You can also use data or index in a callback to define any property.</p>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.select("div").selectAll("p").style("color", function(data, index) {
 	return i % 2 ? "red" : "blue";
 });
@@ -177,7 +177,7 @@ d3.select("div").selectAll("p").style("color", function(data, index) {
 					<section>
            <h2>Transition</h2>
            <p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p>
-				<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+				<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("circle").transition()
 	.duration(750)
 	.delay(function(d, i) { return i * 10; })
@@ -202,7 +202,7 @@ d3.selectAll("circle").transition()
 
 					<section>
 					<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <circle
   cx=250
   cy=100
@@ -214,7 +214,7 @@ d3.selectAll("circle").transition()
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/3q7atsmh/" target="_blank">Rectangle</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <rect
   x=200
   y=50
@@ -228,7 +228,7 @@ d3.selectAll("circle").transition()
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <line 
 	x1="10"
 	y1="10" 
@@ -241,7 +241,7 @@ d3.selectAll("circle").transition()
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/" target="_blank">Path</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <path d='
   M50,100
   L131,66
@@ -276,7 +276,7 @@ d3.selectAll("circle").transition()
 						<h3>Group</h3>
 						TODO: jsfiddle
 						<p>Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</p>
-						<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <g transform='translate(100, 100)'>
   <circle cx=20 cy=10 r=30 fill='#25B0B0'>
   </circle>
@@ -322,7 +322,7 @@ d3.selectAll("circle").transition()
 
 				<!-- <section>
 					<p>styles, attributes, and other properties can be specified as functions of data in D3, not just simple constants</p>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p").style("color", function() {
 	return "hsl(" + Math.random() * 360 + ",100%,50%)";
 });
@@ -338,7 +338,7 @@ d3.selectAll("p").style("color", function() {
 				<!-- <section>
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var bars = d3.select('svg').selectAll('rect');
 
 //if we have more data, add new rectangles for those data items
@@ -356,7 +356,7 @@ bars.exit().remove();
 						When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection
 					</p>
 
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.select("body").selectAll("p")
 		.data([3, 7, 21, 31, 35, 42])
 	.enter().append("p")
@@ -366,7 +366,10 @@ d3.select("body").selectAll("p")
 				</section> -->
 				
 				<section>
-					<h2><a href="http://jsfiddle.net/yonet3d/w319gwyw/" target="_blank">Let's make something</a></h2>
+					<h2>Let's make something</h2>
+					<p>Exercise: <a href="http://bit.ly/d3-exercise">http://bit.ly/d3-exercise</a></p>
+
+					<p>In case you get stuck...<a href="http://jsfiddle.net/yonet3d/w319gwyw/"> Solution</a></p>
 				</section>
 				<section>
 				<h2>More Advanced D3</h2>
