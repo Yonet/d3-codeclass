@@ -61,9 +61,8 @@
 				<section>
 					<h2>What d3 is not?</h2>
 					<p>
-						<ul>
-							<li>Not a prototyping tool</li>
-						</ul>
+						
+						Not a prototyping tool.
 					</p>
 				</section>
 
@@ -86,11 +85,11 @@
 				</section>
 				<section>
 					<h2>Why use D3?</h2>
-<!-- 					<p><ul>
+					<p><ul>
 						<li>JavaScript is cool</li>
 						<li>Graphs are cool</li>
 						<li>Lot's of <a href="http://d3js.org/" target="_blank">examples</li>
-					</ul></p> -->
+					</ul></p>
 				</section>
 				<!-- 3 -->
 				<section>
@@ -133,7 +132,7 @@
 						</code></pre>
 					</section>
 					<section>
-						<h3><a href="http://jsfiddle.net/yonet3d/adtgwdbh/1/" target="_blank">Line</a></h3>
+						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <line 
 	x1="10"
@@ -205,15 +204,17 @@
 				<section>
 					<h2>Selections</h2>
 					<p>
-						D3 selections are array like objects that represents sets of DOM elements paired with data.
+						D3 selections are array like objects that represent sets of DOM elements paired with data.
 					</p>
-					<p>
-						Selectors in D3 are declared the same way as CSS rules. An important difference is, a <a href="http://jsfiddle.net/yonet3d/y5gv81pg/" target="_blank">D3 selector object</a> only contains the elements that matched the selection rule when the selection was first created.
-					</p>
+
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p").style('color', 'red')
 	.attr('class', 'classy');
 					</code></pre>
+
+					<p>
+						Selectors in D3 are declared the same way as CSS rules. An important difference is that a <a href="http://jsfiddle.net/yonet3d/y5gv81pg/3/" target="_blank">D3 selector object</a> only contains the elements that matched the selection rule when the selection was first created.
+					</p>
 				</section>
 				<!-- 5 -->
 				<section>
@@ -245,11 +246,11 @@ d3.selectAll("p").style("color", function(d, i) {
 	return i % 2 ? "red" : "blue";
 });
 					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/">JSFiddle</a></p>
+					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
 				</section>
 				<section>
 					<h2>Data</h2>
-					<p>Data is specified as an array of values and bind to the selection by index.</p>
+					<p>Data is specified as an array of values and bound to the selection by index.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
@@ -263,7 +264,7 @@ d3.selectAll("p")
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var bars = d3.select('body').selectAll('svg');
+var bars = d3.select('svg').selectAll('rect');
 
 //if we have more data, add new rectangles for those data items
 bars.enter().append('rect')
@@ -273,7 +274,6 @@ bars.enter().append('rect')
 bars.exit().remove();
 
 					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/2/" target="_blank">JSFiddle</a></p>
 				</section>
 
 				<section>
@@ -304,7 +304,7 @@ p.enter().append("p")
 // Exit…
 p.exit().remove();
 					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/2/" target="_blank">JSFiddle</a></p>
+					<p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/3/" target="_blank">JSFiddle</a></p>
 					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
 				</section>
 				<section>
@@ -319,17 +319,20 @@ d3.selectAll("circle").transition()
 	.delay(function(d, i) { return i * 10; })
 	.attr("r", function(d) { return Math.sqrt(d * scale); });
 				</code></pre>
+				<!-- TODO Fiddle-->
 				</section>
 
 				<section>
 					<h2>Scales</h2>
+					<p>Scales convert between data and visual encodings.</p>
 					<ul>
-						<li>d3.scale.linear</li>
+						<li>Quantitative Scale</li>
 							<ul>
-								<li>linear.nice - extend the scale domain to nice round numbers.</li>
-								<li>linear.ticks - get representative values from the input domain.</li>
+								<li>d3.scale.linear - construct a linear quantitative scale.</li>
+								<li>linear.domain -  get or set the scale's input domain.</li>
+								<li>linear.domain - get or set the scale's output range.</li>
 							</ul>
-							<li>d3.scale.pow - get the range value corresponding to a given domain value.</li>
+						<li>Ordinal Scale</li>
 					</ul>
 					
 				</section>
@@ -353,8 +356,8 @@ d3.selectAll("circle").transition()
 				<section>
 					<h2>d3.time</h2>
 					<ul>
-						<li class="fragment">d3.time.format - create a new local time formatter for a given specifier.</li>
-						<li class="fragment">d3.time.scale - construct a linear time scale.</li>
+						<li class="fragment">d3.time.format - creates a new local time formatter for a given specifier.</li>
+						<li class="fragment">d3.time.scale - constructs a linear time scale.</li>
 						<li class="fragment">d3.time.intervals - a time interval in local time.</li>
 					</ul>
 
@@ -372,9 +375,9 @@ d3.selectAll("circle").transition()
 								<li>map.get - returns the value for the specified key. </li>
 								<li>map.set - sets the value for the specified key.</li>
 							</ul>
-						<li class="fragment">d3.keys - list the keys of an associative array.</li>
-						<li class="fragment">d3.merge - merge multiple arrays into one array.</li>
-						<li class="fragment">d3.nest - group array elements hierarchically.</li>
+						<li class="fragment">d3.keys - lists the keys of an associative array.</li>
+						<li class="fragment">d3.merge - merges multiple arrays into one array.</li>
+						<li class="fragment">d3.nest - groups array elements hierarchically.</li>
 					</ul>
 					
 				</section>
