@@ -73,7 +73,7 @@
 						</ul>
 
 						<p>
-							SVG does not support common HTML attributes or styles such as width, height, position, left, top, right, bottom or float.
+							SVG does not support common HTML attributes or styles such as position, left, top, right, bottom or float.
 						</p>
 						<aside class="notes"></aside>
 					</section>
@@ -103,6 +103,8 @@
 							fill='#25B0B0'>
 							</rect>
 						</code></pre>
+						<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx">Interesting fact: </a>if a properly specified value is provided for rx but not for ry (or the opposite), then the browser will consider the missing value equal to the defined one.
+						</p>
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
@@ -225,103 +227,62 @@
 					</code></pre>
 					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/">JSFiddle</a></p>
 				</section>
+
 				<section>
-					<h2>Appending</h2>
-					<p>Append nodes to parent container</p>
+					<h2>Enter() and Append()</h2>
+
+					<p>When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 						d3.select("body").selectAll("p")
 								.data([3, 7, 21, 31, 35, 42])
-							.enter().append("p")
-								.text(function(d) { return "I’m number " + d + "!"; });
+							.enter().append("p");
 					</code></pre>
-					<p><a href="http://bit.ly/enter-append">JSFiddle</a></p>
+					<!-- .text(function(d) { return "I’m number " + d + "!"; }); -->
+					<p><a href="http://jsfiddle.net/yonet3d/93ooqk53/1/">JSFiddle</a></p>
 				</section>
+
 				<section>
-					<h2>Enter and Exit</h2>
-					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
+					<h2>Exit() and Remove()</h2>
+					<p>Using D3’s exit and remove, you can get rid of outgoing nodes that are no longer needed.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						var bars = d3.select('svg').selectAll('rect');
+var bars = d3.select('svg').selectAll('rect').data(someData);
 
-						//if we have more data, add new rectangles for those data items
-						bars.enter().append('rect')
-						
-						//Do stuff here...
+//if we have more data, add new rectangles for those data items
+bars.enter().append('rect')
 
-						//if we have less data points, remove the rectangles that no longer have a data pairing. 
-						bars.exit().remove();
+//if we have less data points, remove the rectangles that no longer have a data pairing. 
+bars.exit().remove();
 					</code></pre>
 				</section>
+
 				<section>
 					<p>if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						// Update…
-						var p = d3.select("body").selectAll("p")
-							.data([3, 7, 21, 31, 35, 42])
-							.text(function(d,i){ return "I'm pharagraph number" + i; });
+// Update…
+var p = d3.select("body").selectAll("p")
+	.data([3, 7, 21, 31, 35, 42]);
 
-						// Enter…
-						p.enter().append("p")
-							.text(function(d,i){ return "I'm pharagraph number" + i; });
+// Enter…
+p.enter().append("p")
 
-						// Exit…
-						p.exit().remove();
+// Exit…
+p.exit().remove();
 					</code></pre>
 					<!-- <p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/4/" target="_blank">JSFiddle</a></p> -->
-					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
+					<p>By handling these three cases separately, you specify precisely which operations run on which nodes.</p>
 				</section>
+
 				<section>
 					<h2>Let's give it a try</h2>
-					<p>Exercise: <a href="http://bit.ly/d3-exit">http://bit.ly/d3-exit</a></p>
-
+					<p>Exercise: <a href="http://bit.ly/enter-exit-exercises">http://bit.ly/enter-exit-exercise</a></p>
 				</section>
 
 				<section>
-					<h2>Style</h2>
-					<p>You can also use data or index in a callback to define any property.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						d3.select("div").selectAll("p").style("color", function(data, index) {
-							return i % 2 ? "red" : "blue";
-						});
-					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
+					<p>If you get stuck...<a href="http://bit.ly/enter-exit-solution">Sotlution</a></p>
 				</section>
-				<section>
-					<h2>Transition</h2>
-					<p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						d3.selectAll("circle").transition()
-							.duration(750)
-							.delay(function(d, i) { return i * 10; })
-							.attr("r", function(d) { return Math.sqrt(d); });
-					</code></pre>
-				</section>
-				<section>
-					<h2>Try it for yourself</h2>
-					<p>Look at the example and create a transition to change the size of the circles:<a href="http://bit.ly/d3-transitions">http://bit.ly/d3-transitions</a></p>
-				</section>
-					
-				
-				
-				<!-- 3 -->
-
-				<!-- 4 -->
-				<section>
-					<h2>Selections</h2>
-					<p>
-						D3 selections are array like objects that represent sets of DOM elements paired with data.
-					</p>
-
-<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-d3.select("body");
-d3.selectAll("p").style("color", "red");
-					</code></pre>
-					
-				</section>
-				<!-- 5 -->
 				<section>
 					<p>
 						You can operate over the nodes in a declarative way using selector methods.
-						
 					</p>
 					<ul>
 						<li class="fragment">setting attributes or styles</li>
@@ -329,10 +290,19 @@ d3.selectAll("p").style("color", "red");
 						<li class="fragment">adding, removing or sorting nodes</li>
 						<li class="fragment">and changing HTML or text content</li>
 					</ul>
-					
+				</section>
+				<section>
+					<h2>Style</h2>
+					<p>You can use data values or index in a callback to define any property.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.select("div").selectAll("p").style("color", function(data, index) {
+	return i % 2 ? "red" : "blue";
+});
+					</code></pre>
+					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
 				</section>
 
-				<section>
+<!-- 				<section>
 					<p>styles, attributes, and other properties can be specified as functions of data in D3, not just simple constants</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p").style("color", function() {
@@ -340,13 +310,39 @@ d3.selectAll("p").style("color", function() {
 });
 					</code></pre>
 					
+				</section> -->
+				<section>
+					<h2>Transition</h2>
+<!-- 					<p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p> -->
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.selectAll("circle")
+	.attr("r", "0");
+	.transition()
+	.duration(750)
+	.delay(function(d, i) { return i * 10; })
+	.attr("r", function(d) { return Math.sqrt(d); });
+					</code></pre>
 				</section>
+				<section>
+					<h2>Try it for yourself</h2>
+					<p>Exercise 0: Look at the example and create a transition to change the size of the circles:<a href="http://bit.ly/d3-transitions">http://bit.ly/d3-transitions</a></p>
+					<p>Exercise 1: <a href="http://bit.ly/d3exercise1">http://bit.ly/d3exercise1</a></p>
+				</section>
+				<section>
+					<p>In case you get stuck...<a href="http://jsfiddle.net/yonet3d/w319gwyw/"> Solution for Exercise 1</a></p>
+				</section>
+					
+				<!-- 3 -->
+
+
+
+
 				
 <!-- 		<section>
 					<h2>Data</h2>
 				</section> -->
 
-				<section>
+<!-- 				<section>
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -360,9 +356,9 @@ bars.enter().append('rect')
 bars.exit().remove();
 
 					</code></pre>
-				</section>
+				</section> -->
 
-				<section>
+<!-- 				<section>
 					<p>
 						When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection
 					</p>
@@ -374,22 +370,15 @@ d3.select("body").selectAll("p")
 		.text(function(d) { return "I’m number " + d + "!"; });
 					</code></pre>
 					
-				</section>
+				</section> -->
 				
 				<section>
-					<h2>Let's make something</h2>
-					<p>Exercise: <a href="http://bit.ly/d3exercise1">http://bit.ly/d3exercise1</a></p>
-
-					<p>In case you get stuck...<a href="http://jsfiddle.net/yonet3d/w319gwyw/"> Solution</a></p>
-				</section>
-				<section>
-				<h2>More Advanced D3</h2>
-				<p>Scales and Domains</p>
-				<p>Axis</p>
-				<p>Tooltips</p>
-				<p>Loading external data</p>
-				<p></p>
-
+					<h2>More Advanced D3</h2>
+					<p>Scales and Domains</p>
+					<p>Axis</p>
+					<p>Tooltips</p>
+					<p>Loading external data</p>
+					<p></p>
 				</section>
 
 				<section>
