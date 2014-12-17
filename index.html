@@ -186,6 +186,7 @@
 							<li>Append nodes to parent container</li>
 							<li>Style and animate!</li>
 						</ol>
+					<!-- <img src="images/selection"></img> -->
 					<aside class="notes">
 						Large datasets can be easily bound to SVG objects using simple D3 functions to generate rich text/graphic charts and diagrams. The data can be in various formats, most commonly JSON, comma-separated values (CSV) or geoJSON.
 					</aside>
@@ -213,6 +214,7 @@
 					<p>
 						Selectors in D3 are declared the same way as CSS rules. An important difference is that a D3 selector object only contains the elements that matched the selection rule when the selection was first created.
 					</p>
+					
 					<aside class="notes">
 						The selection can be based on tag (as in the below example), class, identifier, attribute, or place in the hierarchy. Once elements are selected, one can apply operations to them. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.
 					</aside>
@@ -383,17 +385,48 @@ d3.select("body").selectAll("p")
 
 				<section>
 					<h2>Scales</h2>
-					<p>Scales convert between data and visual encodings.</p>
+					<p>Scales transform a number in a certain interval (called the domain) into a number in another interval (called the range).</p>
+					<img src="images/d3scale1.png">
 					<ul>
-						<li>Quantitative Scale</li>
-							<ul>
-								<li>d3.scale.linear - construct a linear quantitative scale.</li>
-								<li>linear.domain -  get or set the scale's input domain.</li>
-								<li>linear.domain - get or set the scale's output range.</li>
-							</ul>
-						<li>Ordinal Scale</li>
+						<li>d3.scale.linear - construct a linear quantitative scale.</li>
+						<li>domain -  get or set the scale's input domain.</li>
+						<li>range - get or set the scale's output range.</li>
 					</ul>
+
+				
+				</section>
+				<section>
+					<h2>Quantitative Scale</h2>
+					<ul>
+						<li>Linear scales</li>
+					<!-- 	If you’re familiar with the concept of normalization, it may be helpful to know that, with a linear scale, that’s all that is really going on here. -->
+						<li>Logarithmic scales</li>
+						<li>Power scales (including square root scales)</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var x = d3.scale.linear()
+		.domain([0, d3.max(data)])
+		.range([0, 420]);
+d3.select(".chart")
+	.selectAll("div")
+		.data([3, 7, 21, 31, 35, 42])
+	.enter().append("div")
+		.style("width", function(d) { return x(d) + "px"; })
+					</code></pre>
+					<a href="http://jsfiddle.net/yonet3d/at4186ez/2/">JSFiddle</a>
+
+					<!-- <img src="images/quantitative-scale.png"> -->
+				</section>
 					
+				<section>
+					<h2>Ordinal Scale</h2>
+					<p>Ordinal Scale have a discrete domain, such as a set of names or categories.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var x = d3.scale.ordinal()
+	.domain(["A", "B", "C", "D", "E", "F"])
+	.rangeRoundBands([0, width], .1);
+					</code></pre>
+					<img src="images/ordinal-scale.png">
 				</section>
 				<section>
 					<h2><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">Color Categories</a></h2>
@@ -403,7 +436,11 @@ d3.select("body").selectAll("p")
 				</section>
 				<section>
 					<h2>Let's refactor our bar chart.</h2>
-					<a href="http://jsfiddle.net/yonet3d/635y98w8/1/" target="_blank">Bar Charts with Scale</a></section>
+					<a href="http://jsfiddle.net/yonet3d/at4186ez/3/" target="_blank">Create a bar charts with scale</a>
+				</section>
+				<section>
+					<p>Solution: <a href="http://jsfiddle.net/yonet3d/635y98w8/1/" target="_blank">Bar Charts with Scale</a></p>
+				</section>
 				<section>
 					<h2>Axis</h2>
 					<p>d3.svg.axis creates a new axis generator.</p>
