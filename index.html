@@ -297,20 +297,25 @@ d3.selectAll("circle").transition()
 
 				</section>
 				<!-- 4 -->
-				<!-- <section>
+				<section>
 					<h2>Selections</h2>
 					<p>
 						D3 selections are array like objects that represent sets of DOM elements paired with data.
 					</p>
 
+<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.select("body");
+d3.selectAll("p").style("color", "red");
+					</code></pre>
 					
-				</section> -->
+				</section>
 				<!-- 5 -->
-<!-- 				<section>
+				<section>
 					<p>
 						You can operate over the nodes in a declarative way using selector methods.
-						TODO: transition here?
+						
 					</p>
+					<!-- TODO: transition here? -->
 					<ul>
 						<li class="fragment">setting attributes or styles</li>
 						<li class="fragment">registering event listeners</li>
@@ -318,9 +323,9 @@ d3.selectAll("circle").transition()
 						<li class="fragment">and changing HTML or text content</li>
 					</ul>
 					
-				</section> -->
+				</section>
 
-				<!-- <section>
+				<section>
 					<p>styles, attributes, and other properties can be specified as functions of data in D3, not just simple constants</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p").style("color", function() {
@@ -328,14 +333,14 @@ d3.selectAll("p").style("color", function() {
 });
 					</code></pre>
 					
-				</section> -->
+				</section>
 				
 <!-- 				<section>
 					<h2>Data</h2>
 					
 				</section> -->
 
-				<!-- <section>
+				<section>
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -350,7 +355,7 @@ bars.exit().remove();
 
 					</code></pre>
 				</section>
- -->
+
 				<!-- <section>
 					<p>
 						When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection
@@ -413,7 +418,7 @@ d3.select("body").selectAll("p")
 					</ul>
 
 				</section>
-				<!-- <section>
+				<section>
 					<h2>d3.time</h2>
 					<ul>
 						<li class="fragment">d3.time.format - creates a new local time formatter for a given specifier.</li>
@@ -422,7 +427,7 @@ d3.select("body").selectAll("p")
 					</ul>
 
 					
-				</section> -->
+				</section>
 				<section>
 					<h2>Working with Arrays</h2>
 					<p>Most commonly used functions</p>
