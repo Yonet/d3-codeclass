@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>D3 Workshop at Data Week 2014</title>
+		<title>D3 Workshop at Girl Develop It December, 17th 2014</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -57,141 +57,14 @@
 				<section>
 					<h2>What d3 is not?</h2>
 					<p>						
-					  Not a prototyping tool.
+						Not a prototyping tool.
 					</p>
 					<br>
 					<h3> Then Why?</h3>
 						<p>Lot's of <a href="http://d3js.org/" target="_blank">examples</a></p>
 				</section>
 				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>How to D3</h2>
-						<h3>Procedure to associate data with DOM</h3>
-							<ol>
-								<li>Select a parent container and child nodes</li>
-								<li>Bind array of data to child nodes</li>
-								<li>Append nodes to parent container</li>
-								<li>Style and animate!</li>
-							</ol>
-						<aside class="notes">
-							Large datasets can be easily bound to SVG objects using simple D3 functions to generate rich text/graphic charts and diagrams. The data can be in various formats, most commonly JSON, comma-separated values (CSV) or geoJSON.
-					</aside>
-					</section>
-					<!-- <section>
-						<h2>Central Principle</h2>
-						<p>
-							Code samples here?
-						</p> 
-						<aside class="notes">The central principle of D3 design is to enable the programmer to first use a CSS-style selector to select a given set of Document Object Model (DOM) nodes, then use operators to manipulate them in a similar manner to jQuery.</aside>
 
-					</section> -->
-					<section>
-						<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
-						<p>Select a parent container and child nodes</p>
-						<h4>jQuery</h4>
-							<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
-$("div p").css('color', 'red').addClass('classy')
-					</code></pre>
-					</code></pre>
-						<h4>D3</h4>
-						<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
-d3.select("div").selectAll("p").style('color', 'red')
-	.attr('class', 'classy');
-					</code></pre>
-					<p>D3 difference: child nodes might not actually exist</p>
-<!-- 					<p>
-						Selectors in D3 are declared the same way as CSS rules. An important difference is that a D3 selector object only contains the elements that matched the selection rule when the selection was first created.
-					</p> -->
-						<aside class="notes">
-						The selection can be based on tag (as in the below example), class, identifier, attribute, or place in the hierarchy. Once elements are selected, one can apply operations to them. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.</aside>
-					</section>
-
-					<section>
-            <h2>Data</h2>
-            <p>Bind array of data to child nodes</p>
-
-
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-d3.selectAll("p")
-	.data([3, 7, 21, 31, 35, 42])
-	.style("font-size", function(d) { return d + "px"; });
-						
-					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/">JSFiddle</a></p>
-					</section>
-					<section>
-           <h2>Appending</h2>
-           <p>Append nodes to parent container</p>
-           <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-d3.select("body").selectAll("p")
-		.data([3, 7, 21, 31, 35, 42])
-	.enter().append("p")
-		.text(function(d) { return "I’m number " + d + "!"; });
-					</code></pre>
-					</section>
-					<section>
-					<h2>Enter and Exit</h2>
-					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var bars = d3.select('svg').selectAll('rect');
-
-//if we have more data, add new rectangles for those data items
-bars.enter().append('rect')
-  .attr('class', 'bar');
-
-//if we have less data points, remove the rectangles that no longer have a data pairing. 
-bars.exit().remove();
-
-					</code></pre>
-				</section>
-				<section>
-					<p>if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-// Update…
-var p = d3.select("body").selectAll("p")
-	.data([3, 7, 21, 31, 35, 42])
-	.text(function(d,i){ return "I'm pharagraph number" + i; });
-
-// Enter…
-p.enter().append("p")
-	.text(function(d,i){ return "I'm pharagraph number" + i; });
-
-// Exit…
-p.exit().remove();
-					</code></pre>
-					<!-- <p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/4/" target="_blank">JSFiddle</a></p> -->
-					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
-				</section>
-				<section>
-					<h2>Let's give it a try</h2>
-					<p>Exercise: <a href="http://bit.ly/d3-exit">http://bit.ly/d3-exit</a></p>
-
-				</section>
-
-					<section>
-            <h2>Style</h2>
-            	<p>You can also use data or index in a callback to define any property.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-d3.select("div").selectAll("p").style("color", function(data, index) {
-	return i % 2 ? "red" : "blue";
-});
-					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
-					</section>
-					<section>
-           <h2>Transition</h2>
-           <p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p>
-				<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-d3.selectAll("circle").transition()
-	.duration(750)
-	.delay(function(d, i) { return i * 10; })
-	.attr("r", function(d) { return Math.sqrt(d * scale); });
-				</code></pre>
-					</section>	
-				</section>
-				
-				<!-- 3 -->
 				<section>
 					<section>
 						<h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
@@ -204,61 +77,61 @@ d3.selectAll("circle").transition()
 						</p>
 						<aside class="notes"></aside>
 					</section>
+					<!-- svg -->
 
 					<section>
-					<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-<circle
-  cx=250
-  cy=100
-  r=30
-  fill='#25B0B0'>
-</circle>
-					</code></pre>
-						
+						<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							<circle
+								cx=250
+								cy=100
+								r=30
+								fill='#25B0B0'>
+							</circle>
+						</code></pre>
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/3q7atsmh/" target="_blank">Rectangle</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-<rect
-  x=200
-  y=50
-  width=100
-  height=100
-  rx=10
-  ry=0
-  fill='#25B0B0'>
-</rect>
+							<rect
+							x=200
+							y=50
+							width=100
+							height=100
+							rx=10
+							ry=0
+							fill='#25B0B0'>
+							</rect>
 						</code></pre>
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-<line 
-	x1="10"
-	y1="10" 
-	x2="100" 
-	y2="100"
-	stroke="blue"
-	stroke-width="100">
-</line>
+							<line 
+								x1="10"
+								y1="10" 
+								x2="100" 
+								y2="100"
+								stroke="blue"
+								stroke-width="100">
+							</line>
 						</code></pre>
 					</section>
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/" target="_blank">Path</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-<path d='
-  M50,100
-  L131,66
-  L259,115
-  L339,50
-  L400,98
-  M350,150
-  L100,150'
-  fill=none
-  stroke='#25B0B0'>
-</path>
-							
+							<path d='
+							M50,100
+							L131,66
+							L259,115
+							L339,50
+							L400,98
+							M350,150
+							L100,150'
+							fill=none
+							stroke='#25B0B0'>
+							</path>
+										
 						</code></pre>
 						<ul>
 							<li>M - move.</li>
@@ -270,25 +143,25 @@ d3.selectAll("circle").transition()
 						<h3>Text</h3>
 						<p>Unless you set the style of the SVG text, it inherits font-styles from CSS.</p>
 						<pre><code>
-<svg>
-	<text x="100" y="100" fill="red" font-family="arial" font-size="16">
-		Look at me, I am a text.
-	</text>
-</svg>
-					</code></pre>
+							<svg>
+								<text x="100" y="100" fill="red" font-family="arial" font-size="16">
+									Look at me, I am a text.
+								</text>
+							</svg>
+						</code></pre>
 					</section>
 					<section>
 						<h3>Group</h3>
 						<!-- TODO: jsfiddle -->
 						<p>Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</p>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-<g transform='translate(100, 100)'>
-  <circle cx=20 cy=10 r=30 fill='#25B0B0'>
-  </circle>
-  <circle cx=100 cy=10 r=30 fill='#25B0B0'>
-  </circle>
-</g>
-							
+							<g transform='translate(100, 100)'>
+								<circle cx=20 cy=10 r=30 fill='#25B0B0'>
+								</circle>
+								<circle cx=100 cy=10 r=30 fill='#25B0B0'>
+								</circle>
+							</g>
+										
 						</code></pre>
 					</section>
 					<section>
@@ -301,6 +174,136 @@ d3.selectAll("circle").transition()
 					</section>
 
 				</section>
+			<!-- /SVG -->
+				<section>
+					<h2>How to D3</h2>
+					<h3>Procedure to associate data with DOM</h3>
+						<ol>
+							<li>Select a parent container and child nodes</li>
+							<li>Bind array of data to child nodes</li>
+							<li>Append nodes to parent container</li>
+							<li>Style and animate!</li>
+						</ol>
+					<aside class="notes">
+						Large datasets can be easily bound to SVG objects using simple D3 functions to generate rich text/graphic charts and diagrams. The data can be in various formats, most commonly JSON, comma-separated values (CSV) or geoJSON.
+					</aside>
+				</section>
+					<!-- <section>
+						<h2>Central Principle</h2>
+						<p>
+							Code samples here?
+						</p> 
+						<aside class="notes">The central principle of D3 design is to enable the programmer to first use a CSS-style selector to select a given set of Document Object Model (DOM) nodes, then use operators to manipulate them in a similar manner to jQuery.</aside>
+
+					</section> -->
+				<section>
+					<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
+					<p>Select a parent container and child nodes</p>
+					<h4>jQuery</h4>
+					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+						var paragraphs = $("div p");
+					</code></pre>
+					<h4>D3</h4>
+					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+						var paragraphs = d3.select("div").selectAll("p");
+					</code></pre>
+					<p>D3 difference: child nodes might not actually exist</p>
+					<p>
+						Selectors in D3 are declared the same way as CSS rules. An important difference is that a D3 selector object only contains the elements that matched the selection rule when the selection was first created.
+					</p>
+					<aside class="notes">
+						The selection can be based on tag (as in the below example), class, identifier, attribute, or place in the hierarchy. Once elements are selected, one can apply operations to them. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Data</h2>
+					<p>Bind array of data to child nodes</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						d3.selectAll("p")
+							.data([3, 7, 21, 31, 35, 42])
+					</code></pre>
+					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/">JSFiddle</a></p>
+				</section>
+				<section>
+					<h2>Appending</h2>
+					<p>Append nodes to parent container</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						d3.select("body").selectAll("p")
+								.data([3, 7, 21, 31, 35, 42])
+							.enter().append("p")
+								.text(function(d) { return "I’m number " + d + "!"; });
+					</code></pre>
+					<p><a href="http://bit.ly/enter-append">JSFiddle</a></p>
+				</section>
+				<section>
+					<h2>Enter and Exit</h2>
+					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						var bars = d3.select('svg').selectAll('rect');
+
+						//if we have more data, add new rectangles for those data items
+						bars.enter().append('rect')
+						
+						//Do stuff here...
+
+						//if we have less data points, remove the rectangles that no longer have a data pairing. 
+						bars.exit().remove();
+					</code></pre>
+				</section>
+				<section>
+					<p>if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						// Update…
+						var p = d3.select("body").selectAll("p")
+							.data([3, 7, 21, 31, 35, 42])
+							.text(function(d,i){ return "I'm pharagraph number" + i; });
+
+						// Enter…
+						p.enter().append("p")
+							.text(function(d,i){ return "I'm pharagraph number" + i; });
+
+						// Exit…
+						p.exit().remove();
+					</code></pre>
+					<!-- <p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/4/" target="_blank">JSFiddle</a></p> -->
+					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
+				</section>
+				<section>
+					<h2>Let's give it a try</h2>
+					<p>Exercise: <a href="http://bit.ly/d3-exit">http://bit.ly/d3-exit</a></p>
+
+				</section>
+
+				<section>
+					<h2>Style</h2>
+					<p>You can also use data or index in a callback to define any property.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						d3.select("div").selectAll("p").style("color", function(data, index) {
+							return i % 2 ? "red" : "blue";
+						});
+					</code></pre>
+					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
+				</section>
+				<section>
+					<h2>Transition</h2>
+					<p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						d3.selectAll("circle").transition()
+							.duration(750)
+							.delay(function(d, i) { return i * 10; })
+							.attr("r", function(d) { return Math.sqrt(d); });
+					</code></pre>
+				</section>
+				<section>
+					<h2>Try it for yourself</h2>
+					<p>Look at the example and create a transition to change the size of the circles:<a href="http://bit.ly/d3-transitions">http://bit.ly/d3-transitions</a></p>
+				</section>
+					
+				
+				
+				<!-- 3 -->
+
 				<!-- 4 -->
 				<section>
 					<h2>Selections</h2>
@@ -351,7 +354,7 @@ var bars = d3.select('svg').selectAll('rect');
 
 //if we have more data, add new rectangles for those data items
 bars.enter().append('rect')
-  .attr('class', 'bar');
+	.attr('class', 'bar');
 
 //if we have less data points, remove the rectangles that no longer have a data pairing. 
 bars.exit().remove();
