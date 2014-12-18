@@ -297,7 +297,7 @@ p.exit().remove();
 					<h2>Style</h2>
 					<p>You can use data values or index in a callback to define any property.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-d3.select("div").selectAll("p").style("color", function(data, index) {
+d3.select("div").selectAll("p").style("color", function(data, i) {
 	return i % 2 ? "red" : "blue";
 });
 					</code></pre>
@@ -378,7 +378,6 @@ d3.select("body").selectAll("p")
 					<h2>More Advanced D3</h2>
 					<p>Scales and Domains</p>
 					<p>Axis</p>
-					<p>Tooltips</p>
 					<p>Loading external data</p>
 					<p></p>
 				</section>
@@ -462,7 +461,7 @@ var xAxis = d3.svg.axis()
 
 				<section>
 					<section>
-						<h2>d3.time</h2>
+						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting">d3.time</a></h2>
 
 						<p>d3.time.format - creates a new local time formatter for a given specifier.</p>
 							<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -499,12 +498,6 @@ var xScale = d3.time.scale()
 					<ul>
 						<li class="fragment">d3.min/d3.max</li>
 						<li class="fragment">d3.range</li>
-						<li class="fragment">d3.map</li>
-							<ul class="fragment">
-								<li>map.forEach -  calls the specified function for each entry in the map.</li>
-								<li>map.get - returns the value for the specified key. </li>
-								<li>map.set - sets the value for the specified key.</li>
-							</ul>
 						<li class="fragment">d3.keys - lists the keys of an associative array.</li>
 						<li class="fragment">d3.merge - merges multiple arrays into one array.</li>
 						<li class="fragment">d3.nest - groups array elements hierarchically.</li>
