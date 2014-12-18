@@ -450,18 +450,49 @@ var x = d3.scale.ordinal()
 						<li>axis.ticks</li>
 						<li>axis.tickFormat</li>
 					</ul>
-
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient('bottom')
+    .tickValues(data);
+					</code></pre>
+					<a href="http://jsfiddle.net/yonet3d/635y98w8/5/">JSFiddle</a>
 				</section>
+
+
 				<section>
-					<h2>d3.time</h2>
-					<ul>
-						<li class="fragment">d3.time.format - creates a new local time formatter for a given specifier.</li>
-						<li class="fragment">d3.time.scale - constructs a linear time scale.</li>
-						<li class="fragment">d3.time.intervals - a time interval in local time.</li>
-					</ul>
+					<section>
+						<h2>d3.time</h2>
 
-					
+						<p>d3.time.format - creates a new local time formatter for a given specifier.</p>
+							<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+d3.time.format("%Y-%m-%d");
+							</code></pre>
+							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/">JSFiddle</a>
+						
+					</section>
+					<section>
+						<p>d3.time.scale - constructs a linear time scale.</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var xScale = d3.time.scale()
+ .domain([2009-07-13T00:02, 2009-07-13T23:48])
+ .rangeRound([0, width]);
+ //rangeRound does the same thing as range but rounds the values to integers or begining of dates.
+						</code></pre>
+						<a href="http://jsfiddle.net/robdodson/KWRxW/">JSFiddle</a>
+					</section>
+					<section>
+						<p>d3.time.intervals - a time interval in local time.</p>
+						<ul>
+							<li>d3.time.hour</li>
+							<li>d3.time.week</li>
+							<li>d3.time.monday</li>
+							<li>d3.time.year</li>
+						</ul>
+					</section>
 				</section>
+
+
 				<section>
 					<h2>Working with Arrays</h2>
 					<p>Most commonly used functions</p>
