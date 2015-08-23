@@ -35,8 +35,8 @@
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				<!-- Intro -->
 				<section>
 					<h1>D3.js</h1>
 					<h3>Data-Driven Documents</h3>
@@ -44,7 +44,7 @@
 					<p>Aysegul Yonet / <a href="https://twitter.com/AysegulYonet" target="_blank">@AysegulYonet</a>
 					</p>
 				</section>
-				<!-- 1 -->
+				
 				<section>
 					<h2>What is D3?</h2>
 
@@ -52,6 +52,7 @@
 						It is a tool for data visualization in the browser, making use of the widely implemented Scalable Vector Graphics (SVG), JavaScript, HTML5, and Cascading Style Sheets (CSS3) standards.
 					</aside>
 				</section>
+
 
 				<!-- 2 -->
 				<!-- TODO -->
@@ -64,22 +65,22 @@
 					<h3> Then Why?</h3>
 						<p>Lot's of <a href="http://d3js.org/" target="_blank">examples</a></p>
 				</section>
-				<!-- Example of nested vertical slides -->
-
+				<!-- /Intro -->
+				
+				<!-- SVG -->
 				<section>
 					<section>
 						<h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
 						<ul>
-							SVG is another HTML element, except you can't put another HTML element inside an SVG. 
+							<li class="fragment">SVG is another HTML element, except you can't put another HTML element inside an SVG.</li>
+							<li class="fragment">SVG does not support common HTML attributes or styles such as position, left, top, right, bottom or float.</li>
+							
 						</ul>
 
-						<p>
-							SVG does not support common HTML attributes or styles such as position, left, top, right, bottom or float.
-						</p>
-						<aside class="notes"></aside>
 					</section>
 					<!-- svg -->
-
+					
+					<!-- circle -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -91,6 +92,9 @@
 							</circle>
 						</code></pre>
 					</section>
+					<!-- /circle -->
+
+					<!-- rect -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/3q7atsmh/" target="_blank">Rectangle</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -107,6 +111,9 @@ fill='#25B0B0'>
 						<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx">Interesting fact: </a>if a properly specified value is provided for rx but not for ry (or the opposite), then the browser will consider the missing value equal to the defined one.
 						</p>
 					</section>
+					<!-- rect -->
+
+					<!-- line -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -120,6 +127,9 @@ fill='#25B0B0'>
 </line>
 						</code></pre>
 					</section>
+					<!-- /line -->
+
+					<!-- path -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/" target="_blank">Path</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -153,6 +163,9 @@ stroke='#25B0B0'>
 </svg>
 						</code></pre>
 					</section>
+					<!-- /path -->
+
+					<!-- group -->
 					<section>
 						<h3>Group</h3>
 						<!-- TODO: jsfiddle -->
@@ -164,17 +177,58 @@ stroke='#25B0B0'>
 	<circle cx=100 cy=10 r=30 fill='#25B0B0'>
 	</circle>
 </g>
-										
 						</code></pre>
 					</section>
+					<!-- group -->
+
 					<section>
-						<h3>SVG styles</h3>
+					  <h3><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element" target="_blank">Other svg Elements</a></h3>
+					  <ul>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath" target="_blank">clipPath</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs" target="_blank">def</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use" target="_blank">use</a></li>
+
+					  </ul>
+
+						<aside class="notes">
+						SVG allows graphical objects to be defined for later reuse. It is recommended that, wherever possible, referenced elements be defined inside of a defs element. Defining these elements inside of a defs element promotes understandability of the SVG content and thus promotes accessibility. Graphical elements defined in a defs will not be directly rendered. You can use a <use> element to render those elements wherever you want on the viewport.
+						</aside>
+					</section>
+					<section>
+						<pre><code data-trim>
+<svg width="100%" height="100%">
+ 
+  <defs>
+    <g id="Port">
+      <circle style="fill:inherit" r="10"/>
+    </g>
+  </defs>
+ 
+  <text y="15">black</text>
+  <use x="50" y="10" xlink:href="#Port" />
+  <text y="35">red</text>
+  <use x="50" y="30" xlink:href="#Port" class="classA"/>
+  <text y="55">blue</text>
+  <use x="50" y="50" xlink:href="#Port" style="fill:blue"/>
+ </svg>
+						</pre></code>
+						<p><a href="" target="_blank"></a></p>
+						<aside class="notes">
+						The use element takes nodes from within the SVG document, and duplicates them somewhere else. The effect is the same as if the nodes were deeply cloned into a non-exposed DOM, and then pasted where the use element is, much like cloned template elements in HTML5. Since the cloned nodes are not exposed, care must be taken when using CSS to style a use element and its hidden descendants. CSS attributes are not guaranteed to be inherited by the hidden, cloned DOM unless you explicitly request it using CSS inheritance.
+					
+						</aside>
+					</section>
+
+					<!-- svg styles -->
+					<section>
+						<h3>SVG attributes</h3>
 						<ul>
-						<!-- TODO -->
-							<li>background-color = fill</li>
-							<li>border = stroke</li>
+							<li class="fragment">background-color ==> fill</li>
+							<li class="fragment">border ==> stroke</li>
+							<li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute" target="_blank">More here</a></li>
 						</ul>
 					</section>
+					<!-- /svg styles -->
 
 				</section>
 			<!-- /SVG -->
@@ -452,9 +506,9 @@ var x = d3.scale.ordinal()
 					</ul>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient('bottom')
-    .tickValues(data);
+	.scale(x)
+	.orient('bottom')
+	.tickValues(data);
 					</code></pre>
 					<a href="http://jsfiddle.net/yonet3d/635y98w8/5/">JSFiddle</a>
 				</section>
