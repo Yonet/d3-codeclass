@@ -31,7 +31,8 @@
 	</head>
 
 	<body>
-		<!-- //TODO1: outline slides, add pictures, jsfiddle, selectAll loops like each/forEach, tell audience it is not for beginners, take out SVG? step-by-step recipe, D3 cheat sheet, create 30min exercises x 2, Advanced d3: scales, domain -->
+		<!-- //TODO1: outline slides, add pictures, jsfiddle, selectAll loops like each/forEach, tell audience it is not for beginners, take out SVG? step-by-step recipe, D3 cheat sheet, create 30min exercises x 2, Advanced d3: scales, domain 
+		debugging $0.__data__-->
 
 		<div class="reveal">
 
@@ -50,6 +51,7 @@
 
 					<aside class="notes">
 						It is a tool for data visualization in the browser, making use of the widely implemented Scalable Vector Graphics (SVG), JavaScript, HTML5, and Cascading Style Sheets (CSS3) standards.
+						Manupulates attributes of DOM elements with the attributes of data items.
 					</aside>
 				</section>
 
@@ -234,31 +236,27 @@ stroke='#25B0B0'>
 					</section>
 				</section>
 			<!-- /SVG -->
+			<!-- TODO : animation here-->
 				<section>
 					<h2>How to D3</h2>
 					<h3>Procedure to associate data with DOM</h3>
 						<ol>
-							<li>Select a parent container and child nodes</li>
-							<li>Bind array of data to child nodes</li>
-							<li>Append nodes to parent container</li>
-							<li>Bind events, style and animate!</li>
+							<li class="fragment">Select a parent container and child nodes</li>
+							<li class="fragment">Bind array of data to child nodes</li>
+							<li class="fragment">Append nodes to parent container</li>
+							<li class="fragment">Bind events, style and animate!</li>
 						</ol>
 					<!-- <img src="images/selection"></img> -->
 					<aside class="notes">
+						The central principle of D3 design is to enable the programmer to first use a CSS-style selector to select a given set of (DOM) nodes, then use operators to manipulate them in a similar manner to jQuery.
+
 						Large datasets can be easily bound to SVG objects using simple D3 functions to generate rich text/graphic charts and diagrams. The data can be in various formats, most commonly JSON, comma-separated values (CSV) or geoJSON.
+
 					</aside>
 				</section>
-					<!-- <section>
-						<h2>Central Principle</h2>
-						<p>
-							Code samples here?
-						</p> 
-						<aside class="notes">The central principle of D3 design is to enable the programmer to first use a CSS-style selector to select a given set of Document Object Model (DOM) nodes, then use operators to manipulate them in a similar manner to jQuery.</aside>
-
-					</section> -->
+				
 				<section>
 					<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
-					<p>Select a parent container and child nodes</p>
 					<h4>jQuery</h4>
 					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
 						var paragraphs = $("div p");
@@ -267,13 +265,11 @@ stroke='#25B0B0'>
 					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
 						var paragraphs = d3.select("div").selectAll("p");
 					</code></pre>
-					<p>D3 difference: child nodes might not actually exist</p>
-					<p>
-						Selectors in D3 are declared the same way as CSS rules. An important difference is that a D3 selector object only contains the elements that matched the selection rule when the selection was first created.
-					</p>
-					
+					<a href="http://jsfiddle.net/yonet3d/pgrwrvyp/" target="_blank">jsFiddle</a>
 					<aside class="notes">
-						The selection can be based on tag (as in the below example), class, identifier, attribute, or place in the hierarchy. Once elements are selected, one can apply operations to them. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.
+						D3 difference: child nodes might not actually exist.
+						Selectors in D3 are declared the same way as CSS rules. An important difference is that a D3 selector object only contains the elements that matched the selection rule when the selection was first created.
+						The selection can be based on tag, class, identifier, attribute, or place in the hierarchy. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.
 					</aside>
 				</section>
 
@@ -281,28 +277,31 @@ stroke='#25B0B0'>
 					<h2>Data</h2>
 					<p>Bind array of data to child nodes</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						d3.selectAll("p")
-							.data([3, 7, 21, 31, 35, 42])
+d3.selectAll("p")
+	.data([3, 7, 21, 31, 35, 42])
 					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/">JSFiddle</a></p>
+					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/" target="_blank">JSFiddle</a></p>
 				</section>
 
 				<section>
 					<h2>Enter() and Append()</h2>
 
-					<p>When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-						d3.select("body").selectAll("p")
-								.data([3, 7, 21, 31, 35, 42])
-							.enter().append("p");
+d3.select("body").selectAll("p")
+	.data([3, 7, 21, 31, 35, 42])
+	.enter().append("p");
 					</code></pre>
-					<!-- .text(function(d) { return "I’m number " + d + "!"; }); -->
 					<p><a href="http://jsfiddle.net/yonet3d/93ooqk53/1/">JSFiddle</a></p>
+					<aside class="notes">
+					When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection.
+					D3 methods returns the selection they act upon, you can apply multiple operations to the same selection.
+					IMPORTANT!There is a gotcha with method chaining, however: while most operations return the same selection, some methods return a new one! For example, selection.append returns a new selection containing the new elements. This conveniently allows you to chain operations into the new elements.
+						
+					</aside>
 				</section>
 
 				<section>
 					<h2>Exit() and Remove()</h2>
-					<p>Using D3’s exit and remove, you can get rid of outgoing nodes that are no longer needed.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var bars = d3.select('svg').selectAll('rect').data(someData);
 
@@ -312,6 +311,9 @@ bars.enter().append('rect')
 //if we have less data points, remove the rectangles that no longer have a data pairing. 
 bars.exit().remove();
 					</code></pre>
+					<aside class="notes">
+						Using D3’s exit and remove, you can get rid of outgoing nodes that are no longer needed.
+					</aside>
 				</section>
 
 				<section>
@@ -328,16 +330,31 @@ p.enter().append("p")
 p.exit().remove();
 					</code></pre>
 					<!-- <p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/4/" target="_blank">JSFiddle</a></p> -->
-					<p>By handling these three cases separately, you specify precisely which operations run on which nodes.</p>
+					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
+				</section>
+				<section>
+				    <h3>Chaining</h3>
+					<pre><code data-trim>
+d3.select("body").selectAll("p")
+	.data([3, 7, 21, 31, 35, 42])
+	.enter().append("p")
+	.exit().remove();
+					</pre></code>
+					<p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/2/" target="_blank">jsFiddle</a></p>
+					<aside class="notes">
+					while most operations return the same selection, some methods return a new one! For example, selection.append returns a new selection containing the new elements. This conveniently allows you to chain operations into the new elements.
+					Since method chaining can only be used to descend into the document hierarchy, use var to keep references to selections and go back up.
+				
+					</aside>
 				</section>
 
 				<section>
 					<h2>Let's give it a try</h2>
-					<p>Exercise: <a href="http://bit.ly/enter-exit-exercise">http://bit.ly/enter-exit-exercise</a></p>
+					<p>Exercise: <a href="http://bit.ly/enter-exit-exercise" target="_blank">bit.ly/enter-exit-exercise</a></p>
 				</section>
 
 				<section>
-					<p>If you get stuck...<a href="http://bit.ly/enter-exit-solution">Sotlution</a></p>
+					<p>If you get stuck...<a href="http://bit.ly/enter-exit-solution" target="_blank">Solution</a></p>
 				</section>
 				<section>
 					<p>
@@ -384,11 +401,11 @@ d3.selectAll("circle")
 				</section>
 				<section>
 					<h2>Try it for yourself</h2>
-					<p>Exercise 0: Look at the example and create a transition to change the size of the circles:<a href="http://bit.ly/d3-transitions">http://bit.ly/d3-transitions</a></p>
-					<p>Exercise 1: <a href="http://bit.ly/d3exercise1">http://bit.ly/d3exercise1</a></p>
+					<p>Exercise 0: Look at the example and create a transition to change the size of the circles:<a href="http://bit.ly/d3-transitions">bit.ly/d3-transitions</a></p>
+					<p>Exercise 1: <a href="http://bit.ly/d3exercise1" target="_blank">bit.ly/d3exercise1</a></p>
 				</section>
 				<section>
-					<p>In case you get stuck...<a href="http://jsfiddle.net/yonet3d/w319gwyw/"> Solution for Exercise 1</a></p>
+					<p>In case you get stuck...<a href="http://jsfiddle.net/yonet3d/w319gwyw/" target="_blank"> Solution for Exercise 1</a></p>
 				</section>
 					
 				<!-- 3 -->
@@ -432,7 +449,7 @@ d3.select("body").selectAll("p")
 				</section> -->
 				
 				<section>
-					<h2>More Advanced D3</h2>
+					<h2>Advanced D3</h2>
 					<p>Scales and Domains</p>
 					<p>Axis</p>
 					<p>Loading external data</p>
@@ -444,9 +461,9 @@ d3.select("body").selectAll("p")
 					<p>Scales transform a number in a certain interval (called the domain) into a number in another interval (called the range).</p>
 					<img src="images/d3scale1.png">
 					<ul>
-						<li>d3.scale.linear - construct a linear quantitative scale.</li>
-						<li>domain -  get or set the scale's input domain.</li>
-						<li>range - get or set the scale's output range.</li>
+						<li class="fragment">d3.scale.linear - construct a linear quantitative scale.</li>
+						<li class="fragment">domain -  get or set the scale's input domain.</li>
+						<li class="fragment">range - get or set the scale's output range.</li>
 					</ul>
 
 				
@@ -454,22 +471,22 @@ d3.select("body").selectAll("p")
 				<section>
 					<h2>Quantitative Scale</h2>
 					<ul>
-						<li>Linear scales</li>
+						<li class="fragment">Linear scales</li>
 					<!-- 	If you’re familiar with the concept of normalization, it may be helpful to know that, with a linear scale, that’s all that is really going on here. -->
-						<li>Logarithmic scales</li>
-						<li>Power scales (including square root scales)</li>
+						<li class="fragment">Logarithmic scales</li>
+						<li class="fragment">Power scales (including square root scales)</li>
 					</ul>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var x = d3.scale.linear()
-		.domain([0, d3.max(data)])
-		.range([0, 420]);
+		.domain([0, d3.max(data)])// your data minimum and maximum
+		.range([0, 420]);//the pixels to map to
 d3.select(".chart")
 	.selectAll("div")
 		.data([3, 7, 21, 31, 35, 42])
 	.enter().append("div")
 		.style("width", function(d) { return x(d) + "px"; })
 					</code></pre>
-					<a href="http://jsfiddle.net/yonet3d/at4186ez/2/">JSFiddle</a>
+					<a href="http://jsfiddle.net/yonet3d/at4186ez/2/" target="_blank">JSFiddle</a>
 
 					<!-- <img src="images/quantitative-scale.png"> -->
 				</section>
@@ -487,7 +504,7 @@ var x = d3.scale.ordinal()
 				<section>
 					<h2><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">Color Categories</a></h2>
 					<p>d3.scale.category10() - Constructs a new ordinal scale with a range of ten categorical colors:</p>
-					<p><a href="http://jsfiddle.net/8CaCn/">JSFiddle</a></p>
+					<p><a href="http://jsfiddle.net/8CaCn/" target="_blank">JSFiddle</a></p>
 					<img class="category-image" src="images/category10.png">
 				</section>
 				<section>
@@ -501,10 +518,10 @@ var x = d3.scale.ordinal()
 					<h2>Axis</h2>
 					<p>d3.svg.axis creates a new axis generator.</p>
 					<ul>
-						<li>axis.scale</li>
-						<li>axis.orient</li>
-						<li>axis.ticks</li>
-						<li>axis.tickFormat</li>
+						<li class="fragment">axis.scale</li>
+						<li class="fragment">axis.orient</li>
+						<li class="fragment">axis.ticks</li>
+						<li class="fragment">axis.tickFormat</li>
 					</ul>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 var xAxis = d3.svg.axis()
@@ -512,19 +529,19 @@ var xAxis = d3.svg.axis()
 	.orient('bottom')
 	.tickValues(data);
 					</code></pre>
-					<a href="http://jsfiddle.net/yonet3d/635y98w8/5/">JSFiddle</a>
+					<a href="http://jsfiddle.net/yonet3d/635y98w8/5/" target="_blank">JSFiddle</a>
 				</section>
 
 
 				<section>
 					<section>
-						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting">d3.time</a></h2>
+						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.time</a></h2>
 
 						<p>d3.time.format - creates a new local time formatter for a given specifier.</p>
 							<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.time.format("%Y-%m-%d");
 							</code></pre>
-							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/">JSFiddle</a>
+							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
 						
 					</section>
 					<section>
@@ -535,15 +552,15 @@ var xScale = d3.time.scale()
  .rangeRound([0, width]);
  //rangeRound does the same thing as range but rounds the values to integers or begining of dates.
 						</code></pre>
-						<a href="http://jsfiddle.net/robdodson/KWRxW/">JSFiddle</a>
+						<a href="http://jsfiddle.net/robdodson/KWRxW/" target="_blank">JSFiddle</a>
 					</section>
 					<section>
 						<p>d3.time.intervals - a time interval in local time.</p>
 						<ul>
-							<li>d3.time.hour</li>
-							<li>d3.time.week</li>
-							<li>d3.time.monday</li>
-							<li>d3.time.year</li>
+							<li class="fragment">d3.time.hour</li>
+							<li class="fragment">d3.time.week</li>
+							<li class="fragment">d3.time.monday</li>
+							<li class="fragment">d3.time.year</li>
 						</ul>
 					</section>
 				</section>
