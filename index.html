@@ -55,16 +55,12 @@
 
 
 				<!-- 2 -->
-				<!-- TODO -->
 				<section>
 					<h2>What d3 is not?</h2>
-					<p>						
-						Not a prototyping tool.
-					</p>
-					<br>
-					<h3> Then Why?</h3>
 						<p>Lot's of <a href="http://d3js.org/" target="_blank">examples</a></p>
+						<img src="images/d3examples.png">
 				</section>
+
 				<!-- /Intro -->
 				
 				<!-- SVG -->
@@ -72,8 +68,8 @@
 					<section>
 						<h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
 						<ul>
-							<li class="fragment">SVG is another HTML element, except you can't put another HTML element inside an SVG.</li>
-							<li class="fragment">SVG does not support common HTML attributes or styles such as position, left, top, right, bottom or float.</li>
+							<li class="fragment">Another HTML element, except you can not put another HTML element inside an SVG.</li>
+							<li class="fragment">Does not support common HTML attributes or styles such as position, left, top, right, bottom or float.</li>
 							
 						</ul>
 
@@ -84,12 +80,12 @@
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-							<circle
-								cx=250
-								cy=100
-								r=30
-								fill='#25B0B0'>
-							</circle>
+<circle
+	cx=250
+	cy=100
+	r=30
+	fill='#25B0B0'>
+</circle>
 						</code></pre>
 					</section>
 					<!-- /circle -->
@@ -108,8 +104,9 @@ ry=0
 fill='#25B0B0'>
 </rect>
 						</code></pre>
-						<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx">Interesting fact: </a>if a properly specified value is provided for rx but not for ry (or the opposite), then the browser will consider the missing value equal to the defined one.
-						</p>
+						<aside class="notes">
+							Interesting fact: if a properly specified value is provided for rx but not for ry (or the opposite), then the browser will consider the missing value equal to the defined one.
+						</aside>
 					</section>
 					<!-- rect -->
 
@@ -147,14 +144,14 @@ stroke='#25B0B0'>
 										
 						</code></pre>
 						<ul>
-							<li>M - move.</li>
-							<li>L - line.</li>
-							<li>z - close path.</li>
+							<li class="fragment">M - move.</li>
+							<li class="fragment">L - line.</li>
+							<li class="fragment">z - close path.</li>
 						</ul>
 					</section>
 					<section>
 						<h3>Text</h3>
-						<p>Unless you set the style of the SVG text, it inherits font-styles from CSS.</p>
+						<p></p>
 						<pre><code>
 <svg>
 	<text x="100" y="100" fill="red" font-family="arial" font-size="16">
@@ -162,14 +159,14 @@ stroke='#25B0B0'>
 	</text>
 </svg>
 						</code></pre>
+						<aside class="notes">Unless you set the style of the SVG text, it inherits font-styles from CSS.</aside>
 					</section>
 					<!-- /path -->
 
 					<!-- group -->
 					<section>
 						<h3>Group</h3>
-						<!-- TODO: jsfiddle -->
-						<p>Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</p>
+					
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 <g transform='translate(100, 100)'>
 	<circle cx=20 cy=10 r=30 fill='#25B0B0'>
@@ -178,6 +175,9 @@ stroke='#25B0B0'>
 	</circle>
 </g>
 						</code></pre>
+
+						<p><a href="jsfiddle.net/yonet3d/kz1esqgn/1/" target="_blank">jsFiddle</a></p>
+						<aside class="notes">Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</aside>
 					</section>
 					<!-- group -->
 
@@ -212,7 +212,7 @@ stroke='#25B0B0'>
   <use x="50" y="50" xlink:href="#Port" style="fill:blue"/>
  </svg>
 						</pre></code>
-						<p><a href="" target="_blank"></a></p>
+						<p><a href="http://jsfiddle.net/yonet3d/t6gum0L7/" target="_blank">jsFiddle</a></p>
 						<aside class="notes">
 						The use element takes nodes from within the SVG document, and duplicates them somewhere else. The effect is the same as if the nodes were deeply cloned into a non-exposed DOM, and then pasted where the use element is, much like cloned template elements in HTML5. Since the cloned nodes are not exposed, care must be taken when using CSS to style a use element and its hidden descendants. CSS attributes are not guaranteed to be inherited by the hidden, cloned DOM unless you explicitly request it using CSS inheritance.
 					
@@ -229,7 +229,9 @@ stroke='#25B0B0'>
 						</ul>
 					</section>
 					<!-- /svg styles -->
-
+					<section>
+					 <h3>Explore</h3>
+					</section>
 				</section>
 			<!-- /SVG -->
 				<section>
