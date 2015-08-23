@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>exercises</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+   
+    <!-- d3 -->
+    <script src="/bower_components/d3/d3.js" charset="utf-8"></script>
+    
+  </head>
+  <body>
+
+    
+    <div class="container">
+   
+     
+    </div>
+    
+    
+    <!-- // <script src="/bower_components/jquery/dist/jquery.js"></script> -->
+    <script>
+        //D3 code goes here...
+        //
+      d3.csv("data/data.csv", function(d) {
+        console.log('data is', d);
+        return {
+          year: new Date(+d.Year, 0, 1), // convert "Year" column to Date
+          make: d.Make,
+          model: d.Model,
+          length: +d.Length // convert "Length" column to number
+        };
+
+      }, function(error, rows) {
+        console.log(rows);
+      });
+
+    </script>
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+
+  </body>
+</html>
