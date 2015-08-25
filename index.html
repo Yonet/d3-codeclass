@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/beige.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -57,8 +57,6 @@
 					</aside>
 				</section>
 
-
-				<!-- 2 -->
 				<section>
 					<h2>What d3 is not?</h2>
 						<p><a href="http://d3js.org/" target="_blank">Examples</a></p>
@@ -83,7 +81,7 @@
 					<!-- circle -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <circle
 	cx=250
 	cy=100
@@ -97,7 +95,7 @@
 					<!-- rect -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/3q7atsmh/" target="_blank">Rectangle</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <rect
 x=200
 y=50
@@ -117,7 +115,7 @@ fill='#25B0B0'>
 					<!-- line -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <line 
 	x1="10"
 	y1="10" 
@@ -133,7 +131,7 @@ fill='#25B0B0'>
 					<!-- path -->
 					<section>
 						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/" target="_blank">Path</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <path d='
 M50,100
 L131,66
@@ -156,7 +154,7 @@ stroke='#25B0B0'>
 					<section>
 						<h3>Text</h3>
 						<p></p>
-						<pre><code>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <svg>
 	<text x="100" y="100" fill="red" font-family="arial" font-size="16">
 		Look at me, I am a text.
@@ -171,7 +169,7 @@ stroke='#25B0B0'>
 					<section>
 						<h3>Group</h3>
 					
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <g transform='translate(100, 100)'>
 	<circle cx=20 cy=10 r=30 fill='#25B0B0'>
 	</circle>
@@ -199,13 +197,12 @@ stroke='#25B0B0'>
 						</aside>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <svg width="100%" height="100%">
- 
   <defs>
-    <g id="Port">
-      <circle style="fill:inherit" r="10"/>
-    </g>
+	<g id="Port">
+	  <circle style="fill:inherit" r="10"/>
+	</g>
   </defs>
  
   <text y="15">black</text>
@@ -214,7 +211,7 @@ stroke='#25B0B0'>
   <use x="50" y="30" xlink:href="#Port" class="classA"/>
   <text y="55">blue</text>
   <use x="50" y="50" xlink:href="#Port" style="fill:blue"/>
- </svg>
+</svg>
 						</pre></code>
 						<p><a href="http://jsfiddle.net/yonet3d/t6gum0L7/" target="_blank">jsFiddle</a></p>
 						<aside class="notes">
@@ -260,11 +257,11 @@ stroke='#25B0B0'>
 				<section>
 					<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
 					<h4>jQuery</h4>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 28px; padding: 15px;">
 						var paragraphs = $("div p");
 					</code></pre>
 					<h4>D3</h4>
-					<pre><code data-trim contenteditable style="font-size: 28px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 28px; padding: 15px;">
 						var paragraphs = d3.select("div").selectAll("p");
 					</code></pre>
 					<a href="http://jsfiddle.net/yonet3d/pgrwrvyp/" target="_blank">jsFiddle</a>
@@ -278,7 +275,7 @@ stroke='#25B0B0'>
 				<section>
 					<h2>Data</h2>
 					<p>Bind array of data to child nodes</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
 					</code></pre>
@@ -288,7 +285,7 @@ d3.selectAll("p")
 				<section>
 					<h2>Enter() and Append()</h2>
 
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.select("body").selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
 	.enter().append("p");
@@ -304,7 +301,7 @@ d3.select("body").selectAll("p")
 
 				<section>
 					<h2>Exit() and Remove()</h2>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var bars = d3.select('svg').selectAll('rect').data(someData);
 
 //if we have more data, add new rectangles for those data items
@@ -320,7 +317,7 @@ bars.exit().remove();
 
 				<section>
 					<p>if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 // Update…
 var p = d3.select("body").selectAll("p")
 	.data([3, 7, 21, 31, 35, 42]);
@@ -335,8 +332,8 @@ p.exit().remove();
 					<aside class="notes">By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
 				</section>
 				<section>
-				    <h3>Chaining</h3>
-					<pre><code data-trim>
+					<h3>Chaining</h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.select("body").selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
 	.enter().append("p")
@@ -355,9 +352,9 @@ d3.select("body").selectAll("p")
 					<p>Exercise: <a href="http://bit.ly/enter-exit-exercise" target="_blank">bit.ly/enter-exit-exercise</a></p>
 				</section> -->
 
-				<section>
+				<!-- <section>
 					<p>If you get stuck...<a href="http://bit.ly/enter-exit-solution" target="_blank">Solution</a></p>
-				</section>
+				</section> -->
 				<section>
 					<p>
 						You can operate over the nodes in a declarative way using selector methods.
@@ -372,7 +369,7 @@ d3.select("body").selectAll("p")
 				<section>
 					<h2>Style</h2>
 					<p>You can use data values or index in a callback to define any property.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.select("div").selectAll("p").style("color", function(data, i) {
 	return i % 2 ? "red" : "blue";
 });
@@ -380,7 +377,7 @@ d3.select("div").selectAll("p").style("color", function(data, i) {
 					<p><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
 				</section>
 
-<!-- 				<section>
+<!--                <section>
 					<p>styles, attributes, and other properties can be specified as functions of data in D3, not just simple constants</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 d3.selectAll("p").style("color", function() {
@@ -391,8 +388,8 @@ d3.selectAll("p").style("color", function() {
 				</section> -->
 				<section>
 					<h2>Transition</h2>
-<!-- 					<p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p> -->
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<!--                    <p>D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values.</p> -->
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.selectAll("circle")
 	.attr("r", "0");
 	.transition()
@@ -416,11 +413,11 @@ d3.selectAll("circle")
 
 
 				
-<!-- 		<section>
+<!--        <section>
 					<h2>Data</h2>
 				</section> -->
 
-<!-- 				<section>
+<!--                <section>
 					<h2>Enter and Exit</h2>
 					<p>Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -436,7 +433,7 @@ bars.exit().remove();
 					</code></pre>
 				</section> -->
 
-<!-- 				<section>
+<!--                <section>
 					<p>
 						When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection
 					</p>
@@ -474,11 +471,11 @@ d3.select("body").selectAll("p")
 					<h2>Quantitative Scale</h2>
 					<ul>
 						<li class="fragment">Linear scales</li>
-					<!-- 	If you’re familiar with the concept of normalization, it may be helpful to know that, with a linear scale, that’s all that is really going on here. -->
+					<!--    If you’re familiar with the concept of normalization, it may be helpful to know that, with a linear scale, that’s all that is really going on here. -->
 						<li class="fragment">Logarithmic scales</li>
 						<li class="fragment">Power scales (including square root scales)</li>
 					</ul>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var x = d3.scale.linear()
 		.domain([0, d3.max(data)])// your data minimum and maximum
 		.range([0, 420]);//the pixels to map to
@@ -496,7 +493,7 @@ d3.select(".chart")
 				<section>
 					<h2>Ordinal Scale</h2>
 					<p>Ordinal Scale have a discrete domain, such as a set of names or categories.</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var x = d3.scale.ordinal()
 	.domain(["A", "B", "C", "D", "E", "F"])
 	.rangeRoundBands([0, width], .1);
@@ -509,13 +506,13 @@ var x = d3.scale.ordinal()
 					<p><a href="http://jsfiddle.net/8CaCn/" target="_blank">JSFiddle</a></p>
 					<img class="category-image" src="images/category10.png">
 				</section>
-				<section>
+				<!-- <section>
 					<h2>Let's refactor our bar chart.</h2>
 					<a href="http://jsfiddle.net/yonet3d/at4186ez/3/" target="_blank">Create a bar charts with scale</a>
 				</section>
 				<section>
 					<p>Solution: <a href="http://jsfiddle.net/yonet3d/635y98w8/1/" target="_blank">Bar Charts with Scale</a></p>
-				</section>
+				</section> -->
 				<section>
 					<h2>Axis</h2>
 					<p>d3.svg.axis creates a new axis generator.</p>
@@ -525,7 +522,7 @@ var x = d3.scale.ordinal()
 						<li class="fragment">axis.ticks</li>
 						<li class="fragment">axis.tickFormat</li>
 					</ul>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xAxis = d3.svg.axis()
 	.scale(x)
 	.orient('bottom')
@@ -540,7 +537,7 @@ var xAxis = d3.svg.axis()
 						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.time</a></h2>
 
 						<p>d3.time.format - creates a new local time formatter for a given specifier.</p>
-							<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.time.format("%Y-%m-%d");
 							</code></pre>
 							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
@@ -548,7 +545,7 @@ d3.time.format("%Y-%m-%d");
 					</section>
 					<section>
 						<p>d3.time.scale - constructs a linear time scale.</p>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xScale = d3.time.scale()
  .domain([2009-07-13T00:02, 2009-07-13T23:48])
  .rangeRound([0, width]);
