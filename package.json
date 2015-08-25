@@ -1,21 +1,19 @@
 {
-  "name": "reveal.js",
-  "version": "2.6.2",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://lab.hakim.se/reveal-js",
-  "subdomain": "revealjs",
+  "name": "sfhtml5-d3-talk",
+  "description": " Introduction to working with D3.js by Aysegul Yonet",
+  "homepage": "bit.ly/sfhtml5-d3",
   "scripts": {
     "test": "grunt test",
     "start": ""
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Aysegul Yonet",
+    "email": "aysegul@anniecannons.com",
+    "web": "anniecannons.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "https://github.com/Yonet/sfhtml5-d3-talk.git"
   },
   "engines": {
     "node": "~0.8.0"
@@ -39,8 +37,7 @@
   },
   "licenses": [
     {
-      "type": "MIT",
-      "url": "https://github.com/hakimel/reveal.js/blob/master/LICENSE"
+      "type": "MIT"
     }
   ]
 }
