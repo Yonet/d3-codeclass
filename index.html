@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -72,6 +73,7 @@
 						<ul>
 							<li class="fragment">Another HTML element, except you can not put another HTML element inside an SVG.</li>
 							<li class="fragment">Does not support common HTML attributes or styles such as position, left, top, right, bottom or float.</li>
+							<li class="fragment">Default svg size is browser-dependant.</li>
 							
 						</ul>
 
@@ -146,9 +148,9 @@ stroke='#25B0B0'>
 										
 						</code></pre>
 						<ul>
-							<li class="fragment">M - move.</li>
-							<li class="fragment">L - line.</li>
-							<li class="fragment">z - close path.</li>
+							<li >M - move.</li>
+							<li >L - line.</li>
+							<li >z - close path.</li>
 						</ul>
 					</section>
 					<section>
@@ -164,21 +166,21 @@ stroke='#25B0B0'>
 						<aside class="notes">Unless you set the style of the SVG text, it inherits font-styles from CSS.</aside>
 					</section>
 					<!-- /path -->
-
+					<!-- TODO  Transition example-->
 					<!-- group -->
 					<section>
 						<h3>Group</h3>
-					
+						<img src="images/circles.png" alt="" width="50%;"/>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 <g transform='translate(100, 100)'>
-	<circle cx=20 cy=10 r=30 fill='#25B0B0'>
+	<circle cx=20 cy=10 r=30 fill="rgb(255, 0, 0)">
 	</circle>
 	<circle cx=100 cy=10 r=30 fill='#25B0B0'>
 	</circle>
 </g>
 						</code></pre>
 
-						<p><a href="jsfiddle.net/yonet3d/kz1esqgn/1/" target="_blank">jsFiddle</a></p>
+						<p><a href="http://jsfiddle.net/yonet3d/a2bor75v/" target="_blank">jsFiddle</a></p>
 						<aside class="notes">Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</aside>
 					</section>
 					<!-- group -->
@@ -196,47 +198,11 @@ stroke='#25B0B0'>
 						SVG allows graphical objects to be defined for later reuse. It is recommended that, wherever possible, referenced elements be defined inside of a defs element. Defining these elements inside of a defs element promotes understandability of the SVG content and thus promotes accessibility. Graphical elements defined in a defs will not be directly rendered. You can use a <use> element to render those elements wherever you want on the viewport.
 						</aside>
 					</section>
-					<section>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<svg width="100%" height="100%">
-  <defs>
-	<g id="Port">
-	  <circle style="fill:inherit" r="10"/>
-	</g>
-  </defs>
- 
-  <text y="15">black</text>
-  <use x="50" y="10" xlink:href="#Port" />
-  <text y="35">red</text>
-  <use x="50" y="30" xlink:href="#Port" class="classA"/>
-  <text y="55">blue</text>
-  <use x="50" y="50" xlink:href="#Port" style="fill:blue"/>
-</svg>
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/t6gum0L7/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-						The use element takes nodes from within the SVG document, and duplicates them somewhere else. The effect is the same as if the nodes were deeply cloned into a non-exposed DOM, and then pasted where the use element is, much like cloned template elements in HTML5. Since the cloned nodes are not exposed, care must be taken when using CSS to style a use element and its hidden descendants. CSS attributes are not guaranteed to be inherited by the hidden, cloned DOM unless you explicitly request it using CSS inheritance.
-					
-						</aside>
-					</section>
 
-					<!-- svg styles -->
-					<section>
-						<h3>SVG attributes</h3>
-						<ul>
-							<li class="fragment">background-color ==> fill</li>
-							<li class="fragment">border ==> stroke</li>
-							<li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute" target="_blank">More here</a></li>
-						</ul>
-					</section>
-					<!-- /svg styles -->
-					<section>
-					 <h3>Explore</h3>
-					</section>
 				</section>
 			<!-- /SVG -->
 			<!-- TODO : animation here-->
-				<section>
+			<!-- 	<section>
 					<h2>How to D3</h2>
 					<h3>Procedure to associate data with DOM</h3>
 						<ol>
@@ -245,14 +211,13 @@ stroke='#25B0B0'>
 							<li class="fragment">Append nodes to parent container</li>
 							<li class="fragment">Bind events, style and animate!</li>
 						</ol>
-					<!-- <img src="images/selection"></img> -->
 					<aside class="notes">
 						The central principle of D3 design is to enable the programmer to first use a CSS-style selector to select a given set of (DOM) nodes, then use operators to manipulate them in a similar manner to jQuery.
 
 						Large datasets can be easily bound to SVG objects using simple D3 functions to generate rich text/graphic charts and diagrams. The data can be in various formats, most commonly JSON, comma-separated values (CSV) or geoJSON.
 
 					</aside>
-				</section>
+				</section> -->
 				
 				<section>
 					<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
@@ -271,15 +236,26 @@ stroke='#25B0B0'>
 						The selection can be based on tag, class, identifier, attribute, or place in the hierarchy. This includes getting and setting attributes, display texts, and styles. Elements may also be added and removed. This process of modifying, creating and removing HTML elements can be made dependent on data, which is the basic concept of D3.js.
 					</aside>
 				</section>
+				<section>
+					<img src="images/helloSF.png" alt="">
+					<pre><code data-trim style="font-size: 18px; padding: 15px;">
+var p = d3.select("body").append('p');
+p.html('Hello SFHTML5!').attr('style', 'color: red;');
+					</pre></code>
+					<p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/4/" target="_blank">jsFiddle</a></p>
+					
+				</section>
 
 				<section>
 					<h2>Data</h2>
-					<p>Bind array of data to child nodes</p>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.selectAll("p")
-	.data([3, 7, 21, 31, 35, 42])
+	.data([0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
 					</code></pre>
 					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/" target="_blank">JSFiddle</a></p>
+					<aside class="notes">
+					Binds the data with indicies.
+					</aside>
 				</section>
 
 				<section>
