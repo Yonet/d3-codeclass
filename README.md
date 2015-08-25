@@ -1,6 +1,6 @@
-GDI-d3-Workshop
+ Introduction to working with D3.js
 ===============
 
-D3js workshop for Girl Develop It December 2014.
+[SFHTML5 All About D3 with Aysegul Yonet, Ali Almossawi, and Elijah Meeks](http://www.meetup.com/sfhtml5/events/219966838/) August 2015.
 
-http://yonet.github.io/GDI-d3-Workshop/#/
+Slides : bit.ly/sfhtml5-d3.
