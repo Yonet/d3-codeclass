@@ -162,20 +162,7 @@
 					<!-- rect -->
 
 					<!-- line -->
-					<section>
-						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<line 
-	x1="10"
-	y1="10" 
-	x2="100" 
-	y2="100"
-	stroke="blue"
-	stroke-width="100">
-</line>
-						</code></pre>
-					</section>
-					<!-- /line -->
+
 
 
 					<!-- TODO  Transition example-->
@@ -196,6 +183,21 @@
 						<aside class="notes">Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</aside>
 					</section>
 					<!-- group -->
+
+					<section>
+						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+<line 
+	x1="10"
+	y1="10" 
+	x2="100" 
+	y2="100"
+	stroke="blue"
+	stroke-width="100">
+</line>
+						</code></pre>
+					</section>
+					<!-- /line -->
 
 					<!-- path -->
 					<section>
@@ -234,10 +236,7 @@
 					</section>
 					<!-- /path -->
 
-
-
 				</section>
-
 				
 				<section>
 					<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
@@ -279,7 +278,7 @@ d3.selectAll("p")
 					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/" target="_blank">JSFiddle</a></p>
 					<aside class="notes">
 					Most importantly we can bind data to our selections.
-					D3 binds the data with indicies to each DOM node.
+					When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection.
 					We can use the data to define the attributes. 
 					</aside>
 				</section>
@@ -294,9 +293,7 @@ d3.select("body").selectAll("p")
 					</code></pre>
 					
 					<aside class="notes">
-					When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection.
-					
-					
+					 If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection.
 						
 					</aside>
 				</section>
@@ -310,7 +307,7 @@ d3.select("body").selectAll("p")
 					</pre></code>
 					<p><a href="" target="_blank"></a></p>
 					<aside class="notes">
-				D3 methods returns the selection they act upon, you can apply multiple operations to the same selection. Here we are able to add text to our newly appended selection.
+				D3 methods returns the selection they act upon, and we can apply multiple operations to the same selection. Here we are able to add text to our newly appended selection.
 					</aside>
 				</section>
 				<section>
@@ -415,7 +412,7 @@ var scale = d3.scale.linear();
 					<p><a href="" target="_blank"></a></p>
 					<aside class="notes">
 					Examples we saw so far calculates the position of our SVG elements by using data. D3 comes with scale methods to make these mappings easy.
-					Scales transform a number in a certain interval (called the domain) into a number in another interval (called the range). Plain English, transforms a number range into pixel space. 
+					Scales transform a dataset in a certain interval (called the domain) into a number in another interval (called the range). For ex, transforms a domain in miles to a range in pixels. 
 					</aside>
 				</section>
 				<section>
@@ -470,7 +467,7 @@ xScale.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
 					</code></pre>
 					<p><a href="http://jsfiddle.net/yonet3d/at4186ez/8/" target="_blank">JSFiddle</a></p>
 					<aside class="notes">
-						You need to have the same number of arguments. If you have more in range, that is OK. 
+						You need to have the same number of arguments. If you have more in range, that is OK. RangePoints subdivides everything in between the values you give to it.
 					</aside>
 
 				</section>
@@ -563,11 +560,11 @@ var render = function(data, r, color){
 					'fill': function(){return color || 'red'} 
 			})
 }
-					
 						</pre></code>
 
 						<aside class="notes">
-					
+						I am using a function to return a default value if the color is not defined.
+
 						</aside>
 					</section>
 					<section>
@@ -841,16 +838,25 @@ var nestedData = d3.nest()
 					</section>
 
 
+				
+
+				</section>
+				<!-- /Working with Arrays -->
+
 				<!-- Time -->
+
 				<section>
 					<section>
-						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.time</a></h2>
+						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.format</a></h2>
 
-						<p>d3.time.format - creates a new local time formatter for a given specifier.</p>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.time.format("%Y-%m-%d");
+d3.time.format("%Y-%m-%d"); //2015-08-26
+d3.format("+,%"); //+2,400%
 							</code></pre>
 							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
+							<aside class="notes">
+								d3.time.format - creates a new local time formatter for a given specifier.
+							</aside>
 						
 					</section>
 					<section>
@@ -873,11 +879,7 @@ var xScale = d3.time.scale()
 						</ul>
 					</section>
 				</section>
-				<!-- /Time -->
-
-
-				</section>
-				<!-- /Working with Arrays -->
+					<!-- /Time -->
 
 				<section>
 					<h2>Good News!</h2>
