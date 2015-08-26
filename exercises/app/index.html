@@ -5,40 +5,58 @@
     <title>exercises</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 
     <!-- styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
    
     <!-- d3 -->
-    <script src="/bower_components/d3/d3.js" charset="utf-8"></script>
-    
+    <script src="../bower_components/d3/d3.js" charset="utf-8"></script>
+    <style type="text/css">
+      html * {
+        font-family: 'Poiret One', cursive;
+      }
+      div {
+        background-color: red;
+        font-size: 10px;
+        color: white;
+        text-align: right;
+        height: 15px;
+        padding: 1px;
+        border: 1px solid white;
+        opacity: 0;
+      }
+
+      circle {
+        fill: red;
+      }
+   
+    </style>
   </head>
   <body>
 
     
-    <div class="container">
-   
-     
-    </div>
-    
-    
-    <!-- // <script src="/bower_components/jquery/dist/jquery.js"></script> -->
-    <script>
-        //D3 code goes here...
-        //
-      d3.csv("data/data.csv", function(d) {
-        console.log('data is', d);
-        return {
-          year: new Date(+d.Year, 0, 1), // convert "Year" column to Date
-          make: d.Make,
-          model: d.Model,
-          length: +d.Length // convert "Length" column to number
-        };
 
-      }, function(error, rows) {
-        console.log(rows);
+    <section class="container">
+      
+    </section>
+
+  
+    
+    
+    <script>
+      var x = "day";
+      var y = "donut";
+
+      var accessor = function(d) {
+        d[y] = parseInt(d[y]); 
+        return d;
+      }
+
+      d3.csv("data/data.csv", accessor, function(d) {
+        console.log(d);
       });
+
 
     </script>
 
