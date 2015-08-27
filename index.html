@@ -136,7 +136,7 @@
 						</code></pre>
 						<aside class="notes">
 							Let's take a look at circle. 
-
+							Notice we are calculating an area of a circle each time we draw a circle using these attributes. That means we have to be aware of the performance issues. 
 						</aside>
 					</section>
 					<!-- /circle -->
@@ -278,8 +278,8 @@ d3.selectAll("p")
 					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/" target="_blank">JSFiddle</a></p>
 					<aside class="notes">
 					Most importantly we can bind data to our selections.
-					When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection.
-					We can use the data to define the attributes. 
+					When data is bound to a selection, each element in the data array is paired with the corresponding DOM node in the selection.
+					We can use the data to define the attributes on that node
 					</aside>
 				</section>
 
@@ -688,58 +688,6 @@ d3.csv("data/data.csv", accessor, function(d) {
 				</section>
 				<!-- /Loading External Data -->
 				
-<!-- 				<section>
-					<h2>Axis</h2>
-					<p>d3.svg.axis creates a new axis generator.</p>
-					<ul>
-						<li class="fragment">axis.scale</li>
-						<li class="fragment">axis.orient</li>
-						<li class="fragment">axis.ticks</li>
-						<li class="fragment">axis.tickFormat</li>
-					</ul>
-					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xAxis = d3.svg.axis()
-	.scale(xScale)
-	.orient('bottom')
-	.tickValues(data);
-					</code></pre>
-					<a href="http://jsfiddle.net/yonet3d/635y98w8/5/" target="_blank">JSFiddle</a>
-				</section> -->
-
-				<!-- Time -->
-			<!-- 	<section>
-					<section>
-						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.time</a></h2>
-
-						<p>d3.time.format - creates a new local time formatter for a given specifier.</p>
-							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.time.format("%Y-%m-%d");
-							</code></pre>
-							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
-						
-					</section> -->
-		<!-- 			<section>
-						<p>d3.time.scale - constructs a linear time scale.</p>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.time.scale()
- .domain([2009-07-13T00:02, 2009-07-13T23:48])
- .rangeRound([0, width]);
- //rangeRound does the same thing as range but rounds the values to integers or begining of dates.
-						</code></pre>
-						<a href="http://jsfiddle.net/robdodson/KWRxW/" target="_blank">JSFiddle</a>
-					</section>
-					<section>
-						<p>d3.time.intervals - a time interval in local time.</p>
-						<ul>
-							<li class="fragment">d3.time.hour</li>
-							<li class="fragment">d3.time.week</li>
-							<li class="fragment">d3.time.monday</li>
-							<li class="fragment">d3.time.year</li>
-						</ul>
-					</section>
-				</section> -->
-				<!-- /Time -->
-
 				<!-- Working with Arrays -->
 				<section>
 				<section>
@@ -888,6 +836,7 @@ var xScale = d3.time.scale()
 						<li class="fragment"><a href="http://nvd3.org/index.html" target="_blank">NVD3</a></li>
 						<li class="fragment"><a href="http://c3js.org/" target="_blank">C3.js</a></li>
 						<li class="fragment"><a href="http://code.shutterstock.com/rickshaw/examples/" target="_blank">Rickshaw</a></li>
+						<li class="fragment"><a href="d3.codeclass.io">d3.codeclass.io</a> - %20 "sfhtml5"</li>
 					</ul>
 				</section>
 
