@@ -1,7 +1,7 @@
 {
   "name": "sfhtml5-d3-talk",
   "description": " Introduction to working with D3.js by Aysegul Yonet",
-  "homepage": "bit.ly/sfhtml5-d3",
+  "homepage": "bit.ly/d3-codeclass",
   "scripts": {
     "test": "grunt test",
     "start": ""
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yonet/sfhtml5-d3-talk.git"
+    "url": "https://github.com/Yonet/d3-codeclass"
   },
   "engines": {
     "node": "~0.8.0"
