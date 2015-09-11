@@ -304,7 +304,8 @@ d3.select("body").selectAll("p")
 d3.select("body").selectAll("p")
 	.data([3, 7, 21, 31, 35, 42])
 	.enter().append("p")
-	.text(function(d) { return "I’m number " + d + "!"; });
+	.text(function(d) { return "I’m number " + d + "!"; })
+	.style("color", "black");
 					</pre></code>
 					<p><a href="" target="_blank"></a></p>
 					<aside class="notes">
@@ -316,6 +317,13 @@ d3.select("body").selectAll("p")
 					<p><a href="http://jsfiddle.net/yonet3d/93ooqk53/35/" target="_blank">JSFiddle</a></p>
 					<aside class="notes">
 					Our new paraghraph's text is created using the data bound data points.
+					</aside>
+				</section>
+				<section>
+
+					<p><a href="http://jsfiddle.net/w5qvpy7v/29/" target="_blank">Exercise</a></p>
+					<aside class="notes">
+					solution: http://jsfiddle.net/yonet3d/w319gwyw/
 					</aside>
 				</section>
 
@@ -468,6 +476,31 @@ console.log(xScale.domain());//[0, 1000]
 						Domain and range is a setter and getter. If you don't pass any arguments it is returning the values. 
 						</aside>
 					</section>
+					<section>
+						<h3></h3>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var xScale = d3.scale.linear()
+			.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+			.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+						</pre></code>
+						<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/" target="_blank">JsFiddle</a></p>
+						<aside class="notes">
+					
+						</aside>
+					</section>
+					<section>
+						<h3>Clamp</h3>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var xScale = d3.scale.linear()
+			.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+			.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+			.clamp(true);
+						</pre></code>
+						<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/1/" target="_blank">jsFiddle</a></p>
+						<aside class="notes">
+						Defaults to false.
+						</aside>
+					</section>
 				</section>
 					
 				<section>
@@ -481,11 +514,44 @@ console.log(xScale("Stuart"));//33.333333333333336
 
 xScale.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
 					</code></pre>
+					<img src="images/rangePoints.png" alt="">
 					<p><a href="http://jsfiddle.net/yonet3d/at4186ez/8/" target="_blank">JSFiddle</a></p>
+
 					<aside class="notes">
 						You need to have the same number of arguments. If you have more in range, that is OK. RangePoints subdivides everything in between the values you give to it.
 					</aside>
 
+				</section>
+				<section>
+					<h3><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#ordinal_rangeBands" target="_blank">RangeBands</a></h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var o = d3.scale.ordinal()
+    .domain([1, 2, 3])
+    .rangeBands([0, 100]);
+
+o.rangeBand(); // 33.333333333333336
+o.range(); // [0, 33.333333333333336, 66.66666666666667]
+o.rangeExtent(); // [0, 100]
+					</pre></code>
+					<img src="images/rangeBands.png" alt="">
+				
+					<aside class="notes">
+					Sets the output range from the specified continuous interval. This interval is subdivided into n evenly-spaced bands, where n is the number of (unique) values in the input domain. The bands may be offset from the edge of the interval and other bands according to the specified padding, which defaults to zero. 
+				
+					</aside>
+				</section>
+				<section>
+					<h3></h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var x = d3.scale.ordinal()
+	.domain(["A", "B", "C", "D", "E", "F"])
+	.rangeRoundBands([0, width], .1);
+					</pre></code>
+					<p><a href="" target="_blank"></a></p>
+					<aside class="notes">
+					Like rangeBands, except guarantees that range values and band width are integers so as to avoid antialiasing artifacts.
+				
+					</aside>
 				</section>
 				<section>
 					<h2><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">Color Categories</a></h2>
@@ -498,12 +564,15 @@ xScale.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
 				</section>
 		
 				<section>
-						<h3>Temporal Scale</h3>
+						<h3>Time Scales</h3>
 					<pre><code data-trim>
-				
+d3.time.scale()
+	.domain([dates])
+	.range([values]);
 					</pre></code>
-					<p><a href="" target="_blank"></a></p>
+					<p><a href="http://bl.ocks.org/phoebebright/3059392" target="_blank">Example</a></p>
 					<aside class="notes">
+					Constructs a new time scale with the default domain and range; the ticks and tick format are configured for local time.
 				TODO: Dates and times can be represented using numbers for days, years,... or specific date-time encoding. ISO 8601.
 					</aside>
 				</section>
@@ -655,6 +724,94 @@ var render = function(data, r, color){
 						TODO add scale to scatter plot.
 						</aside>
 					</section>
+					
+					
+				</section>
+				<!-- /Circle Example with scale -->
+
+				<!-- Axis -->
+				<section>
+					<!-- Components -->
+					<section>
+						<h3>Chart Components</h3>
+						<ul>
+							<li class="fragment">Generators
+								<ul>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#_line" target="_blank">line()</a></li>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#arc" target="_blank">arc()</a></li>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#symbol" target="_blank">symbol()</a></li>
+								</ul>
+							</li>
+							<li class="fragment">Components
+								<ul>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Axes" target="_blank">axis()</a></li>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Controls" target="_blank">brush()</a></li>
+								</ul>
+							</li>
+							<li class="fragment">Layouts
+								<ul>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Pie-Layout" target="_blank">pie()</a></li>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tree-Layout" target="_blank">tree()</a></li>
+									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Force-Layout" target="_blank">force()</a></li>
+								</ul>
+							</li>
+						</ul>
+						<p><a href="" target="_blank"></a></p>
+						<aside class="notes">
+						Generators: take Array Values and create SVG drawing code for the d attribute of path elements.
+						Components:takes functions like Scale() and create element or event listeners.
+						Layouts: takes whole datasets ==> New datasets with attributes for layout.
+					
+						</aside>
+					</section>
+					<!-- /Components -->
+
+
+					<section>
+						<h3>Line Graph</h3>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var line = d3.svg.line()
+	.interpolate("basis")
+	.x(function(d) {
+		return x(d.year);
+	})
+	.y(function(d) {
+		return y(d.stat);
+	});
+						</pre></code>
+						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/" target="_blank">jsFiddle</a></p>
+						<aside class="notes">
+					
+						</aside>
+					</section>
+					<section>
+						<h3>Axis</h3>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom");
+						</pre></code>
+						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/1/" target="_blank">jsFiddle</a></p>
+						<aside class="notes">
+					
+						</aside>
+					</section>
+					<section>
+						<h3>Ticks</h3>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+xAxis.ticks(5);
+xAxis.tickValues([1,2,4]);	
+xAxis.ticks(d3.time.month, 2);		
+						</pre></code>
+						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/2/" target="_blank">jsFiddle</a></p>
+						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/4/" target="_blank">jsFiddle</a></p>
+						
+						<aside class="notes">
+					
+						</aside>
+					</section>
+
+					<!-- TODO -->
 					<section>
 							<h3><a href="" target="_blank">Exercise</a></h3>
 					
@@ -662,9 +819,8 @@ var render = function(data, r, color){
 					
 						</aside>
 					</section>
-					
 				</section>
-				<!-- /Circle Example with scale -->
+				<!-- /Axis -->
 
 				<!-- Loading External Data -->
 				<section>
