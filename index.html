@@ -83,6 +83,7 @@
 						<li class="fragment">Selections</li>
 						<li class="fragment">Update Pattern</li>
 						<li class="fragment">Scales</li>
+						<li class="fragment">Axis</li>
 						<li class="fragment">Loading External Data</li>
 						<li class="fragment">Working with Data methods</li>
 						<li class="fragment">Working with Geospatial data</li>
@@ -570,12 +571,54 @@ d3.time.scale()
 	.domain([dates])
 	.range([values]);
 					</pre></code>
-					<p><a href="http://bl.ocks.org/phoebebright/3059392" target="_blank">Example</a></p>
+					
 					<aside class="notes">
 					Constructs a new time scale with the default domain and range; the ticks and tick format are configured for local time.
 				TODO: Dates and times can be represented using numbers for days, years,... or specific date-time encoding. ISO 8601.
 					</aside>
 				</section>
+								<!-- Time -->
+
+				<section>
+					<section>
+						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.format</a></h2>
+
+							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+d3.time.format("%Y-%m-%d"); //2015-08-26
+d3.format("+,%"); //+2,400%
+							</code></pre>
+							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
+							<aside class="notes">
+								d3.time.format - creates a new local time formatter for a given specifier.
+							</aside>
+						
+					</section>
+					<section>
+						<p>d3.time.scale - constructs a linear time scale.</p>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var xScale = d3.time.scale()
+ .domain([2009-07-13T00:02, 2009-07-13T23:48])
+ .rangeRound([0, width]);
+ //rangeRound does the same thing as range but rounds the values to integers or begining of dates.
+						</code></pre>
+						<a href="http://jsfiddle.net/robdodson/KWRxW/" target="_blank">JSFiddle</a>
+					</section>
+					<section>
+						<p>d3.time.intervals - a time interval in local time.</p>
+						<ul>
+							<li class="fragment">d3.time.hour</li>
+							<li class="fragment">d3.time.week</li>
+							<li class="fragment">d3.time.monday</li>
+							<li class="fragment">d3.time.year</li>
+						</ul>
+					</section>
+					<section>
+						<p><a href="http://bl.ocks.org/phoebebright/3059392" target="_blank">Example</a></p>
+						
+					</section>
+					
+				</section>
+					<!-- /Time -->
 
 				<!-- Circle Example with scale -->
 				<section>
@@ -882,11 +925,14 @@ d3.csv("data/data.csv", accessor, function(d) {
 						</aside>
 					</section>
 					<section>
-							<h3><a href="" target="_blank">Exercise</a></h3>
-						
+							<h3>Exercise</h3>
+							<ul>
+								<li class="fragment">Read the census.csv file inside the data folder.</li>
+								<li class="fragment">Display or console.log the data from the file.</li>
+							</ul>
+							<a href="exercises/exercises.zip" target="_blank">Download Files Here</a>
 						<p></p>
 						<aside class="notes">
-						TODO loading external data exercise.
 						</aside>
 					</section>
 					
@@ -907,7 +953,7 @@ d3.csv("data/data.csv", accessor, function(d) {
 							<li class="fragment">d3.quantile(numbers, p)</li>
 							<li class="fragment">d3.deviation(array[, accessor]) - returns the standard deviation</li>
 						</ul>
-						<p class="fragment"><a href="http://jsfiddle.net/yonet3d/dfjxxdv7/">jsFiddle</a></p>
+						<p class="fragment"><a href="http://jsfiddle.net/yonet3d/dfjxxdv7/" target="_blank">jsFiddle</a></p>
 					</section>
 					<section>
 							<h3>Reduce</h3>
@@ -1000,50 +1046,7 @@ var nestedData = d3.nest()
 				</section>
 				<!-- /Working with Arrays -->
 
-				<!-- Time -->
 
-				<section>
-					<section>
-						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.format</a></h2>
-
-							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.time.format("%Y-%m-%d"); //2015-08-26
-d3.format("+,%"); //+2,400%
-							</code></pre>
-							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
-							<aside class="notes">
-								d3.time.format - creates a new local time formatter for a given specifier.
-							</aside>
-						
-					</section>
-					<section>
-						<p>d3.time.scale - constructs a linear time scale.</p>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.time.scale()
- .domain([2009-07-13T00:02, 2009-07-13T23:48])
- .rangeRound([0, width]);
- //rangeRound does the same thing as range but rounds the values to integers or begining of dates.
-						</code></pre>
-						<a href="http://jsfiddle.net/robdodson/KWRxW/" target="_blank">JSFiddle</a>
-					</section>
-					<section>
-						<p>d3.time.intervals - a time interval in local time.</p>
-						<ul>
-							<li class="fragment">d3.time.hour</li>
-							<li class="fragment">d3.time.week</li>
-							<li class="fragment">d3.time.monday</li>
-							<li class="fragment">d3.time.year</li>
-						</ul>
-					</section>
-					<section>
-							<h3><a href="" target="_blank">Exercise</a></h3>
-						
-						<aside class="notes">
-						TODO create a time formatted scale. 
-						</aside>
-					</section>
-				</section>
-					<!-- /Time -->
 
 					<!-- Map -->
 					<section>
