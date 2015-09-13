@@ -252,7 +252,7 @@
 					<pre><code data-trim contenteditable style="font-size: 28px; padding: 15px;">
 						var paragraphs = d3.select("div").selectAll("p");
 					</code></pre>
-					<a href="http://jsfiddle.net/yonet3d/pgrwrvyp/" target="_blank">jsFiddle</a>
+					<!-- <a href="http://jsfiddle.net/yonet3d/pgrwrvyp/" target="_blank">jsFiddle</a> -->
 					<aside class="notes">
 					D3 uses css selectors to define a selection. The selection can be based on tag, class, identifier, attribute, or place in the hierarchy.
 					Child nodes might not exist at the time of our selection.
@@ -441,67 +441,65 @@ var scale = d3.scale.linear();
 					</aside>
 				</section>
 				<section>
-					<section>
-						<h2>Quantitative Scale</h2>
-						<ul>
-							<li>Linear scales</li>
-							<li>Logarithmic scales</li>
-							<li>Power scales</li>
-						</ul>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+					<h2>Quantitative Scale</h2>
+					<ul>
+						<li>Linear scales</li>
+						<li>Logarithmic scales</li>
+						<li>Power scales</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xScale = d3.scale.linear()
-		.domain([0, d3.max(data)])// your data minimum and maximum
-		.range([0, 420]);//the pixels to map to
+	.domain([0, d3.max(data)])// your data minimum and maximum
+	.range([0, 420]);//the pixels to map to
 d3.select(".chart")
-	.selectAll("div")
-		.data([3, 7, 21, 31, 35, 42])
-	.enter().append("div")
-		.style("width", function(d) { return xScale(d) + "px"; })
-						</code></pre>
-						<a href="http://jsfiddle.net/yonet3d/at4186ez/7/" target="_blank">JSFiddle</a>
-						<aside class="notes">
-						Scale func creates a new instance of a scale. On our new scale, we can create new properties that persists. Quantitative: numarical.
-						</aside>
+.selectAll("div")
+	.data([3, 7, 21, 31, 35, 42])
+.enter().append("div")
+	.style("width", function(d) { return xScale(d) + "px"; })
+					</code></pre>
+					<a href="http://jsfiddle.net/yonet3d/at4186ez/7/" target="_blank">JSFiddle</a>
+					<aside class="notes">
+					Scale func creates a new instance of a scale. On our new scale, we can create new properties that persists. Quantitative: numarical.
+					</aside>
 
-					</section>
-					<section>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+				</section>
+				<section>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xScale = d3.scale.linear()
-			.domain([0, 1000])
-			.range([0, 200]);
+		.domain([0, 1000])
+		.range([0, 200]);
 console.log(xScale(500)); //100
 console.log(xScale.domain());//[0, 1000]
-						</code></pre>
-						<img src="images/linearKm.png" alt="">
-						<aside class="notes">
-						Domain and range is a setter and getter. If you don't pass any arguments it is returning the values. 
-						</aside>
-					</section>
-					<section>
-						<h3></h3>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+					</code></pre>
+					<img src="images/linearKm.png" alt="">
+					<aside class="notes">
+					Domain and range is a setter and getter. If you don't pass any arguments it is returning the values. 
+					</aside>
+				</section>
+				<section>
+					<h3></h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xScale = d3.scale.linear()
-			.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
-			.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/" target="_blank">JsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<h3>Clamp</h3>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+		.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+		.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+					</pre></code>
+					<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/" target="_blank">JsFiddle</a></p>
+					<aside class="notes">
+				
+					</aside>
+				</section>
+				<section>
+					<h3>Clamp</h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xScale = d3.scale.linear()
-			.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
-			.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-			.clamp(true);
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/1/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-						Defaults to false.
-						</aside>
-					</section>
+		.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+		.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+		.clamp(true);
+					</pre></code>
+					<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/1/" target="_blank">jsFiddle</a></p>
+					<aside class="notes">
+					Defaults to false.
+					</aside>
 				</section>
 					
 				<section>
@@ -527,8 +525,8 @@ xScale.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
 					<h3><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#ordinal_rangeBands" target="_blank">RangeBands</a></h3>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var o = d3.scale.ordinal()
-    .domain([1, 2, 3])
-    .rangeBands([0, 100]);
+		.domain([1, 2, 3])
+		.rangeBands([0, 100]);
 
 o.rangeBand(); // 33.333333333333336
 o.range(); // [0, 33.333333333333336, 66.66666666666667]
@@ -844,8 +842,8 @@ var line = d3.svg.line()
 						<h3>Axis</h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 var xAxis = d3.svg.axis()
-    .scale(xScale)
-    .orient("bottom");
+		.scale(xScale)
+		.orient("bottom");
 						</pre></code>
 						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/1/" target="_blank">jsFiddle</a></p>
 						<aside class="notes">
@@ -926,12 +924,12 @@ d3.csv("data/data.csv", accessor, function(d) {
 					</section>
 					<section>
 							<h3>Exercise</h3>
+							<p><a href="exercises/exercises.zip" target="_blank">Download Files Here</a></p>
 							<ul>
 								<li class="fragment">Read the census.csv file inside the data folder.</li>
 								<li class="fragment">Display or console.log the data from the file.</li>
 							</ul>
-							<a href="exercises/exercises.zip" target="_blank">Download Files Here</a>
-						<p></p>
+							
 						<aside class="notes">
 						</aside>
 					</section>
@@ -1035,6 +1033,7 @@ var nestedData = d3.nest()
 					
 						</aside>
 					</section>
+					<!-- TODO -->
 					<section>
 							<h3><a href="" target="_blank">Exercise</a></h3>
 						
@@ -1053,34 +1052,107 @@ var nestedData = d3.nest()
 
 						<section>
 							<h3>Maps</h3>
+								<ul>
+									<li><a href="" target="_blank">GeoData</a></li>
+									<li><a href="" target="_blank">Projections</a></li>
+									<li><a href="" target="_blank">Drawing on a map</a></li>
+								</ul>
+						</section>
+						<section>
+							<h3><a href="http://geojson.org/" target="_blank">GeoJson</a></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-						
+{ "type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"geometry": {
+				"type": "Polygon",
+				"coordinates": [[125.6, 10.1], [124.4, 9.2],...]
+			},
+			"properties": {
+				"name": "Dinagat Islands"
+			}
+		}
+	]
+
+}
 							</pre></code>
-							<p><a href="" target="_blank"></a></p>
+							<p><a href="http://bost.ocks.org/mike/map/" target="_blank">Let's make a Map</a></p>
 							<aside class="notes">
-						
+						GeoJSON is a format for encoding a variety of geographic data structures.
+						It is designed to represent discrete geometry objects grouped into feature collections of name/value pairs.
+						Each feature in a feature collection is a JSON object that stores the border data in a coordinates array. Also some metadata in a properties object. 
+						<!-- Lists of geometries are represented by a GeometryCollection. Geometries with additional properties are Feature objects. And lists of features are represented by a FeatureCollection.  -->
 							</aside>
 						</section>
 						<section>
-							<h3>Geospatial Data</h3>
+						
+							<h3><a href="https://github.com/mbostock/topojson/wiki/API-Reference" target="_blank">TopoJson</a></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-						
-							</pre></code>
-							<p><a href="" target="_blank"></a></p>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+							</code></pre>
+							<p><a href="http://jeffpaine.github.io/geojson-topojson/" target="_blank">GeoJson to TopoJson convertor</a></p>
 							<aside class="notes">
-						
+							TopoJSON is an extension of GeoJSON that encodes topology. Rather than representing geometries discretely, geometries in TopoJSON files are stitched together from shared line segments called arcs. TopoJSON eliminates redundancy, offering much more compact representations of geometry than with GeoJSON; typical TopoJSON files are 80% smaller than their GeoJSON equivalents. In addition, TopoJSON facilitates applications that use topology, such as topology-preserving shape simplification, automatic map coloring, and cartograms.
+							</aside>
+						</section>
+						<section>
+							<h3>How to steal the data</h3>
+							
+							<p><a href="http://bl.ocks.org/mbostock/2206590" target="_blank">Map Example</a></p>
+							<aside class="notes">
+
+						http://bl.ocks.org/mbostock/4060606
 							</aside>
 						</section>
 						<section>
 							<h3>Projection</h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-						
+var projection = d3.geo.albersUsa()
+		.scale(500)
+		.translate([width / 2, height / 2]);
 							</pre></code>
 							<p><a href="" target="_blank"></a></p>
 							<aside class="notes">
 							Scale and transform is different for every projections type. 
 							</aside>
 						</section>
+						<section>
+							<h3></h3>
+							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+var worldProjection = d3.geo.mercator();
+var geoPath = d3.geo.path().projection(worldProjection);
+							</pre></code>
+							<p><a href="" target="_blank"></a></p>
+							<aside class="notes">
+						
+							</aside>
+						</section>
+						<section>
+							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+d3.select('svg').selectAll('path').data(countries.features)
+		.enter()
+		.append('path')
+		.attr('d', geoPath)
+		.attr('class', 'countries');
+							</pre></code>
+							<p><a href="" target="_blank"></a></p>
+							<aside class="notes">
+						main.js
+							</aside>
+						</section>
+						<section>
+							<h3></h3>
+							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+d3.select('svg').selectAll('path').data(topojson.feature(us, us.objects.states).features);
+var interiors = topojson.mesh(topology, object, function(a, b) { return a !== b; });
+							</pre></code>
+							<p><a href="https://github.com/mbostock/topojson/wiki/API-Reference#mesh" target="_blank">topojson.mesh(topology, object, [filter])</a></p>
+							<aside class="notes">
+						Returns the GeoJSON MultiLineString geometry object representing the mesh for the specified object in the given topology. This is useful for rendering strokes in complicated objects efficiently, as edges that are shared by multiple features are only stroked once.
+							</aside>
+						</section>
+
 						
 						<section>
 							<h3>Drawing on a map</h3>
@@ -1112,6 +1184,23 @@ var nestedData = d3.nest()
 							<p><a href="" target="_blank"></a></p>
 							<aside class="notes">
 							TODO find the state/city data to draw the map.
+							</aside>
+						</section>
+						<section>
+							<h3>Other mapping libraries</h3>
+							<ul>
+								<li class="fragment"><a href="https://developers.google.com/maps/?hl=en" target="_blank">Goole Maps</a></li>
+								<li class="fragment"><a href="http://leafletjs.com/" target="_blank">Leaflet</a></li>
+								<li class="fragment"><a href="https://mapzen.com/" target="_blank">Mapzen</a></li>
+								<li class="fragment"><a href="http://tangrams.github.io/tangram-play/#15/40.7063/-74.0095" target="_blank">Tangram Play</a></li>
+
+								<li class="fragment"><a href="https://developer.amazon.com/public/apis/experience/maps" target="_blank">Amazon Maps</a></li>
+								<li class="fragment"><a href="https://developers.google.com/chart/interactive/docs/gallery" target="_blank">Google Charts</a></li>
+								<li class="fragment"><a href="http://datamaps.github.io/" target="_blank">DataMaps</a></li>
+							</ul>
+						
+							<aside class="notes">
+							
 							</aside>
 						</section>
 
