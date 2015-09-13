@@ -1157,7 +1157,11 @@ var interiors = topojson.mesh(topology, object, function(a, b) { return a !== b;
 						<section>
 							<h3>Drawing on a map</h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-						
+<script src="http://d3js.org/queue.v1.min.js"></script>
+queue()
+	.defer(d3.json, 'states.json')
+	.defer(d3.json, 'cities.json')
+	.await(makeMyMap);		
 							</pre></code>
 							<p><a href="" target="_blank"></a></p>
 							<aside class="notes">
@@ -1222,9 +1226,24 @@ var interiors = topojson.mesh(topology, object, function(a, b) { return a !== b;
 						<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">Examples</a></li>
 						<li class="fragment"><a href="http://nvd3.org/index.html" target="_blank">NVD3</a></li>
 						<li class="fragment"><a href="http://krispo.github.io/angular-nvd3/#/" target="_blank">Angular-NVD3</a></li>
-						<li class="fragment"><a href="https://www.dashingd3js.com/d3-resources" target="_blank">Dashing-D3js</a></li>
+						
 						
 					</ul>
+				</section>
+				<section>
+					<h3>Other resources</h3>
+					<ul>
+						<li class="fragment"><a href="https://www.manning.com/books/d3-js-in-action" target="_blank">D3.js i Action</a></li>
+						<li class="fragment"><a href="https://www.packtpub.com/web-development/learning-d3js-mapping" target="_blank">Learning d3.js Mapping</a></li>
+						<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">d3 Tutorials list</a></li>
+						<li class="fragment"><a href="https://www.dashingd3js.com/d3-resources" target="_blank">Dashing-D3js</a></li>
+						<li class="fragment"><a href="http://www.meetup.com/Bay-Area-d3-User-Group/events/202337462/" target="_blank">d3.oakland.meetup()</a></li>
+						
+					</ul>
+				
+					<aside class="notes">
+				
+					</aside>
 				</section>
 
 				<section>
