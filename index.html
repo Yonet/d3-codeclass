@@ -1145,9 +1145,8 @@ d3.select('svg').selectAll('path').data(countries.features)
 							<h3></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
 d3.select('svg').selectAll('path').data(topojson.feature(us, us.objects.states).features);
-var interiors = topojson.mesh(topology, object, function(a, b) { return a !== b; });
 							</pre></code>
-							<p><a href="https://github.com/mbostock/topojson/wiki/API-Reference#mesh" target="_blank">topojson.mesh(topology, object, [filter])</a></p>
+							<!-- <p><a href="https://github.com/mbostock/topojson/wiki/API-Reference#mesh" target="_blank">topojson.mesh(topology, object, [filter])</a></p> -->
 							<aside class="notes">
 						Returns the GeoJSON MultiLineString geometry object representing the mesh for the specified object in the given topology. This is useful for rendering strokes in complicated objects efficiently, as edges that are shared by multiple features are only stroked once.
 							</aside>
@@ -1172,24 +1171,41 @@ queue()
 						<section>
 							<h3>Interactivity</h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-						
+var centered;
+g.on("click", clicked);
+function clicked(d) {
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+}
+
 							</pre></code>
-							<p><a href="" target="_blank"></a></p>
+							<p><a href="http://bl.ocks.org/mbostock/2206590" target="_blank">Example</a></p>
 							<aside class="notes">
 							TODO zooming in/out, panning.
 							</aside>
 						</section>
 
-						<section>
-							<h3>Exercise</h3>
-							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-						
-							</pre></code>
-							<p><a href="" target="_blank"></a></p>
-							<aside class="notes">
-							TODO find the state/city data to draw the map.
-							</aside>
-						</section>
+
 						<section>
 							<h3>Other mapping libraries</h3>
 							<ul>
@@ -1233,7 +1249,8 @@ queue()
 				<section>
 					<h3>Other resources</h3>
 					<ul>
-						<li class="fragment"><a href="https://www.manning.com/books/d3-js-in-action" target="_blank">D3.js i Action</a></li>
+
+						<li class="fragment"><a href="https://www.manning.com/books/d3-js-in-action" target="_blank">D3.js in Action</a></li>
 						<li class="fragment"><a href="https://www.packtpub.com/web-development/learning-d3js-mapping" target="_blank">Learning d3.js Mapping</a></li>
 						<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">d3 Tutorials list</a></li>
 						<li class="fragment"><a href="https://www.dashingd3js.com/d3-resources" target="_blank">Dashing-D3js</a></li>
@@ -1241,6 +1258,14 @@ queue()
 						
 					</ul>
 				
+					<aside class="notes">
+				
+					</aside>
+				</section>
+				<section>
+					<h3>Angular and d3</h3>
+					
+					<p><a href="bit.ly/AngularU-d3" target="_blank">bit.ly/AngularU-d3</a></p>
 					<aside class="notes">
 				
 					</aside>
