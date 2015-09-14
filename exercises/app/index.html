@@ -90,24 +90,24 @@
     
     
     <script>
-      // var x = "day";
-      // var y = "donut";
+      var x = "day";
+      var y = "donut";
 
-      // var accessor = function(d) {
-      //   d[y] = parseInt(d[y]); 
-      //   return d;
-      // }
+      var accessor = function(d) {
+        d[y] = parseInt(d[y]); 
+        return d;
+      }
 
-      // d3.csv("data/data.csv", accessor, function(d) {
-      //   console.log(d);
-      // });
+      d3.csv("data/data.csv", function(d) {
+        console.log(d);
+      });
 
 
     </script>
 
     <!-- build:js scripts/main.js -->
     <!-- // <script src="scripts/main.js"></script> -->
-    <script src="scripts/usaMap.js"></script>
+  <script src="scripts/usaMap.js"></script>
     <!-- endbuild -->
 
 
