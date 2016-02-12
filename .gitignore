@@ -5,3 +5,5 @@ tmp/**
 node_modules/
 .sass-cache
 .txt
+.idea/
+

@@ -1,213 +1,232 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<!-- TODO Nest-->
+<head>
+    <meta charset="utf-8">
+    <!-- TODO Nest-->
 
-		<title>Introduction to working with D3.js with Aysegul Yonet - d3.codeclass.io - September 2015</title>
+    <title>Introduction to working with D3.js with Aysegul Yonet - ForwardJS - February 2016</title>
 
-		<meta name="description" content="Introduction to d3.js.">
-		<meta name="author" content="Aysegul Yonet">
+    <meta name="description" content="Introduction to d3.js.">
+    <meta name="author" content="Aysegul Yonet">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
-		<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + ( window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-	<body>
-		<!-- //TODO1: outline slides, add pictures, jsfiddle, selectAll loops like each/forEach, tell audience it is not for beginners, take out SVG? step-by-step recipe, D3 cheat sheet, create 30min exercises x 2, Advanced d3: scales, domain 
-		debugging $0.__data__-->
+<body>
+<!-- //TODO1: outline slides, add pictures, jsfiddle, selectAll loops like each/forEach, tell audience it is not for beginners, take out SVG? step-by-step recipe, D3 cheat sheet, create 30min exercises x 2, Advanced d3: scales, domain 
+debugging $0.__data__-->
 
-		<div class="reveal">
+<div class="reveal">
 
-			<div class="slides">
-				<!-- Intro -->
-				<section>
-					<h1>D3.js</h1>
-					<h3>Data-Driven Documents</h3>
-					<p>Slides : <a href="http://yonet.github.io/d3-codeclass/#/" target="_blank">bit.ly/d3-codeclass</a></p>
-					<p>Aysegul Yonet / <a href="https://twitter.com/AysegulYonet" target="_blank">@AysegulYonet</a>
-					</p>
-					<p><a href="http://anniecannons.com/" target="_blank">AnnieCannons.com</a>
-					</p>
-				</section>
-				
-				<section>
-					<h2>What is D3?</h2>
+    <div class="slides">
+        <!-- Intro -->
+        <section>
+            <h1>D3.js</h1>
+            <h3>Data-Driven Documents</h3>
+            <p>Slides : <a href="http://yonet.github.io/d3-codeclass/#/" target="_blank">bit.ly/d3-codeclass</a></p>
+            <p>Aysegul Yonet / <a href="https://twitter.com/AysegulYonet" target="_blank">@AysegulYonet</a></p>
 
-					<aside class="notes">
-						D3 allows you to bind data to the DOM, and then apply data-driven transformations to the document.
-						Manupulates attributes of DOM elements with the attributes of data items.
-					</aside>
-				</section>
+            <p><a href="http://anniecannons.com/" target="_blank">AnnieCannons.com</a>
+            </p>
+        </section>
+        <section>
 
-				<section>
-					<h2>What d3 is not?</h2>
-					<p class="fragment"><a href="https://jsfiddle.net/api/post/library/pure/" target="_blank">Google Charts Example</a></p>
-					<p class="fragment"><a href="http://bl.ocks.org/weiglemc/6185069#index.html" target="_blank">D3 Scatterplot Example</a></p>
-					<aside class="notes">
-						Not a prototyping tool. For ex: Google charts has chart.draw(data, options).
-						With d3, you have to define how the chart is rendered with the use of d3 methods. 
-					</aside>
-				</section>
-				<section>
-					<p><a href="http://d3js.org/" target="_blank">Examples</a></p>
-					<img src="images/d3examples.png">
-					<aside class="notes">
-					D3 is very Flexible, It allows you to not just create basic charts but create anything you like with the use of svg. 
-					Open Sourced, Great community. 
-					</aside>
-				</section>
-				<section>
-					<h3>What you will learn</h3>
-					<ul>
-						<li class="fragment">SVG</li>
-						<li class="fragment">Selections</li>
-						<li class="fragment">Update Pattern</li>
-						<li class="fragment">Scales</li>
-						<li class="fragment">Axis</li>
-						<li class="fragment">Loading External Data</li>
-						<li class="fragment">Working with Data methods</li>
-						<li class="fragment">Working with Geospatial data</li>
-						<li class="fragment">Creating maps</li>
-						<li class="fragment">Angular and d3.js</li>
-					</ul>
-					
-					<p><a href="" target="_blank"></a></p>
-					<aside class="notes">
-					I will talk to you about...
-					</aside>
-				</section>
-				<!-- /Intro -->
-				
-				<!-- SVG -->
-				<section>
-					<section>
-						<h3>Web Standards</h3>
-						<ul>
-							<li>HTML</li>
-							<li>CSS</li>
-							<li>SVG</li>
-						</ul>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
-						<ul>
-							<li class="fragment">Another HTML element, except you can not put another HTML element inside an SVG.</li>
-							<li class="fragment">Does not support common HTML attributes or styles such as position, left, top, right, bottom or float.</li>
-							<li class="fragment">Default svg size is browser-dependant.</li>
-						</ul>
-						<aside class="notes">
-							d3 works with html and css and shines through with the use of SVGs.
-							What is an SVG? 
-							SVG default size is implemented differently by various browsers. Make sure to define the Width and Height when you are creating an SVG.
-						</aside>
-					</section>
-					<!-- svg -->
-					
-					<!-- circle -->
-					<section>
-						<h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
+            <img src="images/764CF342-9F09-4E2C-A102-3315E1C2BF7A.png" alt="" style="border: none">
+            <div>
+                <a href="https://myhub.autodesk360.com/g/all_projects/active">A360 Drive</a> / <a href="https://a360.autodesk.com/viewer">A360 Viewer</a>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>What is D3?</h2>
+
+            <aside class="notes">
+                D3 allows you to bind data to the DOM, and then apply data-driven transformations to the document.
+                Manupulates attributes of DOM elements with the attributes of data items.
+            </aside>
+        </section>
+
+        <section>
+            <h2>What d3 is not?</h2>
+            <p class="fragment"><a href="https://jsfiddle.net/api/post/library/pure/" target="_blank">Google Charts
+                Example</a></p>
+            <p class="fragment"><a href="http://bl.ocks.org/weiglemc/6185069#index.html" target="_blank">D3 Scatterplot
+                Example</a></p>
+            <aside class="notes">
+                Not a prototyping tool. For ex: Google charts has chart.draw(data, options).
+                With d3, you have to define how the chart is rendered with the use of d3 methods.
+            </aside>
+        </section>
+        <section>
+            <p><a href="http://d3js.org/" target="_blank">Examples</a></p>
+            <img src="images/d3examples.png">
+            <aside class="notes">
+                D3 is very Flexible, It allows you to not just create basic charts but create anything you like with the
+                use of svg.
+                Open Sourced, Great community.
+            </aside>
+        </section>
+        <section>
+            <h3>What you will learn</h3>
+            <ul>
+                <li class="fragment">SVG</li>
+                <li class="fragment">Selections</li>
+                <li class="fragment">Update Pattern</li>
+                <li class="fragment">Scales</li>
+                <li class="fragment">Axis</li>
+                <li class="fragment">Loading External Data</li>
+                <li class="fragment">Working with Data methods</li>
+                <li class="fragment">Working with Geospatial data</li>
+                <li class="fragment">Creating maps</li>
+                <li class="fragment">Angular and d3.js</li>
+            </ul>
+
+            <p><a href="" target="_blank"></a></p>
+            <aside class="notes">
+                I will talk to you about...
+            </aside>
+        </section>
+        <!-- /Intro -->
+
+        <!-- SVG -->
+        <section>
+            <section>
+                <h3>Web Standards</h3>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>SVG</li>
+                </ul>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h2><a href="https://developer.mozilla.org/en-US/docs/Web/SVG" target="_blank">SVG</a></h2>
+                <ul>
+                    <li class="fragment">Another HTML element, except you can not put another HTML element inside an
+                        SVG.
+                    </li>
+                    <li class="fragment">Does not support common HTML attributes or styles such as position, left, top,
+                        right, bottom or float.
+                    </li>
+                    <li class="fragment">Default svg size is browser-dependant.</li>
+                </ul>
+                <aside class="notes">
+                    d3 works with html and css and shines through with the use of SVGs.
+                    What is an SVG?
+                    SVG default size is implemented differently by various browsers. Make sure to define the Width and
+                    Height when you are creating an SVG.
+                </aside>
+            </section>
+            <!-- svg -->
+
+            <!-- circle -->
+            <section>
+                <h3><a href="http://jsfiddle.net/yonet3d/1g1hcsbk/" target="_blank">Circle</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<circle
-	cx=250
-	cy=100
-	r=30
-	fill='#25B0B0'>
-</circle>
-						</code></pre>
-						<aside class="notes">
-							Let's take a look at circle. 
-							Notice we are calculating an area of a circle each time we draw a circle using these attributes. That means we have to be aware of the performance issues. 
-						</aside>
-					</section>
-					<!-- /circle -->
+                            <circle
+                                    cx=250
+                                    cy=100
+                                    r=30
+                                    fill='#25B0B0'>
+                            </circle>
+                        </code></pre>
+                <aside class="notes">
+                    Let's take a look at circle.
+                    Notice we are calculating an area of a circle each time we draw a circle using these attributes.
+                    That means we have to be aware of the performance issues.
+                </aside>
+            </section>
+            <!-- /circle -->
 
-					<!-- rect -->
-					<section>
-						<h3><a href="http://jsfiddle.net/yonet3d/3q7atsmh/" target="_blank">Rectangle</a></h3>
+            <!-- rect -->
+            <section>
+                <h3><a href="http://jsfiddle.net/yonet3d/3q7atsmh/" target="_blank">Rectangle</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<rect
-	x=200
-	y=50
-	width=100
-	height=100
-	rx=10
-	ry=0
-	fill='#25B0B0'>
-</rect>
-						</code></pre>
-						<aside class="notes">
-							Interesting fact: if a properly specified value is provided for rx but not for ry (or the opposite), then the browser will consider the missing value equal to the defined one.
-						</aside>
-					</section>
-					<!-- rect -->
+                            <rect
+                                    x=200
+                                    y=50
+                                    width=100
+                                    height=100
+                                    rx=10
+                                    ry=0
+                                    fill='#25B0B0'>
+                            </rect>
+                        </code></pre>
+                <aside class="notes">
+                    Interesting fact: if a properly specified value is provided for rx but not for ry (or the opposite),
+                    then the browser will consider the missing value equal to the defined one.
+                </aside>
+            </section>
+            <!-- rect -->
 
-					<!-- line -->
+            <!-- line -->
 
 
-
-					<!-- TODO  Transition example-->
-					<!-- group -->
-					<section>
-						<h3>Group</h3>
-						<img src="images/circles.png" alt="" width="50%;"/>
+            <!-- TODO  Transition example-->
+            <!-- group -->
+            <section>
+                <h3>Group</h3>
+                <img src="images/circles.png" alt="" width="50%;"/>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<g transform='translate(100, 100)'>
-	<circle cx=20 cy=10 r=30 fill="rgb(255, 0, 0)">
-	</circle>
-	<circle cx=100 cy=10 r=30 fill='#25B0B0'>
-	</circle>
-</g>
-						</code></pre>
+                            <g transform='translate(100, 100)'>
+                                <circle cx=20 cy=10 r=30 fill="rgb(255, 0, 0)">
+                                </circle>
+                                <circle cx=100 cy=10 r=30 fill='#25B0B0'>
+                                </circle>
+                            </g>
+                        </code></pre>
 
-						<p><a href="http://jsfiddle.net/yonet3d/a2bor75v/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">Any transformations (positioning, scaling, rotating) that are applied to the group element will also be applied to each of the child elements.</aside>
-					</section>
-					<!-- group -->
+                <p><a href="http://jsfiddle.net/yonet3d/a2bor75v/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">Any transformations (positioning, scaling, rotating) that are applied to the group
+                    element will also be applied to each of the child elements.
+                </aside>
+            </section>
+            <!-- group -->
 
-					<section>
-						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
+            <section>
+                <h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/3/" target="_blank">Line</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<line 
-	x1="10"
-	y1="10" 
-	x2="100" 
-	y2="100"
-	stroke="blue"
-	stroke-width="100">
-</line>
-						</code></pre>
-					</section>
-					<!-- /line -->
+                            <line
+                                    x1="10"
+                                    y1="10"
+                                    x2="100"
+                                    y2="100"
+                                    stroke="blue"
+                                    stroke-width="100">
+                            </line>
+                        </code></pre>
+            </section>
+            <!-- /line -->
 
-					<!-- path -->
-					<section>
-						<h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/" target="_blank">Path</a></h3>
+            <!-- path -->
+            <section>
+                <h3><a href="http://jsfiddle.net/yonet3d/arq8r1ar/" target="_blank">Path</a></h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<path d='
+                            <path d='
 	M50,100
 	L131,66
 	L259,115
@@ -215,1105 +234,1219 @@
 	L400,98
 	M350,150
 	L100,150'
-	fill=none
-	stroke='#25B0B0'>
-</path>
-										
-						</code></pre>
-						<ul>
-							<li >M - move.</li>
-							<li >L - line.</li>
-							<li >z - close path.</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Text</h3>
-						<p></p>
-						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<svg>
-	<text x="100" y="100" fill="red" font-family="arial" font-size="16">
-		Look at me, I am a text.
-	</text>
-</svg>
-						</code></pre>
-						<aside class="notes">Unless you set the style of the SVG text, it inherits font-styles from CSS.</aside>
-					</section>
-					<!-- /path -->
+                                  fill=none
+                                  stroke='#25B0B0'>
+                            </path>
 
-				</section>
-				
-				<section>
-					<h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
-					<h4>jQuery</h4>
+                        </code></pre>
+                <ul>
+                    <li>M - move.</li>
+                    <li>L - line.</li>
+                    <li>z - close path.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Text</h3>
+                <p></p>
+						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+                            <svg>
+                                <text x="100" y="100" fill="red" font-family="arial" font-size="16">
+                                    Look at me, I am a text.
+                                </text>
+                            </svg>
+                        </code></pre>
+                <aside class="notes">Unless you set the style of the SVG text, it inherits font-styles from CSS.</aside>
+            </section>
+            <!-- /path -->
+
+        </section>
+
+        <section>
+            <h2><a href="http://jsfiddle.net/yonet3d/y5gv81pg/8/">Selection</a></h2>
+            <h4>jQuery</h4>
 					<pre><code data-trim contenteditable style="font-size: 28px; padding: 15px;">
-						var paragraphs = $("div p");
-					</code></pre>
-					<h4>D3</h4>
+                        var paragraphs = $("div p");
+                    </code></pre>
+            <h4>D3</h4>
 					<pre><code data-trim contenteditable style="font-size: 28px; padding: 15px;">
-						var paragraphs = d3.select("div").selectAll("p");
-					</code></pre>
-					<!-- <a href="http://jsfiddle.net/yonet3d/pgrwrvyp/" target="_blank">jsFiddle</a> -->
-					<aside class="notes">
-					D3 uses css selectors to define a selection. The selection can be based on tag, class, identifier, attribute, or place in the hierarchy.
-					Child nodes might not exist at the time of our selection.
-					One thing to note, D3 selector object only contains the elements that matched the selection rule when the selection was first created.
-					
-					</aside>
-				</section>
-				<section>
+                        var paragraphs = d3.select("div").selectAll("p");
+                    </code></pre>
+            <!-- <a href="http://jsfiddle.net/yonet3d/pgrwrvyp/" target="_blank">jsFiddle</a> -->
+            <aside class="notes">
+                D3 uses css selectors to define a selection. The selection can be based on tag, class, identifier,
+                attribute, or place in the hierarchy.
+                Child nodes might not exist at the time of our selection.
+                One thing to note, D3 selector object only contains the elements that matched the selection rule when
+                the selection was first created.
+
+            </aside>
+        </section>
+        <section>
 					<pre><code data-trim style="font-size: 18px; padding: 15px;">
-var p = d3.select("body").append('p');
-p.html('Hello CodeClass!').attr('style', 'color: red;');
-					</pre></code>
-					<p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/4/" target="_blank">jsFiddle</a></p>
-					<aside class="notes">
-						Once we have a selection, we can operate on our nodes.
-					</aside>
-				</section>
+                        var p = d3.select("body").append('p');
+                        p.html('Hello CodeClass!').attr('style', 'color: red;');
+					</pre>
+            </code>
+            <p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/4/" target="_blank">jsFiddle</a></p>
+            <aside class="notes">
+                Once we have a selection, we can operate on our nodes.
+            </aside>
+        </section>
 
-				<section>
-					<h2>Data</h2>
+        <section>
+            <h2>Data</h2>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.selectAll("p")
-	.data([0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
-					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/cw6s96my/" target="_blank">JSFiddle</a></p>
-					<aside class="notes">
-					Most importantly we can bind data to our selections.
-					When data is bound to a selection, each element in the data array is paired with the corresponding DOM node in the selection.
-					We can use the data to define the attributes on that node
-					</aside>
-				</section>
+                        d3.selectAll("p")
+                        .data([0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
+                    </code></pre>
+            <p><a href="http://jsfiddle.net/yonet3d/cw6s96my/" target="_blank">JSFiddle</a></p>
+            <aside class="notes">
+                Most importantly we can bind data to our selections.
+                When data is bound to a selection, each element in the data array is paired with the corresponding DOM
+                node in the selection.
+                We can use the data to define the attributes on that node
+            </aside>
+        </section>
 
-				<section>
-					<h2>Enter()</h2>
+        <section>
+            <h2>Enter()</h2>
 
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.select("body").selectAll("p")
-	.data([3, 7, 21, 31, 35, 42])
-	.enter();
-					</code></pre>
-					
-					<aside class="notes">
-					 If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection.
-						
-					</aside>
-				</section>
-				<section>
-					<h3>Append()</h3>
+                        d3.select("body").selectAll("p")
+                        .data([3, 7, 21, 31, 35, 42])
+                        .enter();
+                    </code></pre>
+
+            <aside class="notes">
+                If there are fewer nodes than data, the extra data elements form the enter selection, which you can
+                instantiate by appending to the enter selection.
+
+            </aside>
+        </section>
+        <section>
+            <h3>Append()</h3>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.select("body").selectAll("p")
-	.data([3, 7, 21, 31, 35, 42])
-	.enter().append("p")
-	.text(function(d) { return "I’m number " + d + "!"; })
-	.style("color", "black");
-					</pre></code>
-					<p><a href="" target="_blank"></a></p>
-					<aside class="notes">
-				D3 methods returns the selection they act upon, and we can apply multiple operations to the same selection. Here we are able to add text to our newly appended selection.
-					</aside>
-				</section>
-				<section>
-					<img src="images/paragraph.png" alt="">
-					<p><a href="http://jsfiddle.net/yonet3d/93ooqk53/35/" target="_blank">JSFiddle</a></p>
-					<aside class="notes">
-					Our new paraghraph's text is created using the data bound data points.
-					</aside>
-				</section>
-				<section>
+                        d3.select("body").selectAll("p")
+                        .data([3, 7, 21, 31, 35, 42])
+                        .enter().append("p")
+                        .text(function(d) { return "I’m number " + d + "!"; })
+                        .style("color", "black");
+					</pre>
+            </code>
+            <p><a href="" target="_blank"></a></p>
+            <aside class="notes">
+                D3 methods returns the selection they act upon, and we can apply multiple operations to the same
+                selection. Here we are able to add text to our newly appended selection.
+            </aside>
+        </section>
+        <section>
+            <img src="images/paragraph.png" alt="">
+            <p><a href="http://jsfiddle.net/yonet3d/93ooqk53/35/" target="_blank">JSFiddle</a></p>
+            <aside class="notes">
+                Our new paraghraph's text is created using the data bound data points.
+            </aside>
+        </section>
+        <section>
 
-					<p><a href="http://jsfiddle.net/w5qvpy7v/29/" target="_blank">Exercise</a></p>
-					<aside class="notes">
-					solution: http://jsfiddle.net/yonet3d/w319gwyw/
-					</aside>
-				</section>
+            <p><a href="http://jsfiddle.net/w5qvpy7v/29/" target="_blank">Exercise</a></p>
+            <aside class="notes">
+                http://jsfiddle.net/w5qvpy7v/150/
+                solution: http://jsfiddle.net/yonet3d/w319gwyw/
+            </aside>
+        </section>
 
-				<section>
-					<h2>Exit() and Remove()</h2>
+        <section>
+            <h2>Exit() and Remove()</h2>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var bars = d3.select('body').selectAll('p').data(newData);
+                        var bars = d3.select('body').selectAll('p').data(newData);
 
-//if we have more data, add new 'p' for those data items
-bars.enter().append('p')
+                        //if we have more data, add new 'p' for those data items
+                        bars.enter().append('p')
 
-//if we have less data points, remove the 'p' that no longer have a data pairing. 
-bars.exit().remove();
-					</code></pre>
-					<aside class="notes">
-						What if we have less data points? 
-						Using D3’s exit and remove, you can get rid of outgoing nodes that are no longer needed. Like the enter method, exit selects the extra nodes that doesn't have data matching and remove deletes the nodes from our DOM.
-					</aside>
-				</section>
+                        //if we have less data points, remove the 'p' that no longer have a data pairing.
+                        bars.exit().remove();
+                    </code></pre>
+            <aside class="notes">
+                What if we have less data points?
+                Using D3’s exit and remove, you can get rid of outgoing nodes that are no longer needed. Like the enter
+                method, exit selects the extra nodes that doesn't have data matching and remove deletes the nodes from
+                our DOM.
+            </aside>
+        </section>
 
-				<section>
-					<h3>Update Pattern</h3>
+        <section>
+            <h3>Update Pattern</h3>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-// Update…
-var p = d3.select("body").selectAll("p")
-	.data([3, 7, 21, 31, 35, 42]);
+                        // Update…
+                        var p = d3.select("body").selectAll("p")
+                        .data([3, 7, 21, 31, 35, 42]);
 
-// Enter…
-p.enter().append("p")
+                        // Enter…
+                        p.enter().append("p")
 
-// Exit…
-p.exit().remove();
-					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/4/" target="_blank">JSFiddle</a></p>
-					<aside class="notes">
-					This is what we call the update pattern. 
-					If you forget about the enter and exit selections, you will automatically select only the elements for which there is corresponding data.
-					By handling these three cases separately, you specify precisely which operations run on which nodes.</aside>
-				</section>
-				<section>
-					<h3>Chaining</h3>
+                        // Exit…
+                        p.exit().remove();
+                    </code></pre>
+            <p><a href="http://jsfiddle.net/yonet3d/ubmk6j27/4/" target="_blank">JSFiddle</a></p>
+            <aside class="notes">
+                This is what we call the update pattern.
+                If you forget about the enter and exit selections, you will automatically select only the elements for
+                which there is corresponding data.
+                By handling these three cases separately, you specify precisely which operations run on which nodes.
+            </aside>
+        </section>
+        <section>
+            <h3>Chaining</h3>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.select("body").selectAll("p")
-	.data([3, 7, 21, 31, 35, 42])
-	.enter().append("p")
-	.exit().remove();
-					</pre></code>
-					<p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/2/" target="_blank">jsFiddle</a></p>
-					<aside class="notes">
-					If you have been to the d3's website, I am sure you came accross the chained methods. Every chained method operates on the previous selection, and most operations return the same selection. Some methods return a new one! For example, selection.append returns a new selection containing the new elements. This conveniently allows you to chain operations into the new elements.
-					Since method chaining can only be used to descend into the document hierarchy, use var to keep references to selections and go back up.
-				
-					</aside>
-				</section>
+                        d3.select("body").selectAll("p")
+                        .data([3, 7, 21, 31, 35, 42])
+                        .enter().append("p")
+                        .exit().remove();
+					</pre>
+            </code>
+            <p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/2/" target="_blank">jsFiddle</a></p>
+            <aside class="notes">
+                If you have been to the d3's website, I am sure you came accross the chained methods. Every chained
+                method operates on the previous selection, and most operations return the same selection. Some methods
+                return a new one! For example, selection.append returns a new selection containing the new elements.
+                This conveniently allows you to chain operations into the new elements.
+                Since method chaining can only be used to descend into the document hierarchy, use var to keep
+                references to selections and go back up.
 
-				<section>
-					<h3>Operating on selection</h3>
-					<ul>
-						<li class="fragment">Setting attributes or styles</li>
-						<li class="fragment">Registering event listeners</li>
-						<li class="fragment">Adding, removing or sorting nodes</li>
-						<li class="fragment">Changing HTML or text content</li>
-					</ul>
-					<p class="fragment"><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
-					<aside class="notes">
-					You can operate over the nodes in a declarative way using selector methods.
-					</aside>
-				</section>
+            </aside>
+        </section>
 
-				<section>
-					<h2>Transition</h2>
+        <section>
+            <h3>Operating on selection</h3>
+            <ul>
+                <li class="fragment">Setting attributes or styles</li>
+                <li class="fragment">Registering event listeners</li>
+                <li class="fragment">Adding, removing or sorting nodes</li>
+                <li class="fragment">Changing HTML or text content</li>
+            </ul>
+            <p class="fragment"><a href="http://jsfiddle.net/yonet3d/m09gmw3n/1/" target="_blank">JSFiddle</a></p>
+            <aside class="notes">
+                You can operate over the nodes in a declarative way using selector methods.
+            </aside>
+        </section>
+
+        <section>
+            <h2>Transition</h2>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-circles.attr("r", "0")
-	.attr({
-			'cx': function(d) {return (d * 2); },
-			'cy': 10
-	})
-	.transition()
-	.duration(750)
-	.delay(function(d, i) { return i * 100; })
-	.attr("r", 10);
-					</code></pre>
-					<p><a href="http://jsfiddle.net/yonet3d/Lrnnvtw9/3/" target="_blank">JSFiddle</a></p>
-					<aside class="notes">
-					Transition will happen between what you have assigned before and after the transion is called.
-						
-					</aside>
-				</section>
-				<!-- exit selection exercise -->
+                        circles.attr("r", "0")
+                        .attr({
+                        'cx': function(d) {return (d * 2); },
+                        'cy': 10
+                        })
+                        .transition()
+                        .duration(750)
+                        .delay(function(d, i) { return i * 100; })
+                        .attr("r", 10);
+                    </code></pre>
+            <p><a href="http://jsfiddle.net/yonet3d/Lrnnvtw9/3/" target="_blank">JSFiddle</a></p>
+            <aside class="notes">
+                Transition will happen between what you have assigned before and after the transion is called.
 
-				<section>
-						<h3><a href="http://jsfiddle.net/ubmk6j27/129/" target="_blank">Exercise</a></h3>
-						<ul>
-							<li class="fragment">Update the bar graph with new data</li>
-							<li class="fragment">Add transitions to see the the enter and exit phases.</li>
-							<li class="fragment">Refactor your code to have an update method that you can call with the new data.</li>
-						</ul>
-					<aside class="notes">
-					solution 1: http://jsfiddle.net/ubmk6j27/130/
-					solution 2: http://jsfiddle.net/ubmk6j27/131/
-					solution 3: http://jsfiddle.net/ubmk6j27/132/
-					</aside>
-				</section>
+            </aside>
+        </section>
+        <!-- exit selection exercise -->
 
-				<section>
-					<h3>Scales</h3>
+        <section>
+            <h3><a href="http://jsfiddle.net/ubmk6j27/129/" target="_blank">Exercise</a></h3>
+            <ul>
+                <li class="fragment">Update the bar graph with new data</li>
+                <li class="fragment">Add transitions to see the the enter and exit phases.</li>
+                <li class="fragment">Refactor your code to have an update method that you can call with the new data.
+                </li>
+            </ul>
+            <aside class="notes">
+                solution 1: http://jsfiddle.net/ubmk6j27/130/
+                solution 2: http://jsfiddle.net/ubmk6j27/131/
+                solution 3: http://jsfiddle.net/ubmk6j27/132/
+            </aside>
+        </section>
+
+        <section>
+            <h3>Scales</h3>
 					<pre><code data-trim>
-var scale = d3.scale.linear();
-					</pre></code>
-					<p><a href="" target="_blank"></a></p>
-					<aside class="notes">
-					Examples we saw so far calculates the position of our SVG elements by using data. D3 comes with scale methods to make these mappings easy.
-					Scales transform a dataset in a certain interval (called the domain) into a number in another interval (called the range). For ex, transforms a domain in miles to a range in pixels. 
-					</aside>
-				</section>
-				<section>
-					<h2>Quantitative Scale</h2>
-					<ul>
-						<li>Linear scales</li>
-						<li>Logarithmic scales</li>
-						<li>Power scales</li>
-					</ul>
+                        var scale = d3.scale.linear();
+					</pre>
+            </code>
+            <p><a href="" target="_blank"></a></p>
+            <aside class="notes">
+                Examples we saw so far calculates the position of our SVG elements by using data. D3 comes with scale
+                methods to make these mappings easy.
+                Scales transform a dataset in a certain interval (called the domain) into a number in another interval
+                (called the range). For ex, transforms a domain in miles to a range in pixels.
+            </aside>
+        </section>
+        <section>
+            <h2>Quantitative Scale</h2>
+            <ul>
+                <li>Linear scales</li>
+                <li>Logarithmic scales</li>
+                <li>Power scales</li>
+            </ul>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.scale.linear()
-	.domain([0, d3.max(data)])// your data minimum and maximum
-	.range([0, 420]);//the pixels to map to
-d3.select(".chart")
-.selectAll("div")
-	.data([3, 7, 21, 31, 35, 42])
-.enter().append("div")
-	.style("width", function(d) { return xScale(d) + "px"; })
-					</code></pre>
-					<a href="http://jsfiddle.net/yonet3d/at4186ez/7/" target="_blank">JSFiddle</a>
-					<aside class="notes">
-					Scale func creates a new instance of a scale. On our new scale, we can create new properties that persists. Quantitative: numarical.
-					</aside>
+                        var xScale = d3.scale.linear()
+                        .domain([0, d3.max(data)])// your data minimum and maximum
+                        .range([0, 420]);//the pixels to map to
+                        d3.select(".chart")
+                        .selectAll("div")
+                        .data([3, 7, 21, 31, 35, 42])
+                        .enter().append("div")
+                        .style("width", function(d) { return xScale(d) + "px"; })
+                    </code></pre>
+            <a href="http://jsfiddle.net/yonet3d/at4186ez/7/" target="_blank">JSFiddle</a>
+            <aside class="notes">
+                Scale func creates a new instance of a scale. On our new scale, we can create new properties that
+                persists. Quantitative: numarical.
+            </aside>
 
-				</section>
-				<section>
+        </section>
+        <section>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.scale.linear()
-		.domain([0, 1000])
-		.range([0, 200]);
-console.log(xScale(500)); //100
-console.log(xScale.domain());//[0, 1000]
-					</code></pre>
-					<img src="images/linearKm.png" alt="">
-					<aside class="notes">
-					Domain and range is a setter and getter. If you don't pass any arguments it is returning the values. 
-					</aside>
-				</section>
-				<section>
-					<h3></h3>
+                        var xScale = d3.scale.linear()
+                        .domain([0, 1000])
+                        .range([0, 200]);
+                        console.log(xScale(500)); //100
+                        console.log(xScale.domain());//[0, 1000]
+                    </code></pre>
+            <img src="images/linearKm.png" alt="">
+            <aside class="notes">
+                Domain and range is a setter and getter. If you don't pass any arguments it is returning the values.
+            </aside>
+        </section>
+        <section>
+            <h3></h3>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.scale.linear()
-		.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
-		.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-					</pre></code>
-					<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/" target="_blank">JsFiddle</a></p>
-					<aside class="notes">
-				
-					</aside>
-				</section>
-				<section>
-					<h3>Clamp</h3>
-					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.scale.linear()
-		.domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
-		.range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-		.clamp(true);
-					</pre></code>
-					<p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/1/" target="_blank">jsFiddle</a></p>
-					<aside class="notes">
-					Defaults to false.
-					</aside>
-				</section>
-					
-				<section>
-					<h2>Ordinal Scale</h2>
-					<p>Ordinal Scale have a discrete domain, such as a set of names or categories.</p>
-					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.scale.ordinal()
-	.domain(["Bob", "Stuart", "Kevin", "Scarlet"])
-	.rangePoints([0, 100]);
-console.log(xScale("Stuart"));//33.333333333333336
+                        var xScale = d3.scale.linear()
+                        .domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+                        .range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+					</pre>
+            </code>
+            <p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/" target="_blank">JsFiddle</a></p>
+            <aside class="notes">
 
-xScale.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
-					</code></pre>
-					<img src="images/rangePoints.png" alt="">
-					<p><a href="http://jsfiddle.net/yonet3d/at4186ez/8/" target="_blank">JSFiddle</a></p>
-
-					<aside class="notes">
-						You need to have the same number of arguments. If you have more in range, that is OK. RangePoints subdivides everything in between the values you give to it.
-					</aside>
-
-				</section>
-				<section>
-					<h3><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#ordinal_rangeBands" target="_blank">RangeBands</a></h3>
+            </aside>
+        </section>
+        <section>
+            <h3>Clamp</h3>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var o = d3.scale.ordinal()
-		.domain([1, 2, 3])
-		.rangeBands([0, 100]);
+                        var xScale = d3.scale.linear()
+                        .domain([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+                        .range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+                        .clamp(true);
+					</pre>
+            </code>
+            <p><a href="http://jsfiddle.net/yonet3d/29mj2nrh/1/" target="_blank">jsFiddle</a></p>
+            <aside class="notes">
+                Defaults to false.
+            </aside>
+        </section>
 
-o.rangeBand(); // 33.333333333333336
-o.range(); // [0, 33.333333333333336, 66.66666666666667]
-o.rangeExtent(); // [0, 100]
-					</pre></code>
-					<img src="images/rangeBands.png" alt="">
-				
-					<aside class="notes">
-					Sets the output range from the specified continuous interval. This interval is subdivided into n evenly-spaced bands, where n is the number of (unique) values in the input domain. The bands may be offset from the edge of the interval and other bands according to the specified padding, which defaults to zero. 
-				
-					</aside>
-				</section>
-				<section>
-					<h3></h3>
+        <section>
+            <h2>Ordinal Scale</h2>
+            <p>Ordinal Scale have a discrete domain, such as a set of names or categories.</p>
 					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var x = d3.scale.ordinal()
-	.domain(["A", "B", "C", "D", "E", "F"])
-	.rangeRoundBands([0, width], .1);
-					</pre></code>
-					<p><a href="" target="_blank"></a></p>
-					<aside class="notes">
-					Like rangeBands, except guarantees that range values and band width are integers so as to avoid antialiasing artifacts.
-				
-					</aside>
-				</section>
-				<section>
-					<h2><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">Color Categories</a></h2>
-					<p>d3.scale.category10()</p>
-					<p><a href="http://jsfiddle.net/8CaCn/" target="_blank">JSFiddle</a></p>
-					<img class="category-image" src="images/category10.png">
-					<aside class="notes">
-						 Constructs a new ordinal scale with a range of ten categorical colors:
-					</aside>
-				</section>
-		
-				<section>
-						<h3>Time Scales</h3>
+                        var xScale = d3.scale.ordinal()
+                        .domain(["Bob", "Stuart", "Kevin", "Scarlet"])
+                        .rangePoints([0, 100]);
+                        console.log(xScale("Stuart"));//33.333333333333336
+
+                        xScale.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
+                    </code></pre>
+            <img src="images/rangePoints.png" alt="">
+            <p><a href="http://jsfiddle.net/yonet3d/at4186ez/8/" target="_blank">JSFiddle</a></p>
+
+            <aside class="notes">
+                You need to have the same number of arguments. If you have more in range, that is OK. RangePoints
+                subdivides everything in between the values you give to it.
+            </aside>
+
+        </section>
+        <section>
+            <h3><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#ordinal_rangeBands" target="_blank">RangeBands</a>
+            </h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+                        var o = d3.scale.ordinal()
+                        .domain([1, 2, 3])
+                        .rangeBands([0, 100]);
+
+                        o.rangeBand(); // 33.333333333333336
+                        o.range(); // [0, 33.333333333333336, 66.66666666666667]
+                        o.rangeExtent(); // [0, 100]
+					</pre>
+            </code>
+            <img src="images/rangeBands.png" alt="">
+
+            <aside class="notes">
+                Sets the output range from the specified continuous interval. This interval is subdivided into n
+                evenly-spaced bands, where n is the number of (unique) values in the input domain. The bands may be
+                offset from the edge of the interval and other bands according to the specified padding, which defaults
+                to zero.
+
+            </aside>
+        </section>
+        <section>
+            <h3></h3>
+					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+                        var x = d3.scale.ordinal()
+                        .domain(["A", "B", "C", "D", "E", "F"])
+                        .rangeRoundBands([0, width], .1);
+					</pre>
+            </code>
+            <p><a href="" target="_blank"></a></p>
+            <aside class="notes">
+                Like rangeBands, except guarantees that range values and band width are integers so as to avoid
+                antialiasing artifacts.
+
+            </aside>
+        </section>
+        <section>
+            <h2><a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors" target="_blank">Color
+                Categories</a></h2>
+            <p>d3.scale.category10()</p>
+            <p><a href="http://jsfiddle.net/8CaCn/" target="_blank">JSFiddle</a></p>
+            <img class="category-image" src="images/category10.png">
+            <aside class="notes">
+                Constructs a new ordinal scale with a range of ten categorical colors:
+            </aside>
+        </section>
+
+        <section>
+            <h3>Time Scales</h3>
 					<pre><code data-trim>
-d3.time.scale()
-	.domain([dates])
-	.range([values]);
-					</pre></code>
-					
-					<aside class="notes">
-					Constructs a new time scale with the default domain and range; the ticks and tick format are configured for local time.
-				TODO: Dates and times can be represented using numbers for days, years,... or specific date-time encoding. ISO 8601.
-					</aside>
-				</section>
-								<!-- Time -->
+                        d3.time.scale()
+                        .domain([dates])
+                        .range([values]);
+					</pre>
+            </code>
 
-				<section>
-					<section>
-						<h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.format</a></h2>
+            <aside class="notes">
+                Constructs a new time scale with the default domain and range; the ticks and tick format are configured
+                for local time.
+                TODO: Dates and times can be represented using numbers for days, years,... or specific date-time
+                encoding. ISO 8601.
+            </aside>
+        </section>
+        <!-- Time -->
+
+        <section>
+            <section>
+                <h2><a href="https://github.com/mbostock/d3/wiki/Time-Formatting" target="_blank">d3.format</a></h2>
 
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.time.format("%Y-%m-%d"); //2015-08-26
-d3.format("+,%"); //+2,400%
-							</code></pre>
-							<a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
-							<aside class="notes">
-								d3.time.format - creates a new local time formatter for a given specifier.
-							</aside>
-						
-					</section>
-					<section>
-						<p>d3.time.scale - constructs a linear time scale.</p>
+                                d3.time.format("%Y-%m-%d"); //2015-08-26
+                                d3.format("+,%"); //+2,400%
+                            </code></pre>
+                <a href="http://jsfiddle.net/yonet3d/pfL3w9v6/2/" target="_blank">JSFiddle</a>
+                <aside class="notes">
+                    d3.time.format - creates a new local time formatter for a given specifier.
+                </aside>
+
+            </section>
+            <section>
+                <p>d3.time.scale - constructs a linear time scale.</p>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xScale = d3.time.scale()
- .domain([2009-07-13T00:02, 2009-07-13T23:48])
- .rangeRound([0, width]);
- //rangeRound does the same thing as range but rounds the values to integers or begining of dates.
-						</code></pre>
-						<a href="http://jsfiddle.net/robdodson/KWRxW/" target="_blank">JSFiddle</a>
-					</section>
-					<section>
-						<p>d3.time.intervals - a time interval in local time.</p>
-						<ul>
-							<li class="fragment">d3.time.hour</li>
-							<li class="fragment">d3.time.week</li>
-							<li class="fragment">d3.time.monday</li>
-							<li class="fragment">d3.time.year</li>
-						</ul>
-					</section>
-					<section>
-						<p><a href="http://bl.ocks.org/phoebebright/3059392" target="_blank">Example</a></p>
-						
-					</section>
-					
-				</section>
-					<!-- /Time -->
+                            var xScale = d3.time.scale()
+                            .domain([2009-07-13T00:02, 2009-07-13T23:48])
+                            .rangeRound([0, width]);
+                            //rangeRound does the same thing as range but rounds the values to integers or begining of
+                            dates.
+                        </code></pre>
+                <a href="http://jsfiddle.net/robdodson/KWRxW/" target="_blank">JSFiddle</a>
+            </section>
+            <section>
+                <p>d3.time.intervals - a time interval in local time.</p>
+                <ul>
+                    <li class="fragment">d3.time.hour</li>
+                    <li class="fragment">d3.time.week</li>
+                    <li class="fragment">d3.time.monday</li>
+                    <li class="fragment">d3.time.year</li>
+                </ul>
+            </section>
+            <section>
+                <p><a href="http://bl.ocks.org/phoebebright/3059392" target="_blank">Example</a></p>
 
-				<!-- Circle Example with scale -->
-				<section>
-					<section>
-						<h3>Scatterplot</h3>
+            </section>
+
+        </section>
+        <!-- /Time -->
+
+        <!-- Circle Example with scale -->
+        <section>
+            <section>
+                <h3>Scatterplot</h3>
 						<pre><code data-trim>
-var svg = d3.select('body').append('svg')
-	.attr({
-				'width': 250,
-				'height': 250
-		});
+                            var svg = d3.select('body').append('svg')
+                            .attr({
+                            'width': 250,
+                            'height': 250
+                            });
 
-var xScale = d3.scale.linear()
-	.domain([0, 5])
-	.range([0, 200]);
+                            var xScale = d3.scale.linear()
+                            .domain([0, 5])
+                            .range([0, 200]);
 
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-							<h3></h3>
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3></h3>
 						<pre><code data-trim>
-var render = function(data, r, color){
-	//Bind data
-	var circles = svg.selectAll('circle').data(data);
-	
-	//Enter and update
-	circles.enter().append('circle')
-		.attr({
-			'cx': function(d){return xScale(d)},
-				'cy': 30,
-				'r': r,
-				'fill': function(){return color || 'red'} 
-		});
-}
-						</pre></code>
-						
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
+                            var render = function(data, r, color){
+                            //Bind data
+                            var circles = svg.selectAll('circle').data(data);
+
+                            //Enter and update
+                            circles.enter().append('circle')
+                            .attr({
+                            'cx': function(d){return xScale(d)},
+                            'cy': 30,
+                            'r': r,
+                            'fill': function(){return color || 'red'}
+                            });
+                            }
+						</pre>
+                </code>
+
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var oldData = [1, 2, 3];
-var newData = [1, 2, 3, 4, 5];
-render(oldData, 10);
-render(newData, 15, 'blue');
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-						How many people think the circles all should be blue?
-						</aside>
-					</section>
-					<section>
-						<h3></h3>
-						<img src="images/circleEnter.png" alt="">
-						<p><a href="http://jsfiddle.net/yonet3d/wntt48j5/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
+                            var oldData = [1, 2, 3];
+                            var newData = [1, 2, 3, 4, 5];
+                            render(oldData, 10);
+                            render(newData, 15, 'blue');
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+                    How many people think the circles all should be blue?
+                </aside>
+            </section>
+            <section>
+                <h3></h3>
+                <img src="images/circleEnter.png" alt="">
+                <p><a href="http://jsfiddle.net/yonet3d/wntt48j5/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var render = function(data, r, color){
-		//Bind Data
-		var circles = svg.selectAll('circle').data(data);
-		//Enter
-		circles.enter().append('circle')
-		
-		//Update
-		circles.attr({
-				'cx': function(d){return xScale(d)},
-					'cy': 30,
-					'r': r,
-					'fill': function(){return color || 'red'} 
-			})
-}
-						</pre></code>
+                            var render = function(data, r, color){
+                            //Bind Data
+                            var circles = svg.selectAll('circle').data(data);
+                            //Enter
+                            circles.enter().append('circle')
 
-						<aside class="notes">
-						I am using a function to return a default value if the color is not defined.
+                            //Update
+                            circles.attr({
+                            'cx': function(d){return xScale(d)},
+                            'cy': 30,
+                            'r': r,
+                            'fill': function(){return color || 'red'}
+                            })
+                            }
+						</pre>
+                </code>
 
-						</aside>
-					</section>
-					<section>
-						<img src="images/updateCircles.png" alt="">
-						<p><a href="http://jsfiddle.net/yonet3d/wntt48j5/1/" target="_blank">jsFiddle</a></p>
-					</section>
-					<section>
+                <aside class="notes">
+                    I am using a function to return a default value if the color is not defined.
+
+                </aside>
+            </section>
+            <section>
+                <img src="images/updateCircles.png" alt="">
+                <p><a href="http://jsfiddle.net/yonet3d/wntt48j5/1/" target="_blank">jsFiddle</a></p>
+            </section>
+            <section>
 						<pre><code data-trim>
-var oldData = [1, 2, 3, 4, 5];
-var newData = [1, 2, 3];
-render(oldData, 10);
-render(newData, 15, 'blue');
-						</pre></code>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<img src="images/noExit.png" alt="">
-						<p><a href="http://jsfiddle.net/yonet3d/wntt48j5/1/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-							<h3></h3>
+                            var oldData = [1, 2, 3, 4, 5];
+                            var newData = [1, 2, 3];
+                            render(oldData, 10);
+                            render(newData, 15, 'blue');
+						</pre>
+                </code>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <img src="images/noExit.png" alt="">
+                <p><a href="http://jsfiddle.net/yonet3d/wntt48j5/1/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3></h3>
 						<pre><code data-trim>
-var render = function(data, r, color){
-		//Bind Data
-		var circles = svg.selectAll('circle').data(data);
+                            var render = function(data, r, color){
+                            //Bind Data
+                            var circles = svg.selectAll('circle').data(data);
 
-		//Enter
-		circles.enter().append('circle')
-		
-		//Update
-		circles.attr({
-				'cx': function(d){return xScale(d)},
-					'cy': 30,
-					'r': r,
-					'fill': function(){return color || 'red'} 
-			})
+                            //Enter
+                            circles.enter().append('circle')
 
-		//Remove
-		circles.exit().remove();
-}
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/wntt48j5/3/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<h3>Recap</h3>
-						<ul>
-							<li class="fragment">Bind Data.</li>
-							<li class="fragment">Enter and Append.</li>
-							<li class="fragment">Update the attributes.</li>
-							<li class="fragment">Exit and Remove.</li>
-						</ul>
-						<aside class="notes">
-						TODO add scale to scatter plot.
-						</aside>
-					</section>
-					<section>
-							<h3><a href="http://jsfiddle.net/yonet3d/at4186ez/3/" target="_blank">Exercise</a></h3>
-					
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-					
-						<p><a href="http://jsfiddle.net/yonet3d/635y98w8/1/" target="_blank">Solution</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					
-				</section>
-				<!-- /Circle Example with scale -->
+                            //Update
+                            circles.attr({
+                            'cx': function(d){return xScale(d)},
+                            'cy': 30,
+                            'r': r,
+                            'fill': function(){return color || 'red'}
+                            })
 
-				<!-- Axis -->
-				<section>
-					<!-- Components -->
-					<section>
-						<h3>Chart Components</h3>
-						<ul>
-							<li class="fragment">Generators
-								<ul>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#_line" target="_blank">line()</a></li>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#arc" target="_blank">arc()</a></li>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#symbol" target="_blank">symbol()</a></li>
-								</ul>
-							</li>
-							<li class="fragment">Components
-								<ul>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Axes" target="_blank">axis()</a></li>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Controls" target="_blank">brush()</a></li>
-								</ul>
-							</li>
-							<li class="fragment">Layouts
-								<ul>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Pie-Layout" target="_blank">pie()</a></li>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tree-Layout" target="_blank">tree()</a></li>
-									<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Force-Layout" target="_blank">force()</a></li>
-								</ul>
-							</li>
-						</ul>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-						Generators: take Array Values and create SVG drawing code for the d attribute of path elements.
-						Components:takes functions like Scale() and create element or event listeners.
-						Layouts: takes whole datasets ==> New datasets with attributes for layout.
-					
-						</aside>
-					</section>
-					<!-- /Components -->
+                            //Remove
+                            circles.exit().remove();
+                            }
+						</pre>
+                </code>
+                <p><a href="http://jsfiddle.net/yonet3d/wntt48j5/3/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3>Recap</h3>
+                <ul>
+                    <li class="fragment">Bind Data.</li>
+                    <li class="fragment">Enter and Append.</li>
+                    <li class="fragment">Update the attributes.</li>
+                    <li class="fragment">Exit and Remove.</li>
+                </ul>
+                <aside class="notes">
+                    TODO add scale to scatter plot.
+                </aside>
+            </section>
+            <section>
+                <h3><a href="http://jsfiddle.net/yonet3d/at4186ez/3/" target="_blank">Exercise</a></h3>
+
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+
+                <p><a href="http://jsfiddle.net/yonet3d/635y98w8/1/" target="_blank">Solution</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+
+        </section>
+        <!-- /Circle Example with scale -->
+
+        <!-- Axis -->
+        <section>
+            <!-- Components -->
+            <section>
+                <h3>Chart Components</h3>
+                <ul>
+                    <li class="fragment">Generators
+                        <ul>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#_line"
+                                                    target="_blank">line()</a></li>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#arc"
+                                                    target="_blank">arc()</a></li>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#symbol"
+                                                    target="_blank">symbol()</a></li>
+                        </ul>
+                    </li>
+                    <li class="fragment">Components
+                        <ul>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Axes" target="_blank">axis()</a>
+                            </li>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/SVG-Controls"
+                                                    target="_blank">brush()</a></li>
+                        </ul>
+                    </li>
+                    <li class="fragment">Layouts
+                        <ul>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Pie-Layout"
+                                                    target="_blank">pie()</a></li>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tree-Layout"
+                                                    target="_blank">tree()</a></li>
+                            <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Force-Layout"
+                                                    target="_blank">force()</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+                    Generators: take Array Values and create SVG drawing code for the d attribute of path elements.
+                    Components:takes functions like Scale() and create element or event listeners.
+                    Layouts: takes whole datasets ==> New datasets with attributes for layout.
+
+                </aside>
+            </section>
+            <!-- /Components -->
 
 
-					<section>
-						<h3>Line Graph</h3>
+            <section>
+                <h3>Line Graph</h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var line = d3.svg.line()
-	.interpolate("basis")
-	.x(function(d) {
-		return x(d.year);
-	})
-	.y(function(d) {
-		return y(d.stat);
-	});
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<h3>Axis</h3>
+                            var line = d3.svg.line()
+                            .interpolate("basis")
+                            .x(function(d) {
+                            return x(d.year);
+                            })
+                            .y(function(d) {
+                            return y(d.stat);
+                            });
+						</pre>
+                </code>
+                <p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3>Axis</h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var xAxis = d3.svg.axis()
-		.scale(xScale)
-		.orient("bottom");
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/1/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<h3>Ticks</h3>
+                            var xAxis = d3.svg.axis()
+                            .scale(xScale)
+                            .orient("bottom");
+						</pre>
+                </code>
+                <p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/1/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3>Ticks</h3>
 						<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-xAxis.ticks(5);
-xAxis.tickValues([1,2,4]);	
-xAxis.ticks(d3.time.month, 2);		
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/2/" target="_blank">jsFiddle</a></p>
-						<p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/4/" target="_blank">jsFiddle</a></p>
-						
-						<aside class="notes">
-					
-						</aside>
-					</section>
+                            xAxis.ticks(5);
+                            xAxis.tickValues([1,2,4]);
+                            xAxis.ticks(d3.time.month, 2);		
+						</pre>
+                </code>
+                <p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/2/" target="_blank">jsFiddle</a></p>
+                <p><a href="http://jsfiddle.net/yonet3d/8ckL6hky/4/" target="_blank">jsFiddle</a></p>
 
-					<!-- TODO -->
-					
-				</section>
-				<!-- /Axis -->
+                <aside class="notes">
 
-				<!-- Loading External Data -->
-				<section>
-					<section>
-						<h3><a href="https://github.com/mbostock/d3/wiki/Requests">Loading External Resources</a></h3>
-						<ul>
-							<li class="fragment">d3.json(url[, callback])</li>
-							<li class="fragment">d3.csv(url[, accessor][, callback])</li>
-							<li class="fragment">d3.tsv(url[, accessor][, callback])</li>
-						</ul>
+                </aside>
+            </section>
 
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-						<h3>CSV</h3>
+            <!-- TODO -->
+
+        </section>
+        <!-- /Axis -->
+
+        <!-- Loading External Data -->
+        <section>
+            <section>
+                <h3><a href="https://github.com/mbostock/d3/wiki/Requests">Loading External Resources</a></h3>
+                <ul>
+                    <li class="fragment">d3.json(url[, callback])</li>
+                    <li class="fragment">d3.csv(url[, accessor][, callback])</li>
+                    <li class="fragment">d3.tsv(url[, accessor][, callback])</li>
+                </ul>
+
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3>CSV</h3>
 						<pre><code data-trim>
-day,donut
-Monday,91
-Tuesday,23
-Wednesday,7
-Thursday,4
-Friday,82
-Saturday,39
-Sunday,27
+                            day,donut
+                            Monday,91
+                            Tuesday,23
+                            Wednesday,7
+                            Thursday,4
+                            Friday,82
+                            Saturday,39
+                            Sunday,27
 
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
 						<pre><code data-trim>
-var x = "day";
-var y = "donut";
+                            var x = "day";
+                            var y = "donut";
 
-var accessor = function(d) {
-	d[y] = parseInt(d[y]); 
-	return d;
-}
+                            var accessor = function(d) {
+                            d[y] = parseInt(d[y]);
+                            return d;
+                            }
 
-d3.csv("data/data.csv", accessor, function(d) {
-	console.log(d);//Array of objects [{day: "Monday", donut: 91},...]
-	render(d);
-});
-						</pre></code>
-						<p><a href="http://jsfiddle.net/yonet3d/abpx2bkf/" target="_blank">jsFiddle</a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
-							<h3>Exercise</h3>
-							<p><a href="exercises/exercises.zip" target="_blank">Download Files Here</a></p>
-							<ul>
-								<li class="fragment">Read the census.csv file inside the data folder.</li>
-								<li class="fragment">Display or console.log the data from the file.</li>
-							</ul>
-							
-						<aside class="notes">
-						</aside>
-					</section>
-					
-				</section>
-				<!-- /Loading External Data -->
-				
-				<!-- Working with Arrays -->
-				<section>
-				<section>
-						<h2><a href="https://github.com/mbostock/d3/wiki/Arrays">Working with Arrays</a></h2>
-						<!-- <p>Most commonly used functions</p> -->
-						<ul>
-							<li class="fragment">d3.min/d3.max</li>
-							<li class="fragment">d3.reduce</li>
-							<li class="fragment">d3.keys - lists the keys of an associative array.</li>
-							<li class="fragment">d3.merge - merges multiple arrays into one array.</li>
-							<li class="fragment">d3.nest - groups array elements hierarchically.</li>
-							<li class="fragment">d3.quantile(numbers, p)</li>
-							<li class="fragment">d3.deviation(array[, accessor]) - returns the standard deviation</li>
-						</ul>
-						<p class="fragment"><a href="http://jsfiddle.net/yonet3d/dfjxxdv7/" target="_blank">jsFiddle</a></p>
-					</section>
-					<section>
-							<h3>Reduce</h3>
+                            d3.csv("data/data.csv", accessor, function(d) {
+                            console.log(d);//Array of objects [{day: "Monday", donut: 91},...]
+                            render(d);
+                            });
+						</pre>
+                </code>
+                <p><a href="http://jsfiddle.net/yonet3d/abpx2bkf/" target="_blank">jsFiddle</a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
+                <h3>Exercise</h3>
+                <p><a href="exercises/exercises.zip" target="_blank">Download Files Here</a></p>
+                <ul>
+                    <li class="fragment">Read the census.csv file inside the data folder.</li>
+                    <li class="fragment">Display or console.log the data from the file.</li>
+                </ul>
+
+                <aside class="notes">
+                </aside>
+            </section>
+
+        </section>
+        <!-- /Loading External Data -->
+
+        <!-- Working with Arrays -->
+        <section>
+            <section>
+                <h2><a href="https://github.com/mbostock/d3/wiki/Arrays">Working with Arrays</a></h2>
+                <!-- <p>Most commonly used functions</p> -->
+                <ul>
+                    <li class="fragment">d3.min/d3.max</li>
+                    <li class="fragment">d3.reduce</li>
+                    <li class="fragment">d3.keys - lists the keys of an associative array.</li>
+                    <li class="fragment">d3.merge - merges multiple arrays into one array.</li>
+                    <li class="fragment">d3.nest - groups array elements hierarchically.</li>
+                    <li class="fragment">d3.quantile(numbers, p)</li>
+                    <li class="fragment">d3.deviation(array[, accessor]) - returns the standard deviation</li>
+                </ul>
+                <p class="fragment"><a href="http://jsfiddle.net/yonet3d/dfjxxdv7/" target="_blank">jsFiddle</a></p>
+            </section>
+            <section>
+                <h3>Reduce</h3>
 						<pre><code data-trim>
-[0, 1, 2, 3].reduce(function(a, b) {
-	return a - b;
-});//-6
+                            [0, 1, 2, 3].reduce(function(a, b) {
+                            return a - b;
+                            });//-6
 
-[0, 1, 2, 3].reduceRight(function(a, b) {
-	return a - b;
-});//0
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-						left-to-right
-					
-						</aside>
-					</section>
-					<section>
-						<h3>d3.nest</h3>
+                            [0, 1, 2, 3].reduceRight(function(a, b) {
+                            return a - b;
+                            });//0
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+                    left-to-right
+
+                </aside>
+            </section>
+            <section>
+                <h3>d3.nest</h3>
 						<pre><code data-trim>
-var donutData = [
-	{day: 'Monday', donut: 34, variety: "plain"},
-	{day: 'Tuesday', donut: 41, variety: "glazed"}
-];
+                            var donutData = [
+                            {day: 'Monday', donut: 34, variety: "plain"},
+                            {day: 'Tuesday', donut: 41, variety: "glazed"}
+                            ];
 
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
 
-						</aside>
-					</section>
-					<section>
+                </aside>
+            </section>
+            <section>
 						<pre><code data-trim>
-var nestedData = d3.nest()
-	.key(function(d){ return d.day;})
-	.entries(donutData);
+                            var nestedData = d3.nest()
+                            .key(function(d){ return d.day;})
+                            .entries(donutData);
 
-[{
-	key: "Monday",
-	values: [
-		{day: 'Monday', donut: 34, variety: "plain"}
-	]},
-	{
-	key: "Tuesday",
-	values: [
-		{day: 'Tuesday', donut: 41, variety: "glazed"}
-	]}
-]
+                            [{
+                            key: "Monday",
+                            values: [
+                            {day: 'Monday', donut: 34, variety: "plain"}
+                            ]},
+                            {
+                            key: "Tuesday",
+                            values: [
+                            {day: 'Tuesday', donut: 41, variety: "glazed"}
+                            ]}
+                            ]
 
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<section>
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
 						<pre><code data-trim>
-var nestedData = d3.nest()
-	.key(function(d){ return d.day;})
-	.key(function(d){ return d.variety;})
-	.entries(donutData);
+                            var nestedData = d3.nest()
+                            .key(function(d){ return d.day;})
+                            .key(function(d){ return d.variety;})
+                            .entries(donutData);
 
-[{
-		key: "Monday",
-		values: [
-			{ key: "plain", values: [{day: 'Monday', donut: 34, variety: "plain"}]}
-		]},
-	{
-		key:"Tuesday",
-		values: [
-			{ key: "glazed", values: [{day: 'Tuesday', donut: 41, variety: "glazed"}]}
-		]
-	}
-]
-						</pre></code>
-						<p><a href="" target="_blank"></a></p>
-						<aside class="notes">
-					
-						</aside>
-					</section>
-					<!-- TODO -->
-					<section>
-							<h3><a href="" target="_blank">Exercise</a></h3>
-						
-						<aside class="notes">
-						TODO load data and change format. Find some data with time, so I can use it for time formatting in the next slides.
-						</aside>
-					</section>
+                            [{
+                            key: "Monday",
+                            values: [
+                            { key: "plain", values: [{day: 'Monday', donut: 34, variety: "plain"}]}
+                            ]},
+                            {
+                            key:"Tuesday",
+                            values: [
+                            { key: "glazed", values: [{day: 'Tuesday', donut: 41, variety: "glazed"}]}
+                            ]
+                            }
+                            ]
+						</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
 
-				</section>
-				<!-- /Working with Arrays -->
+                </aside>
+            </section>
+            <!-- TODO -->
+            <section>
+                <h3><a href="" target="_blank">Exercise</a></h3>
+
+                <aside class="notes">
+                    TODO load data and change format. Find some data with time, so I can use it for time formatting in
+                    the next slides.
+                </aside>
+            </section>
+
+        </section>
+        <!-- /Working with Arrays -->
 
 
+        <!-- Map -->
+        <section>
 
-					<!-- Map -->
-					<section>
-
-						<section>
-							<h3>Maps</h3>
-								<ul>
-									<li><a href="" target="_blank">GeoData</a></li>
-									<li><a href="" target="_blank">Projections</a></li>
-									<li><a href="" target="_blank">Drawing on a map</a></li>
-								</ul>
-						</section>
-						<section>
-							<h3><a href="http://geojson.org/" target="_blank">GeoJson</a></h3>
+            <section>
+                <h3>Maps</h3>
+                <ul>
+                    <li><a href="" target="_blank">GeoData</a></li>
+                    <li><a href="" target="_blank">Projections</a></li>
+                    <li><a href="" target="_blank">Drawing on a map</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3><a href="http://geojson.org/" target="_blank">GeoJson</a></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-{ "type": "FeatureCollection",
-	"features": [
-		{
-			"type": "Feature",
-			"geometry": {
-				"type": "Polygon",
-				"coordinates": [[125.6, 10.1], [124.4, 9.2],...]
-			},
-			"properties": {
-				"name": "Dinagat Islands"
-			}
-		}
-	]
+                                { "type": "FeatureCollection",
+                                "features": [
+                                {
+                                "type": "Feature",
+                                "geometry": {
+                                "type": "Polygon",
+                                "coordinates": [[125.6, 10.1], [124.4, 9.2],...]
+                                },
+                                "properties": {
+                                "name": "Dinagat Islands"
+                                }
+                                }
+                                ]
 
-}
-							</pre></code>
-							<p><a href="http://bost.ocks.org/mike/map/" target="_blank">Let's make a Map</a></p>
-							<aside class="notes">
-						GeoJSON is a format for encoding a variety of geographic data structures.
-						It is designed to represent discrete geometry objects grouped into feature collections of name/value pairs.
-						Each feature in a feature collection is a JSON object that stores the border data in a coordinates array. Also some metadata in a properties object. 
-						<!-- Lists of geometries are represented by a GeometryCollection. Geometries with additional properties are Feature objects. And lists of features are represented by a FeatureCollection.  -->
-							</aside>
-						</section>
-						<section>
-						
-							<h3><a href="https://github.com/mbostock/topojson/wiki/API-Reference" target="_blank">TopoJson</a></h3>
+                                }
+							</pre>
+                </code>
+                <p><a href="http://bost.ocks.org/mike/map/" target="_blank">Let's make a Map</a></p>
+                <aside class="notes">
+                    GeoJSON is a format for encoding a variety of geographic data structures.
+                    It is designed to represent discrete geometry objects grouped into feature collections of name/value
+                    pairs.
+                    Each feature in a feature collection is a JSON object that stores the border data in a coordinates
+                    array. Also some metadata in a properties object.
+                    <!-- Lists of geometries are represented by a GeometryCollection. Geometries with additional properties are Feature objects. And lists of features are represented by a FeatureCollection.  -->
+                </aside>
+            </section>
+            <section>
+
+                <h3><a href="https://github.com/mbostock/topojson/wiki/API-Reference" target="_blank">TopoJson</a></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-							</code></pre>
-							<p><a href="http://jeffpaine.github.io/geojson-topojson/" target="_blank">GeoJson to TopoJson convertor</a></p>
-							<aside class="notes">
-							TopoJSON is an extension of GeoJSON that encodes topology. Rather than representing geometries discretely, geometries in TopoJSON files are stitched together from shared line segments called arcs. TopoJSON eliminates redundancy, offering much more compact representations of geometry than with GeoJSON; typical TopoJSON files are 80% smaller than their GeoJSON equivalents. In addition, TopoJSON facilitates applications that use topology, such as topology-preserving shape simplification, automatic map coloring, and cartograms.
-							</aside>
-						</section>
-						<section>
-							<h3>How to steal the data</h3>
-							
-							<p><a href="http://bl.ocks.org/mbostock/2206590" target="_blank">Map Example</a></p>
-							<aside class="notes">
+                                <script src="http://d3js.org/topojson.v1.min.js"></script>
+                            </code></pre>
+                <p><a href="http://jeffpaine.github.io/geojson-topojson/" target="_blank">GeoJson to TopoJson
+                    convertor</a></p>
+                <aside class="notes">
+                    TopoJSON is an extension of GeoJSON that encodes topology. Rather than representing geometries
+                    discretely, geometries in TopoJSON files are stitched together from shared line segments called
+                    arcs. TopoJSON eliminates redundancy, offering much more compact representations of geometry than
+                    with GeoJSON; typical TopoJSON files are 80% smaller than their GeoJSON equivalents. In addition,
+                    TopoJSON facilitates applications that use topology, such as topology-preserving shape
+                    simplification, automatic map coloring, and cartograms.
+                </aside>
+            </section>
+            <section>
+                <h3>How to steal the data</h3>
 
-						http://bl.ocks.org/mbostock/4060606
-							</aside>
-						</section>
-						<section>
-							<h3>Projection</h3>
+                <p><a href="http://bl.ocks.org/mbostock/2206590" target="_blank">Map Example</a></p>
+                <aside class="notes">
+
+                    http://bl.ocks.org/mbostock/4060606
+                </aside>
+            </section>
+            <section>
+                <h3>Projection</h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var projection = d3.geo.albersUsa()
-		.scale(500)
-		.translate([width / 2, height / 2]);
-							</pre></code>
-							<p><a href="" target="_blank"></a></p>
-							<aside class="notes">
-							Scale and transform is different for every projections type. 
-							</aside>
-						</section>
-						<section>
-							<h3></h3>
+                                var projection = d3.geo.albersUsa()
+                                .scale(500)
+                                .translate([width / 2, height / 2]);
+							</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+                    Scale and transform is different for every projections type.
+                </aside>
+            </section>
+            <section>
+                <h3></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var worldProjection = d3.geo.mercator();
-var geoPath = d3.geo.path().projection(worldProjection);
-							</pre></code>
-							<p><a href="" target="_blank"></a></p>
-							<aside class="notes">
-						
-							</aside>
-						</section>
-						<section>
+                                var worldProjection = d3.geo.mercator();
+                                var geoPath = d3.geo.path().projection(worldProjection);
+							</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+
+                </aside>
+            </section>
+            <section>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.select('svg').selectAll('path').data(countries.features)
-		.enter()
-		.append('path')
-		.attr('d', geoPath)
-		.attr('class', 'countries');
-							</pre></code>
-							<p><a href="" target="_blank"></a></p>
-							<aside class="notes">
-						main.js
-							</aside>
-						</section>
-						<section>
-							<h3></h3>
+                                d3.select('svg').selectAll('path').data(countries.features)
+                                .enter()
+                                .append('path')
+                                .attr('d', geoPath)
+                                .attr('class', 'countries');
+							</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
+                    main.js
+                </aside>
+            </section>
+            <section>
+                <h3></h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-d3.select('svg').selectAll('path').data(topojson.feature(us, us.objects.states).features);
-							</pre></code>
-							<!-- <p><a href="https://github.com/mbostock/topojson/wiki/API-Reference#mesh" target="_blank">topojson.mesh(topology, object, [filter])</a></p> -->
-							<aside class="notes">
-						Returns the GeoJSON MultiLineString geometry object representing the mesh for the specified object in the given topology. This is useful for rendering strokes in complicated objects efficiently, as edges that are shared by multiple features are only stroked once.
-							</aside>
-						</section>
+                                d3.select('svg').selectAll('path').data(topojson.feature(us,
+                                us.objects.states).features);
+							</pre>
+                </code>
+                <!-- <p><a href="https://github.com/mbostock/topojson/wiki/API-Reference#mesh" target="_blank">topojson.mesh(topology, object, [filter])</a></p> -->
+                <aside class="notes">
+                    Returns the GeoJSON MultiLineString geometry object representing the mesh for the specified object
+                    in the given topology. This is useful for rendering strokes in complicated objects efficiently, as
+                    edges that are shared by multiple features are only stroked once.
+                </aside>
+            </section>
 
-						
-						<section>
-							<h3>Drawing on a map</h3>
+
+            <section>
+                <h3>Drawing on a map</h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-<script src="http://d3js.org/queue.v1.min.js"></script>
-queue()
-	.defer(d3.json, 'states.json')
-	.defer(d3.json, 'cities.json')
-	.await(makeMyMap);		
-							</pre></code>
-							<p><a href="" target="_blank"></a></p>
-							<aside class="notes">
-						
-							</aside>
-						</section>
+                                <script src="http://d3js.org/queue.v1.min.js"></script>
+                                queue()
+                                .defer(d3.json, 'states.json')
+                                .defer(d3.json, 'cities.json')
+                                .await(makeMyMap);		
+							</pre>
+                </code>
+                <p><a href="" target="_blank"></a></p>
+                <aside class="notes">
 
-						<section>
-							<h3>Interactivity</h3>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Interactivity</h3>
 							<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-var centered;
-g.on("click", clicked);
-function clicked(d) {
-  var x, y, k;
+                                var centered;
+                                g.on("click", clicked);
+                                function clicked(d) {
+                                var x, y, k;
 
-  if (d && centered !== d) {
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 4;
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
+                                if (d && centered !== d) {
+                                var centroid = path.centroid(d);
+                                x = centroid[0];
+                                y = centroid[1];
+                                k = 4;
+                                centered = d;
+                                } else {
+                                x = width / 2;
+                                y = height / 2;
+                                k = 1;
+                                centered = null;
+                                }
 
-  g.selectAll("path")
-      .classed("active", centered && function(d) { return d === centered; });
+                                g.selectAll("path")
+                                .classed("active", centered && function(d) { return d === centered; });
 
-  g.transition()
-      .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .style("stroke-width", 1.5 / k + "px");
-}
+                                g.transition()
+                                .duration(750)
+                                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k +
+                                ")translate(" + -x + "," + -y + ")")
+                                .style("stroke-width", 1.5 / k + "px");
+                                }
 
-							</pre></code>
-							<p><a href="http://bl.ocks.org/mbostock/2206590" target="_blank">Example</a></p>
-							<aside class="notes">
-							TODO zooming in/out, panning.
-							</aside>
-						</section>
-
-
-						<section>
-							<h3>Other mapping libraries</h3>
-							<ul>
-								<li class="fragment"><a href="https://developers.google.com/maps/?hl=en" target="_blank">Goole Maps</a></li>
-								<li class="fragment"><a href="http://leafletjs.com/" target="_blank">Leaflet</a></li>
-								<li class="fragment"><a href="https://mapzen.com/" target="_blank">Mapzen</a></li>
-								<li class="fragment"><a href="http://tangrams.github.io/tangram-play/#15/40.7063/-74.0095" target="_blank">Tangram Play</a></li>
-
-								<li class="fragment"><a href="https://developer.amazon.com/public/apis/experience/maps" target="_blank">Amazon Maps</a></li>
-								<li class="fragment"><a href="https://developers.google.com/chart/interactive/docs/gallery" target="_blank">Google Charts</a></li>
-								<li class="fragment"><a href="http://datamaps.github.io/" target="_blank">DataMaps</a></li>
-							</ul>
-						
-							<aside class="notes">
-							
-							</aside>
-						</section>
+							</pre>
+                </code>
+                <p><a href="http://bl.ocks.org/mbostock/2206590" target="_blank">Example</a></p>
+                <aside class="notes">
+                    TODO zooming in/out, panning.
+                </aside>
+            </section>
 
 
-					</section>
-					<!-- /Map -->
+            <section>
+                <h3>Other mapping libraries</h3>
+                <ul>
+                    <li class="fragment"><a href="https://developers.google.com/maps/?hl=en" target="_blank">Goole
+                        Maps</a></li>
+                    <li class="fragment"><a href="http://leafletjs.com/" target="_blank">Leaflet</a></li>
+                    <li class="fragment"><a href="https://mapzen.com/" target="_blank">Mapzen</a></li>
+                    <li class="fragment"><a href="http://tangrams.github.io/tangram-play/#15/40.7063/-74.0095"
+                                            target="_blank">Tangram Play</a></li>
 
-					<!-- TODO -->
-					<!-- DAta loading async. nesting cb/queue.js-->
-					<!-- Data types: quantitative, categorical, topological, geometric, temporal, raw(text, image) -->
-					<!-- Layouts -->
-					<!-- Geospatial : http://geoservices.tamu.edu/Services/Geocode/-->
-					<!-- Optimization -->
+                    <li class="fragment"><a href="https://developer.amazon.com/public/apis/experience/maps"
+                                            target="_blank">Amazon Maps</a></li>
+                    <li class="fragment"><a href="https://developers.google.com/chart/interactive/docs/gallery"
+                                            target="_blank">Google Charts</a></li>
+                    <li class="fragment"><a href="http://datamaps.github.io/" target="_blank">DataMaps</a></li>
+                </ul>
+
+                <aside class="notes">
+
+                </aside>
+            </section>
 
 
-				<section>
-					<h2>Good News!</h2>
-					<ul>
-						<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">Examples</a></li>
-						<li class="fragment"><a href="http://nvd3.org/index.html" target="_blank">NVD3</a></li>
-						<li class="fragment"><a href="http://krispo.github.io/angular-nvd3/#/" target="_blank">Angular-NVD3</a></li>
-						
-						
-					</ul>
-				</section>
-				<section>
-					<h3>Other resources</h3>
-					<ul>
+        </section>
+        <!-- /Map -->
 
-						<li class="fragment"><a href="https://www.manning.com/books/d3-js-in-action" target="_blank">D3.js in Action</a></li>
-						<li class="fragment"><a href="https://www.packtpub.com/web-development/learning-d3js-mapping" target="_blank">Learning d3.js Mapping</a></li>
-						<li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">d3 Tutorials list</a></li>
-						<li class="fragment"><a href="https://www.dashingd3js.com/d3-resources" target="_blank">Dashing-D3js</a></li>
-						<li class="fragment"><a href="http://www.meetup.com/Bay-Area-d3-User-Group/events/202337462/" target="_blank">d3.oakland.meetup()</a></li>
-						
-					</ul>
-				
-					<aside class="notes">
-				
-					</aside>
-				</section>
-				<section>
-					<h3>Angular and d3</h3>
-					
-					<p><a href="bit.ly/AngularU-d3" target="_blank">bit.ly/AngularU-d3</a></p>
-					<aside class="notes">
-				
-					</aside>
-				</section>
+        <!-- TODO -->
+        <!-- DAta loading async. nesting cb/queue.js-->
+        <!-- Data types: quantitative, categorical, topological, geometric, temporal, raw(text, image) -->
+        <!-- Layouts -->
+        <!-- Geospatial : http://geoservices.tamu.edu/Services/Geocode/-->
+        <!-- Optimization -->
 
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Aysegul Yonet / aysegul@anniecannons.com</h3>
-					<p>Slides : <a href="http://bit.ly/sfhtml5-d3" target="_blank">bit.ly/sfhtml5-d3</a></p>
-				</section>
 
-			</div>
+        <section>
+            <h2>Good News!</h2>
+            <ul>
+                <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">Examples</a>
+                </li>
+                <li class="fragment"><a href="http://nvd3.org/index.html" target="_blank">NVD3</a></li>
+                <li class="fragment"><a href="http://krispo.github.io/angular-nvd3/#/" target="_blank">Angular-NVD3</a>
+                </li>
 
-		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+            </ul>
+        </section>
+        <section>
+            <h3>Other resources</h3>
+            <ul>
 
-		<script>
+                <li class="fragment"><a href="https://www.manning.com/books/d3-js-in-action" target="_blank">D3.js in
+                    Action</a></li>
+                <li class="fragment"><a href="https://www.packtpub.com/web-development/learning-d3js-mapping"
+                                        target="_blank">Learning d3.js Mapping</a></li>
+                <li class="fragment"><a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">d3
+                    Tutorials list</a></li>
+                <li class="fragment"><a href="https://www.dashingd3js.com/d3-resources" target="_blank">Dashing-D3js</a>
+                </li>
+                <li class="fragment"><a href="http://www.meetup.com/Bay-Area-d3-User-Group/events/202337462/"
+                                        target="_blank">d3.oakland.meetup()</a></li>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+            </ul>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+            <aside class="notes">
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+            </aside>
+        </section>
+        <section>
+            <h3>Angular and d3</h3>
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+            <p><a href="bit.ly/AngularU-d3" target="_blank">bit.ly/AngularU-d3</a></p>
+            <aside class="notes">
 
-		</script>
+            </aside>
+        </section>
 
-	</body>
+        <section>
+            <h1>THE END</h1>
+            <h3>BY Aysegul Yonet / aysegul.yonet@autodesk.com</h3>
+            <p>Slides : <a href="http://yonet.github.io/d3-codeclass/#/" target="_blank">bit.ly/d3-codeclass</a></p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            }
+            }
+        ]
+    });
+
+</script>
+
+</body>
 </html>
 
