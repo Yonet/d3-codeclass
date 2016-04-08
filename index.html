@@ -397,14 +397,15 @@ debugging $0.__data__-->
         </section>
         <section>
             <h3>Chaining</h3>
-					<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
-                        d3.select("body").selectAll("p")
-                        .data([3, 7, 21, 31, 35, 42])
-                        .enter().append("p")
-                        .exit().remove();
-					</pre>
+		<pre><code data-trim contenteditable style="font-size: 20px; padding: 15px;">
+d3.select("body").selectAll("p")
+        .data([3, 7, 21, 31, 35, 42])
+        .enter().append("p")
+        .text(function(d){return d;})
+        .exit().remove();
+		</pre>
             </code>
-            <p><a href="http://jsfiddle.net/yonet3d/pgrwrvyp/2/" target="_blank">jsFiddle</a></p>
+            <p><a href="http://jsfiddle.net/pgrwrvyp/6/" target="_blank">jsFiddle</a></p>
             <aside class="notes">
                 If you have been to the d3's website, I am sure you came accross the chained methods. Every chained
                 method operates on the previous selection, and most operations return the same selection. Some methods
